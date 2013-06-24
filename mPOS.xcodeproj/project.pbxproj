@@ -1,0 +1,943 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DB15113176B1142001618F4 /* hpPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB15112176B1142001618F4 /* hpPasswordController.m */; };
+		0DB2405B177079B5004CD1D1 /* hpTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2405A177079B5004CD1D1 /* hpTextField.m */; };
+		0DB2405F1771EF9B004CD1D1 /* HpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2405E1771EF9B004CD1D1 /* HpUtils.m */; };
+		0DD60EFB17622D61002A842E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DD60EFD17622D61002A842E /* Localizable.strings */; };
+		8034061F1754E66E00D9E830 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8034061E1754E66E00D9E830 /* libheft.a */; };
+		803406231754E8E200D9E830 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 803406221754E8E200D9E830 /* libdtdev.a */; };
+		81E3EC3D17424EC80017B2BD /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC3C17424EC80017B2BD /* LocationViewController.m */; };
+		81E3EC40174250640017B2BD /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC3F174250640017B2BD /* ItemViewController.m */; };
+		81E3EC43174250E80017B2BD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC42174250E80017B2BD /* DetailViewController.m */; };
+		81E3EC47174251A20017B2BD /* MyStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC45174251A20017B2BD /* MyStore.xcdatamodeld */; };
+		81E3EC4A1742544E0017B2BD /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC491742544E0017B2BD /* Items.m */; };
+		81E3EC4C174254E00017B2BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E3EC4B174254E00017B2BD /* MapKit.framework */; };
+		81E3EC4E174254F20017B2BD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E3EC4D174254F20017B2BD /* CoreData.framework */; };
+		81F3CAA21726C5E200E09212 /* Draw SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F3CAA11726C5E200E09212 /* Draw SignatureViewController.m */; };
+		81F3CAAE1726EC6E00E09212 /* CalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F3CAAD1726EC6E00E09212 /* CalViewController.m */; };
+		81FAFA28172A8610003F775B /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81FAFA27172A8610003F775B /* PhotoViewController.m */; };
+		81FAFA2C172ABE3B003F775B /* SocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81FAFA2B172ABE3B003F775B /* SocialViewController.m */; };
+		81FAFA34172AC386003F775B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FAFA33172AC386003F775B /* Social.framework */; };
+		929574A216F88FBE00992410 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 929574A116F88FBE00992410 /* libsqlite3.0.dylib */; };
+		AF02E1F117170742000C579C /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = AF02E1F017170741000C579C /* Background.png */; };
+		AF02E1F517170A41000C579C /* Divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AF02E1F417170A41000C579C /* Divider.png */; };
+		AF3E7F221725848400709E2A /* hpReceipts.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = AF3E7F211725848400709E2A /* hpReceipts.sqlite */; };
+		AF3E7F241726C9E400709E2A /* hpReceiptDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = AF3E7F231726C9E400709E2A /* hpReceiptDelegate.h */; };
+		AF3E7F261726CA1100709E2A /* hpReceiptDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3E7F251726CA1100709E2A /* hpReceiptDelegate.m */; };
+		AF5A5DEB1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF5A5DEA1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard */; };
+		AF5A5DED174306D200FAD165 /* socialIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A5DEC174306D200FAD165 /* socialIcon.png */; };
+		AF5A5DEF174309AF00FAD165 /* itemsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A5DEE174309AE00FAD165 /* itemsIcon.png */; };
+		AF60525717121921003A3DC1 /* numberButtons.png in Resources */ = {isa = PBXBuildFile; fileRef = AF60525617121921003A3DC1 /* numberButtons.png */; };
+		AF60525917121995003A3DC1 /* numberButtonsDown.png in Resources */ = {isa = PBXBuildFile; fileRef = AF60525817121995003A3DC1 /* numberButtonsDown.png */; };
+		AF60525C17121C79003A3DC1 /* payButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = AF60525A17121C79003A3DC1 /* payButtonDown.png */; };
+		AF60525D17121C79003A3DC1 /* payButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AF60525B17121C79003A3DC1 /* payButton.png */; };
+		AF6681DC16E8C86000A17A89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6681DB16E8C86000A17A89 /* UIKit.framework */; };
+		AF6681DE16E8C86000A17A89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6681DD16E8C86000A17A89 /* Foundation.framework */; };
+		AF6681E016E8C86000A17A89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6681DF16E8C86000A17A89 /* CoreGraphics.framework */; };
+		AF6681E616E8C86000A17A89 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF6681E416E8C86000A17A89 /* InfoPlist.strings */; };
+		AF6681E816E8C86000A17A89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6681E716E8C86000A17A89 /* main.m */; };
+		AF6681EC16E8C86000A17A89 /* hpAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6681EB16E8C86000A17A89 /* hpAppDelegate.m */; };
+		AF6681F816E8C86000A17A89 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6681F616E8C86000A17A89 /* MainStoryboard_iPad.storyboard */; };
+		AF6681FB16E8C86000A17A89 /* hpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6681FA16E8C86000A17A89 /* hpViewController.m */; };
+		AF66820E16E8FD1500A17A89 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF66820D16E8FD1500A17A89 /* ExternalAccessory.framework */; };
+		AF66821016E8FD1E00A17A89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF66820F16E8FD1E00A17A89 /* Security.framework */; };
+		AF66821316E9101100A17A89 /* hpDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66821216E9101100A17A89 /* hpDiscoverViewController.m */; };
+		AF66E97916F9234100C09F45 /* mPOS_items.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = AF66E97816F9234100C09F45 /* mPOS_items.sqlite */; };
+		AF6AB02C16F09B5300C34917 /* hpHeftServiceStub.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6AB02B16F09B5300C34917 /* hpHeftServiceStub.m */; };
+		AF6AB03016F09E5D00C34917 /* hpHeftServiceStubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6AB02F16F09E5D00C34917 /* hpHeftServiceStubClient.m */; };
+		AF6AB03316F09E6700C34917 /* hpHeftServiceStubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6AB03216F09E6700C34917 /* hpHeftServiceStubManager.m */; };
+		AF6AB03616F0E42900C34917 /* hpNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6AB03516F0E42900C34917 /* hpNavigationViewController.m */; };
+		AF6D34F01729D90200B94301 /* hpListOfRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6D34EF1729D90200B94301 /* hpListOfRecordsViewController.m */; };
+		AF6DCCA917425B24007B7774 /* mPOS_User_Guide in Resources */ = {isa = PBXBuildFile; fileRef = AF6DCCA817425B24007B7774 /* mPOS_User_Guide */; };
+		AF6DCCAF17425C58007B7774 /* hpUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6DCCAE17425C58007B7774 /* hpUserGuideViewController.m */; };
+		AF6DCCB11742663E007B7774 /* UsrGuideIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF6DCCB01742663E007B7774 /* UsrGuideIcon.png */; };
+		AF8916D21738710D00DC33C3 /* hpCustomerReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8916D11738710D00DC33C3 /* hpCustomerReceiptViewController.m */; };
+		AF8916D5173874CE00DC33C3 /* hpMerchantReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8916D4173874CE00DC33C3 /* hpMerchantReceiptViewController.m */; };
+		AF8916D7173A667800DC33C3 /* handpoint logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8916D6173A667800DC33C3 /* handpoint logo.png */; };
+		AF8916D9173A68F400DC33C3 /* LoRIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8916D8173A68F400DC33C3 /* LoRIcon.png */; };
+		AF8916DB173A6E4F00DC33C3 /* refundIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8916DA173A6E4F00DC33C3 /* refundIcon.png */; };
+		AFA5D937172FD61500093231 /* hpListOfRecordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA5D936172FD61500093231 /* hpListOfRecordsCell.m */; };
+		AFA5D9391730198900093231 /* Visa_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA5D9381730198900093231 /* Visa_Logo.png */; };
+		AFA5D93B17301E3A00093231 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA5D93A17301E3A00093231 /* card.png */; };
+		AFA5D93E1730772600093231 /* hpReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA5D93D1730772600093231 /* hpReceiptViewController.m */; };
+		AFA5D9411732AAB800093231 /* hpMerchantInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA5D9401732AAB800093231 /* hpMerchantInformationViewController.m */; };
+		AFA5D94F173422E200093231 /* connectIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA5D94E173422E200093231 /* connectIcon.png */; };
+		AFA5D9511734245100093231 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA5D9501734245100093231 /* settingsIcon.png */; };
+		AFA5D953173424DD00093231 /* infoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFA5D952173424DC00093231 /* infoIcon.png */; };
+		AFB41D1E170F111E00ECDDB6 /* hpReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB41D1D170F111E00ECDDB6 /* hpReceipt.m */; };
+		AFB41D21170F234100ECDDB6 /* hpSelectCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB41D20170F234100ECDDB6 /* hpSelectCurrencyViewController.m */; };
+		AFD0C1791749950300A4C7A1 /* hpRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6A021A17498DC400467148 /* hpRootViewController.m */; };
+		AFD0C17A1749950300A4C7A1 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6A021C17498DC400467148 /* KeychainWrapper.m */; };
+		AFE1E6FF16ECBBF7006EC93D /* hpSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE1E6FE16ECBBF7006EC93D /* hpSettingsViewController.m */; };
+		AFE1E70216EDFE87006EC93D /* hpHeftService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE1E70116EDFE87006EC93D /* hpHeftService.m */; };
+		AFE1E70516EE8A64006EC93D /* hpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE1E70416EE8A64006EC93D /* hpSupportViewController.m */; };
+		AFE1E70716EE8C39006EC93D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE1E70616EE8C39006EC93D /* MessageUI.framework */; };
+		AFE1E70916EF8559006EC93D /* hpConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFE1E70816EF8559006EC93D /* hpConfig.plist */; };
+		AFE70DF01737E3BA0019D1A0 /* Camera_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AFE70DEF1737E3BA0019D1A0 /* Camera_icon.png */; };
+		AFE70DF21737E4640019D1A0 /* Camera_icon_PRESSED.png in Resources */ = {isa = PBXBuildFile; fileRef = AFE70DF11737E4640019D1A0 /* Camera_icon_PRESSED.png */; };
+		AFEA789B173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEA789A173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.m */; };
+		AFF259881712F76B0075386F /* Hi_icon_transp_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF259871712F76B0075386F /* Hi_icon_transp_57x57.png */; };
+		AFF2598A1712F7700075386F /* Hi_icon_transp_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF259891712F7700075386F /* Hi_icon_transp_114x114.png */; };
+		F51349421762451800CC6B81 /* hpSetSupportModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51349411762451800CC6B81 /* hpSetSupportModeViewController.m */; };
+		FB2985A7175F990000409380 /* amex.png in Resources */ = {isa = PBXBuildFile; fileRef = FB298598175F990000409380 /* amex.png */; };
+		FB2985A8175F990000409380 /* credit.png in Resources */ = {isa = PBXBuildFile; fileRef = FB298599175F990000409380 /* credit.png */; };
+		FB2985A9175F990000409380 /* dankort.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859A175F990000409380 /* dankort.png */; };
+		FB2985AA175F990000409380 /* diners.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859B175F990000409380 /* diners.png */; };
+		FB2985AB175F990000409380 /* discover.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859C175F990000409380 /* discover.png */; };
+		FB2985AC175F990000409380 /* forbru.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859D175F990000409380 /* forbru.png */; };
+		FB2985AD175F990000409380 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859E175F990000409380 /* google.png */; };
+		FB2985AE175F990000409380 /* jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = FB29859F175F990000409380 /* jcb.png */; };
+		FB2985AF175F990000409380 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A0175F990000409380 /* laser.png */; };
+		FB2985B0175F990000409380 /* maestro.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A1175F990000409380 /* maestro.png */; };
+		FB2985B1175F990000409380 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A2175F990000409380 /* mastercard.png */; };
+		FB2985B2175F990000409380 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A3175F990000409380 /* money.png */; };
+		FB2985B3175F990000409380 /* paypa.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A4175F990000409380 /* paypa.png */; };
+		FB2985B4175F990000409380 /* solo.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A5175F990000409380 /* solo.png */; };
+		FB2985B5175F990000409380 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = FB2985A6175F990000409380 /* visa.png */; };
+		FBEC39FF17673B9C0083C5F4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FBEC39FE17673B9C0083C5F4 /* Default.png */; };
+		FBEC3A0117673BA00083C5F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBEC3A0017673BA00083C5F4 /* Default@2x.png */; };
+		FBEC3A0317673BA40083C5F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBEC3A0217673BA40083C5F4 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D982DBF176238B9001C2833 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0DB15111176B1142001618F4 /* hpPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpPasswordController.h; sourceTree = "<group>"; };
+		0DB15112176B1142001618F4 /* hpPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpPasswordController.m; sourceTree = "<group>"; };
+		0DB24059177079B5004CD1D1 /* hpTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpTextField.h; sourceTree = "<group>"; };
+		0DB2405A177079B5004CD1D1 /* hpTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpTextField.m; sourceTree = "<group>"; };
+		0DB2405D1771EF9B004CD1D1 /* HpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpUtils.h; sourceTree = "<group>"; };
+		0DB2405E1771EF9B004CD1D1 /* HpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HpUtils.m; sourceTree = "<group>"; };
+		0DD60EFC17622D61002A842E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8034061A1754E66E00D9E830 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
+		8034061B1754E66E00D9E830 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
+		8034061C1754E66E00D9E830 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
+		8034061D1754E66E00D9E830 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
+		8034061E1754E66E00D9E830 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
+		803406211754E8E200D9E830 /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		803406221754E8E200D9E830 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
+		81E3EC3B17424EC80017B2BD /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		81E3EC3C17424EC80017B2BD /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		81E3EC3E174250640017B2BD /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		81E3EC3F174250640017B2BD /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		81E3EC41174250E80017B2BD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		81E3EC42174250E80017B2BD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		81E3EC46174251A20017B2BD /* MyStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyStore.xcdatamodel; sourceTree = "<group>"; };
+		81E3EC481742544E0017B2BD /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
+		81E3EC491742544E0017B2BD /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
+		81E3EC4B174254E00017B2BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		81E3EC4D174254F20017B2BD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		81F3CAA01726C5E200E09212 /* Draw SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Draw SignatureViewController.h"; sourceTree = "<group>"; };
+		81F3CAA11726C5E200E09212 /* Draw SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Draw SignatureViewController.m"; sourceTree = "<group>"; };
+		81F3CAAC1726EC6E00E09212 /* CalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalViewController.h; sourceTree = "<group>"; };
+		81F3CAAD1726EC6E00E09212 /* CalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalViewController.m; sourceTree = "<group>"; };
+		81FAFA26172A8610003F775B /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		81FAFA27172A8610003F775B /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		81FAFA2A172ABE3B003F775B /* SocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialViewController.h; sourceTree = "<group>"; };
+		81FAFA2B172ABE3B003F775B /* SocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialViewController.m; sourceTree = "<group>"; };
+		81FAFA33172AC386003F775B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		929574A116F88FBE00992410 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		AF02E1F017170741000C579C /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		AF02E1F417170A41000C579C /* Divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Divider.png; sourceTree = "<group>"; };
+		AF3E7F211725848400709E2A /* hpReceipts.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = hpReceipts.sqlite; sourceTree = "<group>"; };
+		AF3E7F231726C9E400709E2A /* hpReceiptDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpReceiptDelegate.h; sourceTree = "<group>"; };
+		AF3E7F251726CA1100709E2A /* hpReceiptDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpReceiptDelegate.m; sourceTree = "<group>"; };
+		AF5A5DEA1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPhone.storyboard; path = slideviewTest/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		AF5A5DEC174306D200FAD165 /* socialIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = socialIcon.png; sourceTree = "<group>"; };
+		AF5A5DEE174309AE00FAD165 /* itemsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemsIcon.png; sourceTree = "<group>"; };
+		AF60525617121921003A3DC1 /* numberButtons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numberButtons.png; sourceTree = "<group>"; };
+		AF60525817121995003A3DC1 /* numberButtonsDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numberButtonsDown.png; sourceTree = "<group>"; };
+		AF60525A17121C79003A3DC1 /* payButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payButtonDown.png; sourceTree = "<group>"; };
+		AF60525B17121C79003A3DC1 /* payButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payButton.png; sourceTree = "<group>"; };
+		AF6681D816E8C86000A17A89 /* mPOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mPOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF6681DB16E8C86000A17A89 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AF6681DD16E8C86000A17A89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AF6681DF16E8C86000A17A89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AF6681E316E8C86000A17A89 /* mPOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mPOS-Info.plist"; sourceTree = "<group>"; };
+		AF6681E516E8C86000A17A89 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AF6681E716E8C86000A17A89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AF6681E916E8C86000A17A89 /* mPOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mPOS-Prefix.pch"; sourceTree = "<group>"; };
+		AF6681EA16E8C86000A17A89 /* hpAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hpAppDelegate.h; path = slideviewTest/hpAppDelegate.h; sourceTree = "<group>"; };
+		AF6681EB16E8C86000A17A89 /* hpAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = hpAppDelegate.m; path = slideviewTest/hpAppDelegate.m; sourceTree = "<group>"; };
+		AF6681ED16E8C86000A17A89 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AF6681EF16E8C86000A17A89 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AF6681F116E8C86000A17A89 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AF6681F716E8C86000A17A89 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		AF6681F916E8C86000A17A89 /* hpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hpViewController.h; sourceTree = "<group>"; };
+		AF6681FA16E8C86000A17A89 /* hpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hpViewController.m; sourceTree = "<group>"; };
+		AF66820D16E8FD1500A17A89 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		AF66820F16E8FD1E00A17A89 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AF66821116E9101100A17A89 /* hpDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpDiscoverViewController.h; sourceTree = "<group>"; };
+		AF66821216E9101100A17A89 /* hpDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpDiscoverViewController.m; sourceTree = "<group>"; };
+		AF66E97816F9234100C09F45 /* mPOS_items.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mPOS_items.sqlite; sourceTree = "<group>"; };
+		AF6A021917498DC400467148 /* hpRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hpRootViewController.h; sourceTree = "<group>"; };
+		AF6A021A17498DC400467148 /* hpRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hpRootViewController.m; sourceTree = "<group>"; };
+		AF6A021B17498DC400467148 /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		AF6A021C17498DC400467148 /* KeychainWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		AF6A021D17498DC400467148 /* PasswordConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordConstants.h; sourceTree = "<group>"; };
+		AF6AB02A16F09B5300C34917 /* hpHeftServiceStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpHeftServiceStub.h; sourceTree = "<group>"; };
+		AF6AB02B16F09B5300C34917 /* hpHeftServiceStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpHeftServiceStub.m; sourceTree = "<group>"; };
+		AF6AB02E16F09E5D00C34917 /* hpHeftServiceStubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpHeftServiceStubClient.h; sourceTree = "<group>"; };
+		AF6AB02F16F09E5D00C34917 /* hpHeftServiceStubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpHeftServiceStubClient.m; sourceTree = "<group>"; };
+		AF6AB03116F09E6700C34917 /* hpHeftServiceStubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpHeftServiceStubManager.h; sourceTree = "<group>"; };
+		AF6AB03216F09E6700C34917 /* hpHeftServiceStubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpHeftServiceStubManager.m; sourceTree = "<group>"; };
+		AF6AB03416F0E42900C34917 /* hpNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpNavigationViewController.h; sourceTree = "<group>"; };
+		AF6AB03516F0E42900C34917 /* hpNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpNavigationViewController.m; sourceTree = "<group>"; };
+		AF6D34EE1729D90200B94301 /* hpListOfRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpListOfRecordsViewController.h; sourceTree = "<group>"; };
+		AF6D34EF1729D90200B94301 /* hpListOfRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpListOfRecordsViewController.m; sourceTree = "<group>"; };
+		AF6DCCA817425B24007B7774 /* mPOS_User_Guide */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mPOS_User_Guide; sourceTree = "<group>"; };
+		AF6DCCAD17425C58007B7774 /* hpUserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hpUserGuideViewController.h; path = ../hpUserGuideViewController.h; sourceTree = "<group>"; };
+		AF6DCCAE17425C58007B7774 /* hpUserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = hpUserGuideViewController.m; path = ../hpUserGuideViewController.m; sourceTree = "<group>"; };
+		AF6DCCB01742663E007B7774 /* UsrGuideIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UsrGuideIcon.png; sourceTree = "<group>"; };
+		AF8916D01738710D00DC33C3 /* hpCustomerReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpCustomerReceiptViewController.h; sourceTree = "<group>"; };
+		AF8916D11738710D00DC33C3 /* hpCustomerReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpCustomerReceiptViewController.m; sourceTree = "<group>"; };
+		AF8916D3173874CE00DC33C3 /* hpMerchantReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpMerchantReceiptViewController.h; sourceTree = "<group>"; };
+		AF8916D4173874CE00DC33C3 /* hpMerchantReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpMerchantReceiptViewController.m; sourceTree = "<group>"; };
+		AF8916D6173A667800DC33C3 /* handpoint logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handpoint logo.png"; sourceTree = "<group>"; };
+		AF8916D8173A68F400DC33C3 /* LoRIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoRIcon.png; sourceTree = "<group>"; };
+		AF8916DA173A6E4F00DC33C3 /* refundIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refundIcon.png; sourceTree = "<group>"; };
+		AFA5D935172FD61500093231 /* hpListOfRecordsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpListOfRecordsCell.h; sourceTree = "<group>"; };
+		AFA5D936172FD61500093231 /* hpListOfRecordsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpListOfRecordsCell.m; sourceTree = "<group>"; };
+		AFA5D9381730198900093231 /* Visa_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Visa_Logo.png; sourceTree = "<group>"; };
+		AFA5D93A17301E3A00093231 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
+		AFA5D93C1730772600093231 /* hpReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpReceiptViewController.h; sourceTree = "<group>"; };
+		AFA5D93D1730772600093231 /* hpReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpReceiptViewController.m; sourceTree = "<group>"; };
+		AFA5D93F1732AAB800093231 /* hpMerchantInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpMerchantInformationViewController.h; sourceTree = "<group>"; };
+		AFA5D9401732AAB800093231 /* hpMerchantInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpMerchantInformationViewController.m; sourceTree = "<group>"; };
+		AFA5D94E173422E200093231 /* connectIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connectIcon.png; sourceTree = "<group>"; };
+		AFA5D9501734245100093231 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		AFA5D952173424DC00093231 /* infoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoIcon.png; sourceTree = "<group>"; };
+		AFB41D1C170F111E00ECDDB6 /* hpReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpReceipt.h; sourceTree = "<group>"; };
+		AFB41D1D170F111E00ECDDB6 /* hpReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpReceipt.m; sourceTree = "<group>"; };
+		AFB41D1F170F234100ECDDB6 /* hpSelectCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpSelectCurrencyViewController.h; sourceTree = "<group>"; };
+		AFB41D20170F234100ECDDB6 /* hpSelectCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpSelectCurrencyViewController.m; sourceTree = "<group>"; };
+		AFE1E6FD16ECBBF7006EC93D /* hpSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpSettingsViewController.h; sourceTree = "<group>"; };
+		AFE1E6FE16ECBBF7006EC93D /* hpSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpSettingsViewController.m; sourceTree = "<group>"; };
+		AFE1E70016EDFE87006EC93D /* hpHeftService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpHeftService.h; sourceTree = "<group>"; };
+		AFE1E70116EDFE87006EC93D /* hpHeftService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpHeftService.m; sourceTree = "<group>"; };
+		AFE1E70316EE8A64006EC93D /* hpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpSupportViewController.h; sourceTree = "<group>"; };
+		AFE1E70416EE8A64006EC93D /* hpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpSupportViewController.m; sourceTree = "<group>"; };
+		AFE1E70616EE8C39006EC93D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AFE1E70816EF8559006EC93D /* hpConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hpConfig.plist; sourceTree = "<group>"; };
+		AFE70DEF1737E3BA0019D1A0 /* Camera_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera_icon.png; sourceTree = "<group>"; };
+		AFE70DF11737E4640019D1A0 /* Camera_icon_PRESSED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera_icon_PRESSED.png; sourceTree = "<group>"; };
+		AFEA7899173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hpReceiptsDetailsTabViewController.h; path = ../hpReceiptsDetailsTabViewController.h; sourceTree = "<group>"; };
+		AFEA789A173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = hpReceiptsDetailsTabViewController.m; path = ../hpReceiptsDetailsTabViewController.m; sourceTree = "<group>"; };
+		AFF259871712F76B0075386F /* Hi_icon_transp_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hi_icon_transp_57x57.png; sourceTree = "<group>"; };
+		AFF259891712F7700075386F /* Hi_icon_transp_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hi_icon_transp_114x114.png; sourceTree = "<group>"; };
+		F51349401762451800CC6B81 /* hpSetSupportModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpSetSupportModeViewController.h; sourceTree = "<group>"; };
+		F51349411762451800CC6B81 /* hpSetSupportModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpSetSupportModeViewController.m; sourceTree = "<group>"; };
+		FB298598175F990000409380 /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
+		FB298599175F990000409380 /* credit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = credit.png; sourceTree = "<group>"; };
+		FB29859A175F990000409380 /* dankort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dankort.png; sourceTree = "<group>"; };
+		FB29859B175F990000409380 /* diners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diners.png; sourceTree = "<group>"; };
+		FB29859C175F990000409380 /* discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover.png; sourceTree = "<group>"; };
+		FB29859D175F990000409380 /* forbru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forbru.png; sourceTree = "<group>"; };
+		FB29859E175F990000409380 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		FB29859F175F990000409380 /* jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jcb.png; sourceTree = "<group>"; };
+		FB2985A0175F990000409380 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
+		FB2985A1175F990000409380 /* maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maestro.png; sourceTree = "<group>"; };
+		FB2985A2175F990000409380 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		FB2985A3175F990000409380 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
+		FB2985A4175F990000409380 /* paypa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paypa.png; sourceTree = "<group>"; };
+		FB2985A5175F990000409380 /* solo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solo.png; sourceTree = "<group>"; };
+		FB2985A6175F990000409380 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		FBEC39FE17673B9C0083C5F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FBEC3A0017673BA00083C5F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FBEC3A0217673BA40083C5F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF6681D516E8C86000A17A89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81E3EC4E174254F20017B2BD /* CoreData.framework in Frameworks */,
+				81E3EC4C174254E00017B2BD /* MapKit.framework in Frameworks */,
+				81FAFA34172AC386003F775B /* Social.framework in Frameworks */,
+				929574A216F88FBE00992410 /* libsqlite3.0.dylib in Frameworks */,
+				AFE1E70716EE8C39006EC93D /* MessageUI.framework in Frameworks */,
+				AF66821016E8FD1E00A17A89 /* Security.framework in Frameworks */,
+				AF66820E16E8FD1500A17A89 /* ExternalAccessory.framework in Frameworks */,
+				AF6681DC16E8C86000A17A89 /* UIKit.framework in Frameworks */,
+				AF6681DE16E8C86000A17A89 /* Foundation.framework in Frameworks */,
+				AF6681E016E8C86000A17A89 /* CoreGraphics.framework in Frameworks */,
+				8034061F1754E66E00D9E830 /* libheft.a in Frameworks */,
+				803406231754E8E200D9E830 /* libdtdev.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DB2405817707987004CD1D1 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0DB24059177079B5004CD1D1 /* hpTextField.h */,
+				0DB2405A177079B5004CD1D1 /* hpTextField.m */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
+		0DB2405C1771EF72004CD1D1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2405D1771EF9B004CD1D1 /* HpUtils.h */,
+				0DB2405E1771EF9B004CD1D1 /* HpUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		803406181754E66E00D9E830 /* HeftLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				803406191754E66E00D9E830 /* include */,
+				8034061E1754E66E00D9E830 /* libheft.a */,
+			);
+			path = HeftLibrary;
+			sourceTree = SOURCE_ROOT;
+		};
+		803406191754E66E00D9E830 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				8034061A1754E66E00D9E830 /* CmdIds.h */,
+				8034061B1754E66E00D9E830 /* HeftClient.h */,
+				8034061C1754E66E00D9E830 /* HeftManager.h */,
+				8034061D1754E66E00D9E830 /* HeftStatusReportPublic.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		803406201754E8E200D9E830 /* extLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				803406211754E8E200D9E830 /* DTDevices.h */,
+				803406221754E8E200D9E830 /* libdtdev.a */,
+			);
+			path = extLibraries;
+			sourceTree = SOURCE_ROOT;
+		};
+		81E3EC3A174248EB0017B2BD /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				AF6681EA16E8C86000A17A89 /* hpAppDelegate.h */,
+				AF6681EB16E8C86000A17A89 /* hpAppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		81E3EC441742515D0017B2BD /* CoreData Items */ = {
+			isa = PBXGroup;
+			children = (
+				81E3EC45174251A20017B2BD /* MyStore.xcdatamodeld */,
+				81E3EC481742544E0017B2BD /* Items.h */,
+				81E3EC491742544E0017B2BD /* Items.m */,
+			);
+			name = "CoreData Items";
+			sourceTree = "<group>";
+		};
+		81F3CA9F1726C5AC00E09212 /* Draw Signature */ = {
+			isa = PBXGroup;
+			children = (
+				81F3CAA01726C5E200E09212 /* Draw SignatureViewController.h */,
+				81F3CAA11726C5E200E09212 /* Draw SignatureViewController.m */,
+			);
+			name = "Draw Signature";
+			sourceTree = "<group>";
+		};
+		81F3CAA81726EB7E00E09212 /* Cal */ = {
+			isa = PBXGroup;
+			children = (
+				81F3CAAC1726EC6E00E09212 /* CalViewController.h */,
+				81F3CAAD1726EC6E00E09212 /* CalViewController.m */,
+			);
+			name = Cal;
+			sourceTree = "<group>";
+		};
+		81FAFA25172A85EC003F775B /* Take Photo */ = {
+			isa = PBXGroup;
+			children = (
+				81FAFA26172A8610003F775B /* PhotoViewController.h */,
+				81FAFA27172A8610003F775B /* PhotoViewController.m */,
+			);
+			name = "Take Photo";
+			sourceTree = "<group>";
+		};
+		81FAFA29172ABE17003F775B /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				81FAFA2A172ABE3B003F775B /* SocialViewController.h */,
+				81FAFA2B172ABE3B003F775B /* SocialViewController.m */,
+				81E3EC3B17424EC80017B2BD /* LocationViewController.h */,
+				81E3EC3C17424EC80017B2BD /* LocationViewController.m */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		9295749116F88A0B00992410 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				81E3EC441742515D0017B2BD /* CoreData Items */,
+				81E3EC3E174250640017B2BD /* ItemViewController.h */,
+				81E3EC3F174250640017B2BD /* ItemViewController.m */,
+				81E3EC41174250E80017B2BD /* DetailViewController.h */,
+				81E3EC42174250E80017B2BD /* DetailViewController.m */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		AF6681CF16E8C86000A17A89 = {
+			isa = PBXGroup;
+			children = (
+				0DB2405C1771EF72004CD1D1 /* Utils */,
+				0DB2405817707987004CD1D1 /* CustomClasses */,
+				FBEC3A0217673BA40083C5F4 /* Default-568h@2x.png */,
+				FBEC3A0017673BA00083C5F4 /* Default@2x.png */,
+				FBEC39FE17673B9C0083C5F4 /* Default.png */,
+				0DD60EFD17622D61002A842E /* Localizable.strings */,
+				803406201754E8E200D9E830 /* extLibraries */,
+				803406181754E66E00D9E830 /* HeftLibrary */,
+				FB1EFE1B175009BB0050E462 /* Storyboards */,
+				81E3EC3A174248EB0017B2BD /* AppDelegate */,
+				81FAFA29172ABE17003F775B /* Social */,
+				81FAFA25172A85EC003F775B /* Take Photo */,
+				81F3CAA81726EB7E00E09212 /* Cal */,
+				81F3CA9F1726C5AC00E09212 /* Draw Signature */,
+				AFB41D1B170F10FC00ECDDB6 /* Receipt */,
+				9295749116F88A0B00992410 /* Items */,
+				FB1EFE1C17500B040050E462 /* Password view */,
+				FB1EFE1E17500B9A0050E462 /* Settings and subsettings */,
+				FB1EFE1D17500B4B0050E462 /* List of receipts and details */,
+				AF6681E116E8C86000A17A89 /* Main view */,
+				AF6681E216E8C86000A17A89 /* Supporting Files */,
+				AF6681DA16E8C86000A17A89 /* Frameworks */,
+				AF6681D916E8C86000A17A89 /* Products */,
+				AFF259891712F7700075386F /* Hi_icon_transp_114x114.png */,
+				AFF259871712F76B0075386F /* Hi_icon_transp_57x57.png */,
+			);
+			sourceTree = "<group>";
+		};
+		AF6681D916E8C86000A17A89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF6681D816E8C86000A17A89 /* mPOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF6681DA16E8C86000A17A89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				929574A116F88FBE00992410 /* libsqlite3.0.dylib */,
+				81E3EC4D174254F20017B2BD /* CoreData.framework */,
+				81E3EC4B174254E00017B2BD /* MapKit.framework */,
+				81FAFA33172AC386003F775B /* Social.framework */,
+				AFE1E70616EE8C39006EC93D /* MessageUI.framework */,
+				AF66820F16E8FD1E00A17A89 /* Security.framework */,
+				AF66820D16E8FD1500A17A89 /* ExternalAccessory.framework */,
+				AF6681DB16E8C86000A17A89 /* UIKit.framework */,
+				AF6681DD16E8C86000A17A89 /* Foundation.framework */,
+				AF6681DF16E8C86000A17A89 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF6681E116E8C86000A17A89 /* Main view */ = {
+			isa = PBXGroup;
+			children = (
+				AF6AB03416F0E42900C34917 /* hpNavigationViewController.h */,
+				AF6AB03516F0E42900C34917 /* hpNavigationViewController.m */,
+				AF6681F916E8C86000A17A89 /* hpViewController.h */,
+				AF6681FA16E8C86000A17A89 /* hpViewController.m */,
+				AFE1E70016EDFE87006EC93D /* hpHeftService.h */,
+				AFE1E70116EDFE87006EC93D /* hpHeftService.m */,
+				AF6AB02D16F09E3E00C34917 /* hpHeftServiceStub */,
+			);
+			name = "Main view";
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+		AF6681E216E8C86000A17A89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB298597175F98E600409380 /* CardImages */,
+				AF5A5DEE174309AE00FAD165 /* itemsIcon.png */,
+				AF5A5DEC174306D200FAD165 /* socialIcon.png */,
+				AF6DCCB01742663E007B7774 /* UsrGuideIcon.png */,
+				AF6DCCA817425B24007B7774 /* mPOS_User_Guide */,
+				AF8916DA173A6E4F00DC33C3 /* refundIcon.png */,
+				AF8916D8173A68F400DC33C3 /* LoRIcon.png */,
+				AF8916D6173A667800DC33C3 /* handpoint logo.png */,
+				AFE70DF11737E4640019D1A0 /* Camera_icon_PRESSED.png */,
+				AFE70DEF1737E3BA0019D1A0 /* Camera_icon.png */,
+				AFA5D952173424DC00093231 /* infoIcon.png */,
+				AFA5D9501734245100093231 /* settingsIcon.png */,
+				AFA5D94E173422E200093231 /* connectIcon.png */,
+				AFA5D93A17301E3A00093231 /* card.png */,
+				AFA5D9381730198900093231 /* Visa_Logo.png */,
+				AF02E1F417170A41000C579C /* Divider.png */,
+				AF02E1F017170741000C579C /* Background.png */,
+				AF60525A17121C79003A3DC1 /* payButtonDown.png */,
+				AF60525B17121C79003A3DC1 /* payButton.png */,
+				AF60525817121995003A3DC1 /* numberButtonsDown.png */,
+				AF60525617121921003A3DC1 /* numberButtons.png */,
+				AF66E97816F9234100C09F45 /* mPOS_items.sqlite */,
+				AFE1E70816EF8559006EC93D /* hpConfig.plist */,
+				AF6681E316E8C86000A17A89 /* mPOS-Info.plist */,
+				AF6681E416E8C86000A17A89 /* InfoPlist.strings */,
+				AF6681E716E8C86000A17A89 /* main.m */,
+				AF6681E916E8C86000A17A89 /* mPOS-Prefix.pch */,
+				AF6681ED16E8C86000A17A89 /* Default.png */,
+				AF6681EF16E8C86000A17A89 /* Default@2x.png */,
+				AF6681F116E8C86000A17A89 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+		AF6AB02D16F09E3E00C34917 /* hpHeftServiceStub */ = {
+			isa = PBXGroup;
+			children = (
+				AF6AB02A16F09B5300C34917 /* hpHeftServiceStub.h */,
+				AF6AB02B16F09B5300C34917 /* hpHeftServiceStub.m */,
+				AF6AB02E16F09E5D00C34917 /* hpHeftServiceStubClient.h */,
+				AF6AB02F16F09E5D00C34917 /* hpHeftServiceStubClient.m */,
+				AF6AB03116F09E6700C34917 /* hpHeftServiceStubManager.h */,
+				AF6AB03216F09E6700C34917 /* hpHeftServiceStubManager.m */,
+			);
+			name = hpHeftServiceStub;
+			sourceTree = "<group>";
+		};
+		AFB41D1B170F10FC00ECDDB6 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				AF3E7F231726C9E400709E2A /* hpReceiptDelegate.h */,
+				AF3E7F251726CA1100709E2A /* hpReceiptDelegate.m */,
+				AF3E7F211725848400709E2A /* hpReceipts.sqlite */,
+				AFB41D1C170F111E00ECDDB6 /* hpReceipt.h */,
+				AFB41D1D170F111E00ECDDB6 /* hpReceipt.m */,
+			);
+			name = Receipt;
+			sourceTree = "<group>";
+		};
+		FB1EFE1B175009BB0050E462 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AF5A5DEA1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard */,
+				AF6681F616E8C86000A17A89 /* MainStoryboard_iPad.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		FB1EFE1C17500B040050E462 /* Password view */ = {
+			isa = PBXGroup;
+			children = (
+				AF6A021917498DC400467148 /* hpRootViewController.h */,
+				AF6A021A17498DC400467148 /* hpRootViewController.m */,
+				AF6A021B17498DC400467148 /* KeychainWrapper.h */,
+				AF6A021C17498DC400467148 /* KeychainWrapper.m */,
+				AF6A021D17498DC400467148 /* PasswordConstants.h */,
+				0DB15111176B1142001618F4 /* hpPasswordController.h */,
+				0DB15112176B1142001618F4 /* hpPasswordController.m */,
+			);
+			name = "Password view";
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+		FB1EFE1D17500B4B0050E462 /* List of receipts and details */ = {
+			isa = PBXGroup;
+			children = (
+				AFA5D935172FD61500093231 /* hpListOfRecordsCell.h */,
+				AFA5D936172FD61500093231 /* hpListOfRecordsCell.m */,
+				AF6D34EE1729D90200B94301 /* hpListOfRecordsViewController.h */,
+				AF6D34EF1729D90200B94301 /* hpListOfRecordsViewController.m */,
+				AF8916D01738710D00DC33C3 /* hpCustomerReceiptViewController.h */,
+				AF8916D11738710D00DC33C3 /* hpCustomerReceiptViewController.m */,
+				AF8916D3173874CE00DC33C3 /* hpMerchantReceiptViewController.h */,
+				AF8916D4173874CE00DC33C3 /* hpMerchantReceiptViewController.m */,
+				AFEA7899173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.h */,
+				AFEA789A173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.m */,
+				AFA5D93C1730772600093231 /* hpReceiptViewController.h */,
+				AFA5D93D1730772600093231 /* hpReceiptViewController.m */,
+			);
+			name = "List of receipts and details";
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+		FB1EFE1E17500B9A0050E462 /* Settings and subsettings */ = {
+			isa = PBXGroup;
+			children = (
+				AF6DCCAD17425C58007B7774 /* hpUserGuideViewController.h */,
+				AF6DCCAE17425C58007B7774 /* hpUserGuideViewController.m */,
+				AFB41D1F170F234100ECDDB6 /* hpSelectCurrencyViewController.h */,
+				AFB41D20170F234100ECDDB6 /* hpSelectCurrencyViewController.m */,
+				AFE1E70316EE8A64006EC93D /* hpSupportViewController.h */,
+				AFE1E70416EE8A64006EC93D /* hpSupportViewController.m */,
+				AFE1E6FD16ECBBF7006EC93D /* hpSettingsViewController.h */,
+				AFE1E6FE16ECBBF7006EC93D /* hpSettingsViewController.m */,
+				AFA5D93F1732AAB800093231 /* hpMerchantInformationViewController.h */,
+				AFA5D9401732AAB800093231 /* hpMerchantInformationViewController.m */,
+				AF66821116E9101100A17A89 /* hpDiscoverViewController.h */,
+				AF66821216E9101100A17A89 /* hpDiscoverViewController.m */,
+				F51349401762451800CC6B81 /* hpSetSupportModeViewController.h */,
+				F51349411762451800CC6B81 /* hpSetSupportModeViewController.m */,
+			);
+			name = "Settings and subsettings";
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+		FB298597175F98E600409380 /* CardImages */ = {
+			isa = PBXGroup;
+			children = (
+				FB298598175F990000409380 /* amex.png */,
+				FB298599175F990000409380 /* credit.png */,
+				FB29859A175F990000409380 /* dankort.png */,
+				FB29859B175F990000409380 /* diners.png */,
+				FB29859C175F990000409380 /* discover.png */,
+				FB29859D175F990000409380 /* forbru.png */,
+				FB29859E175F990000409380 /* google.png */,
+				FB29859F175F990000409380 /* jcb.png */,
+				FB2985A0175F990000409380 /* laser.png */,
+				FB2985A1175F990000409380 /* maestro.png */,
+				FB2985A2175F990000409380 /* mastercard.png */,
+				FB2985A3175F990000409380 /* money.png */,
+				FB2985A4175F990000409380 /* paypa.png */,
+				FB2985A5175F990000409380 /* solo.png */,
+				FB2985A6175F990000409380 /* visa.png */,
+			);
+			name = CardImages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF6681D716E8C86000A17A89 /* mPOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF6681FE16E8C86000A17A89 /* Build configuration list for PBXNativeTarget "mPOS" */;
+			buildPhases = (
+				AF6681D416E8C86000A17A89 /* Sources */,
+				AF6681D516E8C86000A17A89 /* Frameworks */,
+				AF6681D616E8C86000A17A89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mPOS;
+			productName = slideviewTest;
+			productReference = AF6681D816E8C86000A17A89 /* mPOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF6681D016E8C86000A17A89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = hp;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Handpoint ehf";
+			};
+			buildConfigurationList = AF6681D316E8C86000A17A89 /* Build configuration list for PBXProject "mPOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				es,
+			);
+			mainGroup = AF6681CF16E8C86000A17A89;
+			productRefGroup = AF6681D916E8C86000A17A89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF6681D716E8C86000A17A89 /* mPOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF6681D616E8C86000A17A89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6681E616E8C86000A17A89 /* InfoPlist.strings in Resources */,
+				AF6681F816E8C86000A17A89 /* MainStoryboard_iPad.storyboard in Resources */,
+				AFE1E70916EF8559006EC93D /* hpConfig.plist in Resources */,
+				AF66E97916F9234100C09F45 /* mPOS_items.sqlite in Resources */,
+				AF60525717121921003A3DC1 /* numberButtons.png in Resources */,
+				AF60525917121995003A3DC1 /* numberButtonsDown.png in Resources */,
+				AF60525C17121C79003A3DC1 /* payButtonDown.png in Resources */,
+				AF60525D17121C79003A3DC1 /* payButton.png in Resources */,
+				AFF259881712F76B0075386F /* Hi_icon_transp_57x57.png in Resources */,
+				AFF2598A1712F7700075386F /* Hi_icon_transp_114x114.png in Resources */,
+				AF02E1F117170742000C579C /* Background.png in Resources */,
+				AF02E1F517170A41000C579C /* Divider.png in Resources */,
+				AF3E7F221725848400709E2A /* hpReceipts.sqlite in Resources */,
+				AF3E7F241726C9E400709E2A /* hpReceiptDelegate.h in Resources */,
+				AFA5D9391730198900093231 /* Visa_Logo.png in Resources */,
+				AFA5D93B17301E3A00093231 /* card.png in Resources */,
+				AFA5D94F173422E200093231 /* connectIcon.png in Resources */,
+				AFA5D9511734245100093231 /* settingsIcon.png in Resources */,
+				AFA5D953173424DD00093231 /* infoIcon.png in Resources */,
+				AFE70DF01737E3BA0019D1A0 /* Camera_icon.png in Resources */,
+				AFE70DF21737E4640019D1A0 /* Camera_icon_PRESSED.png in Resources */,
+				AF8916D7173A667800DC33C3 /* handpoint logo.png in Resources */,
+				AF8916D9173A68F400DC33C3 /* LoRIcon.png in Resources */,
+				AF8916DB173A6E4F00DC33C3 /* refundIcon.png in Resources */,
+				AF6DCCA917425B24007B7774 /* mPOS_User_Guide in Resources */,
+				AF6DCCB11742663E007B7774 /* UsrGuideIcon.png in Resources */,
+				AF5A5DEB1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard in Resources */,
+				AF5A5DED174306D200FAD165 /* socialIcon.png in Resources */,
+				AF5A5DEF174309AF00FAD165 /* itemsIcon.png in Resources */,
+				FB2985A7175F990000409380 /* amex.png in Resources */,
+				FB2985A8175F990000409380 /* credit.png in Resources */,
+				FB2985A9175F990000409380 /* dankort.png in Resources */,
+				FB2985AA175F990000409380 /* diners.png in Resources */,
+				FB2985AB175F990000409380 /* discover.png in Resources */,
+				FB2985AC175F990000409380 /* forbru.png in Resources */,
+				FB2985AD175F990000409380 /* google.png in Resources */,
+				FB2985AE175F990000409380 /* jcb.png in Resources */,
+				FB2985AF175F990000409380 /* laser.png in Resources */,
+				FB2985B0175F990000409380 /* maestro.png in Resources */,
+				FB2985B1175F990000409380 /* mastercard.png in Resources */,
+				FB2985B2175F990000409380 /* money.png in Resources */,
+				FB2985B3175F990000409380 /* paypa.png in Resources */,
+				FB2985B4175F990000409380 /* solo.png in Resources */,
+				FB2985B5175F990000409380 /* visa.png in Resources */,
+				0DD60EFB17622D61002A842E /* Localizable.strings in Resources */,
+				FBEC39FF17673B9C0083C5F4 /* Default.png in Resources */,
+				FBEC3A0117673BA00083C5F4 /* Default@2x.png in Resources */,
+				FBEC3A0317673BA40083C5F4 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF6681D416E8C86000A17A89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD0C1791749950300A4C7A1 /* hpRootViewController.m in Sources */,
+				AFD0C17A1749950300A4C7A1 /* KeychainWrapper.m in Sources */,
+				AF6681E816E8C86000A17A89 /* main.m in Sources */,
+				AF6681EC16E8C86000A17A89 /* hpAppDelegate.m in Sources */,
+				AF6681FB16E8C86000A17A89 /* hpViewController.m in Sources */,
+				AF66821316E9101100A17A89 /* hpDiscoverViewController.m in Sources */,
+				AFE1E6FF16ECBBF7006EC93D /* hpSettingsViewController.m in Sources */,
+				AFE1E70216EDFE87006EC93D /* hpHeftService.m in Sources */,
+				AFE1E70516EE8A64006EC93D /* hpSupportViewController.m in Sources */,
+				AF6AB02C16F09B5300C34917 /* hpHeftServiceStub.m in Sources */,
+				AF6AB03016F09E5D00C34917 /* hpHeftServiceStubClient.m in Sources */,
+				AF6AB03316F09E6700C34917 /* hpHeftServiceStubManager.m in Sources */,
+				AF6AB03616F0E42900C34917 /* hpNavigationViewController.m in Sources */,
+				AFB41D1E170F111E00ECDDB6 /* hpReceipt.m in Sources */,
+				AFB41D21170F234100ECDDB6 /* hpSelectCurrencyViewController.m in Sources */,
+				AF3E7F261726CA1100709E2A /* hpReceiptDelegate.m in Sources */,
+				AF6D34F01729D90200B94301 /* hpListOfRecordsViewController.m in Sources */,
+				81F3CAA21726C5E200E09212 /* Draw SignatureViewController.m in Sources */,
+				81F3CAAE1726EC6E00E09212 /* CalViewController.m in Sources */,
+				81FAFA28172A8610003F775B /* PhotoViewController.m in Sources */,
+				81FAFA2C172ABE3B003F775B /* SocialViewController.m in Sources */,
+				AFA5D937172FD61500093231 /* hpListOfRecordsCell.m in Sources */,
+				AFA5D93E1730772600093231 /* hpReceiptViewController.m in Sources */,
+				AFA5D9411732AAB800093231 /* hpMerchantInformationViewController.m in Sources */,
+				AFEA789B173865ED00D5F4EE /* hpReceiptsDetailsTabViewController.m in Sources */,
+				AF8916D21738710D00DC33C3 /* hpCustomerReceiptViewController.m in Sources */,
+				AF8916D5173874CE00DC33C3 /* hpMerchantReceiptViewController.m in Sources */,
+				AF6DCCAF17425C58007B7774 /* hpUserGuideViewController.m in Sources */,
+				81E3EC3D17424EC80017B2BD /* LocationViewController.m in Sources */,
+				81E3EC40174250640017B2BD /* ItemViewController.m in Sources */,
+				81E3EC43174250E80017B2BD /* DetailViewController.m in Sources */,
+				81E3EC47174251A20017B2BD /* MyStore.xcdatamodeld in Sources */,
+				81E3EC4A1742544E0017B2BD /* Items.m in Sources */,
+				F51349421762451800CC6B81 /* hpSetSupportModeViewController.m in Sources */,
+				0DB15113176B1142001618F4 /* hpPasswordController.m in Sources */,
+				0DB2405B177079B5004CD1D1 /* hpTextField.m in Sources */,
+				0DB2405F1771EF9B004CD1D1 /* HpUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0DD60EFD17622D61002A842E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DD60EFC17622D61002A842E /* en */,
+				0D982DBF176238B9001C2833 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AF6681E416E8C86000A17A89 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6681E516E8C86000A17A89 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AF6681F616E8C86000A17A89 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6681F716E8C86000A17A89 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			path = slideviewTest;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF6681FC16E8C86000A17A89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		AF6681FD16E8C86000A17A89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+		AF6681FF16E8C86000A17A89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "slideviewTest/mPOS-Prefix.pch";
+				INFOPLIST_FILE = "slideviewTest/mPOS-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/HeftLibrary\"",
+					"\"$(SRCROOT)/extLibraries\"",
+				);
+				OTHER_LDFLAGS = "-lc++";
+				PRODUCT_NAME = mPOS;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AF66820016E8C86000A17A89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "slideviewTest/mPOS-Prefix.pch";
+				INFOPLIST_FILE = "slideviewTest/mPOS-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/HeftLibrary\"",
+					"\"$(SRCROOT)/extLibraries\"",
+				);
+				OTHER_LDFLAGS = "-lc++";
+				PRODUCT_NAME = mPOS;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF6681D316E8C86000A17A89 /* Build configuration list for PBXProject "mPOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6681FC16E8C86000A17A89 /* Debug */,
+				AF6681FD16E8C86000A17A89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF6681FE16E8C86000A17A89 /* Build configuration list for PBXNativeTarget "mPOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6681FF16E8C86000A17A89 /* Debug */,
+				AF66820016E8C86000A17A89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		81E3EC45174251A20017B2BD /* MyStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				81E3EC46174251A20017B2BD /* MyStore.xcdatamodel */,
+			);
+			currentVersion = 81E3EC46174251A20017B2BD /* MyStore.xcdatamodel */;
+			path = MyStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AF6681D016E8C86000A17A89 /* Project object */;
+}

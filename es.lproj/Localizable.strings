@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  mPOS
+
+  Created by Juan on 6/6/13.
+  Copyright (c) 2013 Handpoint ehf. All rights reserved.
+*/
+"Ok"            = "Ok";
+"Pay"           = "Pagar";
+"Retry"         = "Reintentar";
+"Cancel"        = "Cancelar";
+"Status"        = "Estado";
+"Create"        = "Crear";
+"Regards"       = "Saludos";
+"Sign in"       = "Entrar";
+"Welcome."      = "Bienvenido.";
+"Scanning"      = "Buscando";
+"Approved"      = "Aprobado";
+"Connected"     = "Conectado";
+"Processing"    = "Procesando";
+"Connecting"    = "Connectando";
+
+"List of records"           = "Operaciones";
+"Connection to reader:"     = "Conexión al lector:";
+"Receipt from mPOS"         = "Recibo del mPOS";
+"Nice to see you again."    = "Bienvenido de nuevo.";
+"Passcode incorrect!"       = "¡Contraseña incorrecta!";
+"Passcodes do not match!"   = "¡Las contraseñas no coinciden!";
+"Passcode reset!"           = "¡Resetear la contraseña!";
+
+"Error connection to reader, please try again." = "Error conectando al lector, por favor, vuelva a intentarlo más adelante.";
+
+"Support" = "Soporte";
+"Error" = "Error";
+"No reader connected" = "Ningun lector conectado";
+"Refund" = "Reembolso";
+"Where am I?" = "¿Dónde estoy?";
+"Here !!!" = "¡Aquí!";
+"Device has no camera" = "No hay ninguna cámara disponible";
+"Social networks" = "Redes sociales";
+"please setup Twitter" = "por favor configure una cuenta de Twitter";
+
+"Reset passcode"    = "Resetear la contraseña";
+"Hi"                = "Hola";
+"Enter passcode"    = "Introducir contraseña";
+"Create passcode"   = "Crear contraseña";
+"Confirm passcode"  = "Confirmar contraseña";
+
+"Logout"            = "Salir";
+"Settings"          = "Ajustes";
+"Social"            = "Social";
+"User guide"        = "Ayuda";
+"Discover"          = "Buscar";
+"Items"             = "Elementos";
+"Description"       = "Descripción";
+"E-mail address"    = "Dirección de e-mail";
+"Details"           = "Detalles";
+"Back"              = "Atrás";
+
+"UNDEFINED"         = "INDEFINIDO";
+"SALE"              = "VENTA";
+"VOID_SALE"         = "VENTA ANULADA";
+"REFUND"            = "REEMBOLSO";
+"VOID_REFUND"       = "REEMBOLSO ANULADO";
+"CANCEL_SALE"       = "VENTA CANCELADA";
+"CANCEL_REFUND"     = "REEMBOLSO CANCELADO";
+
+"Select currency"           = "Selecciona la moneda";
+"Merchant information"      = "Información de la tienda";
+"Contact Handpoint support" = "Contacta con el sopórte técnico de Handpoint";
+"Hotline"                   = "Teléfono";
+"visit our website"         = "visita nuestra web";
+"E-mail us"                 = "Envíanos un e-mail";
+"Merchant name"             = "Nombre de la tienda";
+"Merchant address"          = "Dirección de la tienda";
