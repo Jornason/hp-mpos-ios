@@ -5,7 +5,12 @@ The Handpoint mPOS App offers a simple GUI where users can enter an amount and s
 See http://www.handpoint.com for more information.
 
 The app is pending review at the Apple app store.
+ 
+Requerments for use:
+This source code depends on libraries found in the Handpoint SDK for iOS, available here: http://www.handpoint.com/developers/ios/
 
+License
+===============
 ------------------------
  Copyright 2013 Handpoint
 
@@ -21,6 +26,3 @@ The app is pending review at the Apple app store.
  See the License for the specific language governing permissions and
  limitations under the License.
  ------------------------
- 
- Requerments for use:
- This source code depends on libraries found in the Handpoint SDK for iOS, available here: http://www.handpoint.com/developers/ios/
