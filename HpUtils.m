@@ -63,4 +63,44 @@
     return [currencySymbol objectForKey:currencyIso];
 }
 
+
+//TODO Move this from here
++ (BOOL)matchRegex:(NSString *)regex withString:(NSString *)text
+{
+    BOOL ret = false;
+    if ([text rangeOfString:regex options:NSRegularExpressionSearch].location != NSNotFound)
+        ret = true;
+    return ret;
+}
+
+
+//TODO Move this from here
++ (UIImage *)getCardSchemeLogo:(NSString*)cardSchemeName
+{
+    NSString *result = @"credit.png";
+
+    if(([self matchRegex:@"(?i).*ELECTRON.*" withString:cardSchemeName]) || ([self matchRegex:@"(?i).*DEBIT.*" withString:cardSchemeName])) {
+        result = @"visa.png";
+    } else if (([self matchRegex:@"(?i).*visa.*" withString:cardSchemeName]) || ([self matchRegex:@"(?i).*CREDIT.*" withString:cardSchemeName])) {
+        result = @"visa.png";
+    } else if ([self matchRegex:@"(?i).*mastercard" withString:cardSchemeName]) {
+        result = @"mastercard.png";
+    } else if ([self matchRegex:@"(?i).*MAESTRO.*" withString:cardSchemeName]) {
+        result = @"maestro.png";
+    } else if ([self matchRegex:@"(?i).*AMEX.*" withString:cardSchemeName]) {
+        result = @"amex.png";
+    } else if ([self matchRegex:@"(?i).*JCB.*" withString:cardSchemeName]) {
+        result = @"jcb.png";
+    } else if ([self matchRegex:@"(?i).*UNIONPAY.*" withString:cardSchemeName]) {
+        result = @"credit.png";
+    } else if ([self matchRegex:@"(?i).*DISCOVER.*" withString:cardSchemeName]) {
+        result = @"discover.png";
+    } else if ([self matchRegex:@"(?i).*DINERS.*" withString:cardSchemeName]) {
+        result = @"diners.png";
+    }
+
+    return [UIImage imageNamed: result];
+}
+
+
 @end

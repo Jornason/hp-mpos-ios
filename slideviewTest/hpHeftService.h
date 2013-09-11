@@ -24,7 +24,7 @@
 #import "HeftStatusReportPublic.h"
 #import "hpReceipt.h"
 
-@interface hpHeftService : NSObject <HeftDiscoveryDelegate, HeftStatusReportDelegate>
+@interface hpHeftService : NSObject <HeftDiscoveryDelegate, HeftStatusReportDelegate, UIWebViewDelegate>
 {
     UIAlertView *activityIndicator;
     UIActivityIndicatorView *progress;
@@ -34,10 +34,13 @@
     id<FinanceResponseInfo> xmlResponce;
     hpReceiptDelegate* receiptDelegate;
     hpReceipt *receipt;
+    NSString* signatureReceipt;
     NSString* transactionDescription;
     UIImage* transactionImage;
     BOOL automaticConnectToReader;
     BOOL supportModeOn;
+    
+    UIWebView* webReceipt;
 }
 
 @property(retain, nonatomic) id<HeftClient> heftClient;
@@ -46,8 +49,10 @@
 @property(retain, nonatomic) id<FinanceResponseInfo> xmlResponce;
 @property(retain, nonatomic) hpReceiptDelegate* receiptDelegate;
 @property(retain, nonatomic) hpReceipt *receipt;
+@property(retain, nonatomic) NSString* signatureReceipt;
 @property(retain, nonatomic) NSString* transactionDescription;
 @property(retain, nonatomic) UIImage* transactionImage;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property(nonatomic) BOOL supportModeOn;
 @property(nonatomic) BOOL automaticConnectToReader;
 
@@ -60,9 +65,12 @@
 - (void)resetDevices;
 - (void)clientForDevice:(HeftRemoteDevice*)device sharedSecret:(NSData*)sharedSecret delegate:(NSObject<HeftStatusReportDelegate>*)aDelegate;
 - (void)connectToLastCardReader;
+- (void)checkIfAccessoryIsConnected;
 - (void) logSetLevel:(eLogLevel)level;
 - (BOOL) logReset;
 - (BOOL) logGetInfo;
 - (NSData*)readSharedSecretFromFile;
+
+
 
 @end

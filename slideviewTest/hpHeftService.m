@@ -20,13 +20,15 @@
 
 #import "hpHeftService.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ExternalAccessory/ExternalAccessory.h"
+#import "BWStatusBarOverlay.h"
 
 @implementation hpHeftService
 @synthesize heftClient;
 @synthesize devices;
 @synthesize manager;
 @synthesize xmlResponce;
-@synthesize receiptDelegate, receipt, transactionDescription, automaticConnectToReader, transactionImage, supportModeOn;
+@synthesize receiptDelegate, receipt, transactionDescription, signatureReceipt, automaticConnectToReader, transactionImage, supportModeOn;
 
 
 // Creates a shared hpHeftService object using the singleton pattern
@@ -55,6 +57,7 @@
         manager.delegate = self;
         receiptDelegate =[[hpReceiptDelegate alloc]init];
         [manager resetDevices];
+        [BWStatusBarOverlay setAnimation:BWStatusBarOverlayAnimationTypeFromTop];
     }
     return self;
 }
@@ -115,12 +118,17 @@
     // Send notification about a new device being found
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
                                                         object:nil];
+    [self clientForDevice:newDevice sharedSecret:[self readSharedSecretFromFile] delegate:self];
+    
 }
 
 - (void)didLostAccessoryDevice:(HeftRemoteDevice *)oldDevice
 {
     NSLog(@"hpHeftService didLostAccessoryDevice");
     [devices removeObject:oldDevice];
+    heftClient = nil;
+    [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
+    [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
                                                         object:nil];
     
@@ -155,10 +163,7 @@
 - (void)clientForDevice:(HeftRemoteDevice*)device sharedSecret:(NSData*)sharedSecret delegate:(NSObject<HeftStatusReportDelegate>*)aDelegate;
 {
     NSLog(@"hpHeftService clientForDevice");
-    activityIndicator.title = Localize(@"Connecting");
-    activityIndicator.message = @" ";
-    [activityIndicator show];
-    [progress startAnimating];
+    [BWStatusBarOverlay showWithMessage:@"Connecting to reader..." loading:YES animated:YES];
     [manager clientForDevice:device sharedSecret:sharedSecret delegate:aDelegate];
 }
 
@@ -169,16 +174,10 @@
     NSLog(@"hpHeftService didConnect");
     NSLog(@"didConnect client: %@", client);
     
-    [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
-    UIAlertView *connectionAlert = [[UIAlertView alloc] initWithTitle:Localize(@"Connection to reader:")
-                                                     message:@" "
-                                                    delegate:nil
-                                                    cancelButtonTitle:nil
-                                                    otherButtonTitles:Localize(@"Ok"), nil];
-    
     if(client == NULL)
     {
-        connectionAlert.message = Localize(@"Error connection to reader, please try again.");
+        [BWStatusBarOverlay showErrorWithMessage:Localize(@"Error connection to reader, please try again.") duration:5 animated:YES];
+        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
         
     }
     else
@@ -186,9 +185,10 @@
         heftClient = nil;
         heftClient = client;
         [heftClient logSetLevel:eLogDebug];
-        connectionAlert.message = Localize(@"Connected!");
+        [BWStatusBarOverlay showSuccessWithMessage:Localize(@"Connected!") duration:5 animated:YES];
+        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.33f green:0.74f blue:0.68f alpha:1.0f]];
     }
-    [connectionAlert show];
+    //[connectionAlert show];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"readerConnected"
                                                         object:nil];
     
@@ -241,18 +241,25 @@
 // Here alot could be moved to a seperat function and re-designed
 - (void)responseFinanceStatus:(id<FinanceResponseInfo>)info;
 {
+    NSMutableSet *set = [NSSet setWithObjects:@"APPROVED", @"AUTHORISED", @"DECLINED", @"PROCESSED", @"FAILED", @"CANCELLED", @"CARD BLOCKED", nil];
+    
     
     NSLog(@"hpHeftService responceFinanceStatus");
     NSLog(@"%@", info.status);
-    NSLog(@"%@", info.customerReceipt);
     NSLog(@"%@", info.xml.description);
-    if(![[info.status uppercaseString] isEqualToString:@"USER CANCELLED"])
+    if ([set containsObject:[info.status uppercaseString]])
     {
         xmlResponce = info;
         receipt = [[hpReceipt alloc]initWithPrimaryKey:0];
         receipt.customerReceipt = [info customerReceipt];
         receipt.customerIsCopy = NO;
-        receipt.merchantReceipt = [info merchantReceipt];
+        if ([[info merchantReceipt] length] == 0){
+            receipt.merchantReceipt = signatureReceipt;
+            signatureReceipt = @"";
+        }
+        else {
+            receipt.merchantReceipt = [info merchantReceipt];
+        }
         receipt.merchantIsCopy = NO;
         receipt.xml = [info xml];
         receipt.transactionId = [info transactionId];
@@ -261,16 +268,37 @@
         if( transactionImage != NULL)
         {
             receipt.image = transactionImage;
-        }
+        }        
+
         [receiptDelegate addItem:receipt];
-    }
+        
+        NSLog(@"send customer receipt");
+        webReceipt = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 595, 0)];
+        NSString* merchantReceipt;
+        
+        [webReceipt setDelegate:self];
+        
+        // Remove {COPY_RECEIPT} placeholder
+        if ([receipt merchantIsCopy])
+        {
+            merchantReceipt = [receipt customerReceipt];
+        }
+        else
+        {
+            merchantReceipt = [[receipt merchantReceipt] stringByReplacingOccurrencesOfString:@"{COPY_RECEIPT}" withString:@""];
+        }
+        // TODO: Add functionality so we know if receipt is being sent for the first time or not.
+        
+        NSLog(@"Merchant receipt: %@", merchantReceipt);
+        [webReceipt loadHTMLString:merchantReceipt baseURL:nil];
+        NSLog(@"Webview is loading...");
+        //The rest is handled in the delegate webViewDidFinishLoad
+        }
     
     // Display the alert to the user
     if ([[info.status uppercaseString] isEqualToString:@"APPROVED"] || [[info.status uppercaseString] isEqualToString:@"AUTHORISED"])
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"transactionFinished"
-                                                            object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadListData"
                                                             object:nil];
         
     }
@@ -284,18 +312,22 @@
                                                     otherButtonTitles:Localize(@"Ok"), nil];
         [status show];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshData"
+                                                        object:nil];
+    
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
     
     
 }
 
 // This function gets called when a card that needs a signature is inserted into the card reader
-- (void)requestSignature:(NSString*)receipt;
+- (void)requestSignature:(NSString*)signatureReceiptIn;
 {
     NSLog(@"hpHeftService requestSignature");
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
-    NSLog(receipt);
-    self.receipt.customerReceipt = receipt;
+    NSLog(@"%@",signatureReceiptIn);
+    self.signatureReceipt = signatureReceiptIn;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"requestSignature"
                                                         object:nil];
 }
@@ -409,6 +441,76 @@
             }
         }
     }
+}
+
+- (void)checkIfAccessoryIsConnected
+{
+    NSString* eaProtocol = @"com.datecs.pinpad";
+    NSArray *accessories = [[EAAccessoryManager sharedAccessoryManager]
+                            connectedAccessories];
+
+    if (heftClient == nil)
+    {
+        if ([accessories count] == 0)
+        {
+            [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
+            [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
+        }
+        else
+        {
+            for (EAAccessory* accessory in accessories)
+            {
+                if([accessory.protocolStrings containsObject:eaProtocol])
+                {
+                    //Connect to last known card reader
+                    HeftRemoteDevice* newRemoteDevice = [manager.devicesCopy objectAtIndex:(manager.devicesCopy.count-1)];
+                    [self clientForDevice:newRemoteDevice sharedSecret:[self readSharedSecretFromFile] delegate:self];
+                }
+            }
+        }
+    }
+}
+
+- (void)storeReceiptIniCloud:(NSMutableData*)receiptData withFilename:(NSString*)filename
+{
+    NSError* error = nil;
+    
+    //create url to write pdf to Documents folder
+    NSString *localFilename = [NSString stringWithFormat:@"/%@.pdf", filename];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* document = [documentsDirectory stringByAppendingString:localFilename];
+    [receiptData writeToFile:document atomically:YES];
+    
+    //Create url to move pdf to iCloud folder
+    NSString *iCloudFilename = [NSString stringWithFormat:@"Documents/%@.pdf", filename];
+    NSURL *iCloudFolderURL = [[NSFileManager defaultManager]
+                              URLForUbiquityContainerIdentifier:nil];
+    iCloudFolderURL = [iCloudFolderURL URLByAppendingPathComponent:iCloudFilename];
+    
+    //Copy pdf to iCloud folder
+    [[NSFileManager defaultManager]setUbiquitous:YES itemAtURL:[NSURL URLWithString:document] destinationURL:iCloudFolderURL error:&error];
+}
+
+-(void) webViewDidFinishLoad:(UIWebView *)webView {
+    NSLog(@"merchantReceipt webview loaded");
+    
+    // Get full height of content
+    NSString *heightStr = [webReceipt stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+    int height = [heightStr intValue];
+    
+    // Set height
+    [webReceipt setFrame:CGRectMake(0.f, 0.f, 595, height)];
+    
+    // Convert to pdf
+    NSMutableData *pdfData = [NSMutableData data];
+    UIGraphicsBeginPDFContextToData(pdfData, webReceipt.bounds, nil);
+    UIGraphicsBeginPDFPage();
+    CGContextRef pdfContext = UIGraphicsGetCurrentContext();
+    [webReceipt.layer renderInContext:pdfContext];
+    UIGraphicsEndPDFContext();
+    [self storeReceiptIniCloud:pdfData withFilename:[receipt.xml objectForKey:@"EFTTimestamp"]];
+    
 }
 
 // adds functionality to the buttons in the alert view

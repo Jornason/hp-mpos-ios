@@ -106,7 +106,7 @@
     self.contactLabel.text = Localize(@"Contact Handpoint support");
     self.hotlineLabel.text = Localize(@"Hotline");
     self.visitLabel.text = Localize(@"visit our website");
-    [self.emailButton setTitle:Localize(@"E-mail us") forState:UIControlStateNormal];
+    self.emailLabel.text = Localize(@"E-mail us");
     
 }
 

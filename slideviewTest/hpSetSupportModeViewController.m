@@ -45,7 +45,7 @@
     // If there is no connection with the client we want to disable support mode
     if(sharedHeftService.heftClient == nil) {
         switchSupportMode.enabled = NO;
-        UILabel *label =  [[UILabel alloc] initWithFrame:CGRectMake(40, 119, 240, 15)];
+        UILabel *label =  [[UILabel alloc] initWithFrame:CGRectMake(40, 55, 240, 15)];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setFont:[UIFont systemFontOfSize:12]];
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:Localize(@"Connect to reader to enable support mode.")];

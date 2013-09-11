@@ -5,20 +5,21 @@
   Created by Juan on 6/6/13.
   Copyright (c) 2013 Handpoint ehf. All rights reserved.
 */
-"Ok"            = "Ok";
-"Pay"           = "Pagar";
-"Retry"         = "Reintentar";
-"Cancel"        = "Cancelar";
-"Status"        = "Estado";
-"Create"        = "Crear";
-"Regards"       = "Saludos";
-"Sign in"       = "Entrar";
-"Welcome."      = "Bienvenido.";
-"Scanning"      = "Buscando";
-"Approved"      = "Aprobado";
-"Connected"     = "Conectado";
-"Processing"    = "Procesando";
-"Connecting"    = "Connectando";
+"Ok"                        = "Ok";
+"Pay"                       = "Pagar";
+"Retry"                     = "Reintentar";
+"Cancel"                    = "Cancelar";
+"Status"                    = "Estado";
+"Create"                    = "Crear";
+"Regards"                   = "Saludos";
+"Sign in"                   = "Entrar";
+"Welcome."                  = "Éste podría ser el princípio de una gran amistad.";
+"Scanning"                  = "Buscando";
+"Approved"                  = "Aprobado";
+"Connected"                 = "Conectado";
+"Processing"                = "Procesando";
+"Connecting to reader..."   = "Connectando...";
+"Reader disconnected!"      = "Lector desconectado";
 
 "List of records"           = "Operaciones";
 "Connection to reader:"     = "Conexión al lector:";
@@ -46,16 +47,16 @@
 "Create passcode"   = "Crear contraseña";
 "Confirm passcode"  = "Confirmar contraseña";
 
-"Logout"            = "Salir";
-"Settings"          = "Ajustes";
-"Social"            = "Social";
-"User guide"        = "Ayuda";
-"Discover"          = "Buscar";
-"Items"             = "Elementos";
-"Description"       = "Descripción";
-"E-mail address"    = "Dirección de e-mail";
-"Details"           = "Detalles";
-"Back"              = "Atrás";
+"Logout"                = "Salir";
+"Settings"              = "Ajustes";
+"Social"                = "Social";
+"User guide"            = "Ayuda";
+"Discover"              = "Buscar";
+"Items"                 = "Elementos";
+"+ Description"         = "+ Descripción";
+"E-mail address"        = "Dirección de e-mail";
+"Details"               = "Detalles";
+"Back"                  = "Atrás";
 
 "UNDEFINED"         = "INDEFINIDO";
 "SALE"              = "VENTA";

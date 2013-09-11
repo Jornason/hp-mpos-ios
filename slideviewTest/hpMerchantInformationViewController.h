@@ -29,5 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveMerchantInfo;
 @property (weak, nonatomic) IBOutlet UILabel *merchantLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 @end

@@ -23,5 +23,7 @@
 @interface HpUtils : NSObject
 +(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency;
 +(NSString*)currencyAlphafromISO:(NSString*)currencyIso;
++ (BOOL)matchRegex:(NSString *)regex withString:(NSString *)text;
++ (UIImage *)getCardSchemeLogo:(NSString*)cardSchemeName;
 
 @end

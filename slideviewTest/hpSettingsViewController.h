@@ -24,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *currencyButton;
 @property (weak, nonatomic) IBOutlet UIButton *merchantInfoButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

@@ -19,13 +19,14 @@
  */
 
 #import "hpListOfRecordsViewController.h"
+#import "hpUtils.h"
 
 @interface hpListOfRecordsViewController ()
 
 @end
 
 @implementation hpListOfRecordsViewController
-@synthesize listOfRecordsTable, currencySymbol, logo;
+@synthesize listOfRecordsTable, currencySymbol;//, logo;
 
 
 - (void)viewDidLoad
@@ -45,7 +46,7 @@
     self.title = Localize(@"List of records");
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadListData:)
-                                                 name:@"reloadListData"
+                                                 name:@"refreshData"
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -53,7 +54,7 @@
                                                  name:@"clearListData"
                                                object:nil];
     
-    logo = [UIImage imageNamed: @"card.png"];
+    //logo = [UIImage imageNamed: @"card.png"];
     
 }
 
@@ -105,7 +106,9 @@
     }
     else
     {
-         cell.listImage.image = logo;   
+        NSString *cardSchemeName = [itemObj.xml objectForKey: @"CardSchemeName"];
+        UIImage *logo = [HpUtils getCardSchemeLogo:cardSchemeName];
+        cell.listImage.image = logo;
     }
     cell.tranactionType.text = [Localize([itemObj.xml objectForKey:@"TransactionType"])capitalizedString];
     cell.transactionDateTime.text = [itemObj dateFromTimestamp];

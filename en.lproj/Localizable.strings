@@ -5,20 +5,21 @@
   Created by Juan on 6/6/13.
   Copyright (c) 2013 Handpoint ehf. All rights reserved.
 */
-"Ok"            = "Ok";
-"Pay"           = "Pay";
-"Retry"         = "Retry";
-"Cancel"        = "Cancel";
-"Status"        = "Status";
-"Create"        = "Create";
-"Regards"       = "Regards";
-"Sign in"       = "Sign in";
-"Welcome."      = "Welcome.";
-"Scanning"      = "Scanning";
-"Approved"      = "Approved";
-"Connected"     = "Connected";
-"Processing"    = "Processing";
-"Connecting"    = "Connecting";
+"Ok"                        = "Ok";
+"Pay"                       = "Pay";
+"Retry"                     = "Retry";
+"Cancel"                    = "Cancel";
+"Status"                    = "Status";
+"Create"                    = "Create";
+"Regards"                   = "Regards";
+"Sign in"                   = "Sign in";
+"Welcome."                  = "This could be the start of a beautiful friendship";
+"Scanning"                  = "Scanning";
+"Approved"                  = "Approved";
+"Connected"                 = "Connected";
+"Processing"                = "Processing";
+"Connecting to reader..."   = "Connecting to reader...";
+"Reader disconnected!"      = "Reader disconnected!";
 
 "List of records"           = "List of records";
 "Connection to reader:"     = "Connection to reader:";
@@ -47,15 +48,15 @@
 "Create passcode"   = "Create passcode";
 "Confirm passcode"  = "Confirm passcode";
 
-"Logout"            = "Logout";
-"Settings"          = "Settings";
-"Social"            = "Social";
-"User guide"        = "User guide";
-"Discover"          = "Discover";
-"Description"       = "Description";
-"E-mail address"    = "E-mail address";
-"Details"           = "Details";
-"Back"              = "Back";
+"Logout"                = "Logout";
+"Settings"              = "Settings";
+"Social"                = "Social";
+"User guide"            = "User guide";
+"Discover"              = "Discover";
+"+ Description"         = "+ Description";
+"E-mail address"        = "E-mail address";
+"Details"               = "Details";
+"Back"                  = "Back";
 
 "UNDEFINED"         = "UNDEFINED";
 "SALE"              = "SALE";
@@ -70,9 +71,9 @@
 "Select currency"           = "Select currency";
 "Merchant information"      = "Merchant information";
 "Contact Handpoint support" = "Contact Handpoint support";
-"Hotline"                   = "Hotline";
-"visit our website"         = "visit our website";
-"E-mail us"                 = "E-mail us";
+"Hotline"                   = "Phone number:";
+"visit our website"         = "Visit our website:";
+"E-mail us"                 = "E-mail us:";
 
 "Fetching log from card reader."            = "Fetching log from card reader.";
 "No log available!"                         = "No log available!";

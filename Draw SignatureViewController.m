@@ -60,7 +60,7 @@
     UILabel *merchLabel             = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, REF_WIDTH, 80.0) ];
     merchLabel.textColor            = [UIColor blackColor];
     merchLabel.backgroundColor      = [UIColor whiteColor];
-    merchLabel.font                 = [UIFont fontWithName:@"Helvetica neue" size:(36.0)];
+    merchLabel.font                 = [UIFont fontWithName:@"Avenir" size:(36.0)];
     NSString *merchantName          = [settings objectForKey:@"merchantName"];
     merchLabel.text                 = [NSString stringWithFormat:@"%@\r%@", merchantName,self.amountwithCurrency];
     merchLabel.numberOfLines        = 2;
@@ -75,6 +75,7 @@
     [self setMainImage:nil];
     [self setTempDrawImage:nil];
     [super viewDidUnload];
+    //[sharedHeftService.heftClient ]   //acceptSignature:YES];
     
     // Release any retained subviews of the main view.
 }

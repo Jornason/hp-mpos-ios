@@ -48,6 +48,10 @@
     merchantAddress.text = merchantAddressString;
    	// Do any additional setup after loading the view.
 
+    merchantAddress.placeholder = Localize(@"Merchant address");
+    merchantName.placeholder = Localize(@"Merchant name");
+    self.navigationBar.title = Localize(@"Merchant information");
+
     self.merchantLabel.text = Localize(@"Merchant address");
     self.nameLabel.text = Localize(@"Merchant name");
     [self.saveMerchantInfo setTitle:Localize(@"Save") forState:UIControlStateNormal];

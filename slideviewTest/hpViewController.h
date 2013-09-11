@@ -31,9 +31,12 @@
     NSString* storedAmount;
     NSString *selectedCurrency;
 }
+
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIView *firstView;
 @property (weak, nonatomic) IBOutlet UIView *secondView;
 @property (weak, nonatomic) IBOutlet UIView *thirdView;
+@property (weak, nonatomic) IBOutlet UIView *numpadView;
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIPageControl *pageControl;
 

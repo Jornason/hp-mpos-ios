@@ -211,6 +211,13 @@
     [appDelegate copyPlist];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.scrollView setContentOffset:CGPointMake(0,textField.center.y-60) animated:YES];
+    return YES;
+}
+
+
 // UITextField delegate function that detects all inputs in textfields, used to move focus to next textfield after each digit input
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -260,6 +267,7 @@
             else
             {
                 //dismiss keyboard
+                [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
                 [textField resignFirstResponder];
                 [self signInButton];
                         
@@ -271,12 +279,13 @@
             UITextField *nextField = (UITextField*)[self.view viewWithTag:(textField.tag-1)];
             if(textField.tag > textFieldCount)
             {
-                //move focus to next textfield
+                //move focus to next textfieldanimated:YES];
                 [nextField becomeFirstResponder];
             }
             else
             {
                 //dismiss keyboard
+                [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
                 [textField resignFirstResponder];
             }
         }

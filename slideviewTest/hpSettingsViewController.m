@@ -43,7 +43,11 @@
     [self.currencyButton setTitle:Localize(@"Select currency") forState:UIControlStateNormal];
     [self.merchantInfoButton setTitle:Localize(@"Merchant information") forState:UIControlStateNormal];
 
+    
+    self.titleLabel.text = Localize(@"Settings");
     self.navigationItem.title = Localize(@"Settings");
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

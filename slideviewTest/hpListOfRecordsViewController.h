@@ -30,7 +30,7 @@
 {
     hpReceiptDelegate *receiptDelegate;
     NSDictionary* currencySymbol;
-    UIImage* logo;
+    //UIImage* logo;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *listOfRecordsTable;

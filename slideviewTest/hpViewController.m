@@ -123,9 +123,7 @@
                                                cancelButtonTitle:Localize(@"Ok")
                                                otherButtonTitles:nil];
         [status show];
-    }
-
-    
+    }    
 }
 
 - (void)viewDidLoad
@@ -145,6 +143,10 @@
     [self.scrollView addSubview:_secondView];
     [self.scrollView addSubview:_thirdView];
    
+    CGRect scrollFrame;
+    scrollFrame.origin = self.scrollView.frame.origin;
+    scrollFrame.size = CGSizeMake(self.scrollView.frame.size.width, self.mainView.frame.size.height - 48);
+    self.scrollView.frame = scrollFrame;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * self.scrollView.subviews.count, self.scrollView.frame.size.height);
     
     CGRect startFrame = self.scrollView.frame;
@@ -155,6 +157,7 @@
     
     //Create a sharedHeftService object
     sharedHeftService =[hpHeftService sharedHeftService];
+    [sharedHeftService checkIfAccessoryIsConnected];
     
     // Recieve notification from hpHeftService when transaction is done
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -165,6 +168,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadSignatureController:)
                                                  name:@"requestSignature"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(clearAmount:)
+                                                 name:@"refreshData"
                                                object:nil];
 
     //Setup localozation in buttons
@@ -182,7 +189,7 @@
     self.supportLabel.text              = Localize(@"Support");
     self.settingsButtonLabel.text       = Localize(@"Settings");
     self.discoverLabel.text             = Localize(@"Discover");
-    self.descriptionTextField.placeholder = Localize(@"Description");
+    self.descriptionTextField.placeholder = Localize(@"+ Description");
 
 
 
@@ -249,6 +256,10 @@
         self.refundButton.hidden = YES;
     }
     
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width * 1;
+    frame.origin.y = 0;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
     
 }
 
@@ -274,12 +285,16 @@
     NSLog(@"load signature view");
     //hpReceiptViewController *detailViewController = [hpReceiptViewController alloc];
     Draw_SignatureViewController *signatureViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"signatureViewController"];
-    signatureViewController.receipt = sharedHeftService.receipt.customerReceipt;
+    signatureViewController.receipt = sharedHeftService.signatureReceipt;
     signatureViewController.amountwithCurrency = self.ammountDisplay.text;
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:signatureViewController animated:YES];
 }
 
+- (void)clearAmount:(NSNotification *)notif
+{
+    self.ammountDisplay.text = [self formatAmount:storedAmount forCurrency:selectedCurrency];
+}
 
 -(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency
 {

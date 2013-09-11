@@ -37,5 +37,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *hotlineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *visitLabel;
 @property (weak, nonatomic) IBOutlet UIButton *emailButton;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 @end

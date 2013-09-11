@@ -139,6 +139,16 @@
 {
     // Override point for customization after application launch.
     [self performSelector:@selector(copyPlist)];
+    
+    //Check if iCloud is functioning
+    NSURL *ubiq = [[NSFileManager defaultManager]
+                   URLForUbiquityContainerIdentifier:nil];
+    if (ubiq) {
+        NSLog(@"iCloud access at %@", ubiq);
+        // TODO: Load document...
+    } else {
+        NSLog(@"No iCloud access");
+    }
     return YES;
 }
 

@@ -33,5 +33,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *enterPasscodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createPasscodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *confirmPasscodeLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
