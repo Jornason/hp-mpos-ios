@@ -19,3 +19,7 @@ DerivedData
 pom.xml
 extLibraries/
 HeftLibrary/
+
+Coffee.h
+
+Coffee.m
