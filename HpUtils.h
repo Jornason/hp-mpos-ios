@@ -19,10 +19,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "Currency.h"
 
 @interface HpUtils : NSObject
 +(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency;
++(NSNumberFormatter*)currencyFormatter:(Currency*)currency;
 +(NSString*)currencyAlphafromISO:(NSString*)currencyIso;
++(NSInteger)formatSendableAmount:(NSInteger)amount withCurrency:(NSString*)currencyAlpha;
 + (BOOL)matchRegex:(NSString *)regex withString:(NSString *)text;
 + (UIImage *)getCardSchemeLogo:(NSString*)cardSchemeName;
 

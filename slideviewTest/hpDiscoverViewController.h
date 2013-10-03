@@ -23,7 +23,7 @@
 
 @interface hpDiscoverViewController : hpViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    HeftRemoteDevice *selectedDevice;
+    //HeftRemoteDevice *selectedDevice;
     
 
 }

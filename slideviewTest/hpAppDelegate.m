@@ -20,6 +20,7 @@
 
 #import "hpAppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "hpSharedAppSettings.h"
 
 @implementation hpAppDelegate
 
@@ -149,6 +150,9 @@
     } else {
         NSLog(@"No iCloud access");
     }
+    
+    [hpSharedAppSettings sharedManager];
+    
     return YES;
 }
 

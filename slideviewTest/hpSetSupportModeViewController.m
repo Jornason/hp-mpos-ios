@@ -108,7 +108,8 @@
         NSLog(@"SENDING EMAIL");
         if ([sharedHeftService logGetInfo])
         {
-            fetchingLogsAlert = [[UIAlertView alloc]initWithTitle:Localize(@"Fetching log from card reader.") message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
+            [sharedHeftService.transactionViewController setStatusMessage:Localize(@"Fetching log from card reader.") andStatusCode:0];
+            //fetchingLogsAlert = [[UIAlertView alloc]initWithTitle:Localize(@"Fetching log from card reader.") message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
             UIActivityIndicatorView *fetchingLogsActive = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 70, 30, 30)];
             [fetchingLogsActive setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
             [fetchingLogsActive startAnimating];
@@ -119,6 +120,7 @@
         else
         {
             fetchingLogsAlert = [[UIAlertView alloc]initWithTitle:Localize(@"No log available!") message:Localize(@"Please check instructions.") delegate:nil cancelButtonTitle:Localize(@"Ok") otherButtonTitles: nil];
+            [sharedHeftService dismissTransactionViewController];
             [fetchingLogsAlert show];
         }
     }

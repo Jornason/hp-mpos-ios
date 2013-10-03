@@ -38,5 +38,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *visitLabel;
 @property (weak, nonatomic) IBOutlet UIButton *emailButton;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+- (IBAction) updateCardReader;
+@property (weak, nonatomic) IBOutlet UIButton *softwareUpdateButton;
+@property (weak, nonatomic) IBOutlet UIButton *supportModeLabel;
 
 @end

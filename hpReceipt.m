@@ -279,9 +279,13 @@ static sqlite3_stmt *updateStmt = nil;
 
 - (NSString*)ammountWithCurrencySymbol
 {
-    NSString* currency = [HpUtils currencyAlphafromISO:[xml objectForKey:@"Currency"]];
+    Currency* currency = [[Currency alloc] initWithCode:[xml objectForKey:@"Currency"]];
     NSString* amount = [xml objectForKey:@"RequestedAmount"];
-    return [HpUtils formatAmount:amount forCurrency:currency];
+    if (currency.maxFractionDigits != 2){
+        NSInteger amountNumber = [amount doubleValue]/100;
+        return [HpUtils formatAmount:[@(amountNumber) stringValue] forCurrency:currency.currencyAlpha];
+    }
+    return [HpUtils formatAmount:amount forCurrency:currency.currencyAlpha];
 }
 
 - (NSString*)dateFromTimestamp
@@ -304,10 +308,7 @@ static sqlite3_stmt *updateStmt = nil;
 
 - (NSString*)htmlReceipt
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"hpConfig.plist"];
-    NSDictionary *settings = [[NSDictionary alloc]initWithContentsOfFile:path];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
     
 
     NSMutableString* htmlReceipt = [NSMutableString stringWithString:@"<html><body>"];

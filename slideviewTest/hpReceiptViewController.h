@@ -26,5 +26,7 @@
 @property (strong, nonatomic) hpReceipt* localReceipt;
 @property (weak, nonatomic) IBOutlet UIButton *detailsButton;
 @property (strong, nonatomic) IBOutlet UIWebView *webReceipt;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) IBOutlet UIView *receiptTemplate;
 
 @end

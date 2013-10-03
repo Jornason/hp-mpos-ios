@@ -27,9 +27,11 @@
 @synthesize heftClient;
 @synthesize devices;
 @synthesize manager;
-@synthesize xmlResponce;
-@synthesize receiptDelegate, receipt, transactionDescription, signatureReceipt, automaticConnectToReader, transactionImage, supportModeOn;
+@synthesize xmlResponse;
+@synthesize receiptDelegate, receipt, transactionDescription, signatureReceipt, automaticConnectToReader, transactionImage, supportModeOn, selectedDevice, newDefaultCardReader, transactionViewController;
 
+NSInteger defaultCardReaderIndex = 0;
+NSString* defaultCardReaderStoredSerialNumber;
 
 // Creates a shared hpHeftService object using the singleton pattern
 + (hpHeftService *)sharedHeftService
@@ -45,12 +47,18 @@
 {
     self = [super init];
     if (self) {
-        activityIndicator = [[UIAlertView alloc] initWithTitle:Localize(@"Processing") message:@" " delegate:self cancelButtonTitle:Localize(@"Cancel")otherButtonTitles:nil];
+        activityIndicator = [[UIAlertView alloc] initWithTitle:Localize(@"Processing")
+                                                       message:@" " delegate:self
+                                             cancelButtonTitle:Localize(@"Cancel")
+                                             otherButtonTitles:nil];
         progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 40, 30, 30)];
         progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
         [activityIndicator addSubview:progress];
+
         heftClient = nil;
+        selectedDevice = nil;
         automaticConnectToReader = YES;
+        newDefaultCardReader = NO;
         supportModeOn = NO;
         devices = [NSMutableArray array];
         manager = [HeftManager sharedManager];
@@ -65,18 +73,72 @@
 // Starts a sale transaction with amount, currency and cardholder present properties
 - (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present
 {
+    [self showTransactionViewController:eTransactionSale];
     return [heftClient saleWithAmount:amount currency:currency cardholder:present];
 }
 // Starts a refund transaction with amount, currency and cardholder present properties
 - (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 {
+    [self showTransactionViewController:eTransactionRefund];
     return [heftClient refundWithAmount:amount currency:currency cardholder:present];
+}
+
+- (BOOL)saleVoidWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present transaction:(NSString*)transaction
+{
+    if (![self isTransactionVoid:transaction])
+    {
+        [self showTransactionViewController:eTransactionVoid];
+        return [heftClient saleVoidWithAmount:amount currency:currency cardholder:present transaction:transaction];
+    }
+    else
+    {
+        [self throwVoidError];
+        return NO;
+    }
+}
+
+- (BOOL)refundVoidWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present transaction:(NSString*)transaction
+{
+    if (![self isTransactionVoid:transaction])
+    {
+        [self showTransactionViewController:eTransactionVoid];
+        return [heftClient refundVoidWithAmount:amount currency:currency cardholder:present transaction:transaction];
+    }
+    else
+    {
+        [self throwVoidError];
+        return NO;
+    }
+}
+
+- (BOOL)isTransactionVoid:(NSString*)transaction
+{
+    for (int i = 0; i < [receiptDelegate.itemArray count]; i++) {
+        hpReceipt* receiptTran = [receiptDelegate.itemArray objectAtIndex:i];
+        if ([[receiptTran.xml objectForKey:@"OriginalEFTTransactionID"] isEqualToString:transaction] && [[receiptTran.xml objectForKey:@"FinancialStatus"] isEqualToString:@"AUTHORISED"])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)throwVoidError
+{
+    activityIndicator.title = Localize(@"Error");
+    activityIndicator.message = Localize(@"This transaction voided");
+    [activityIndicator show];
 }
 
 // Resets/clears the list of found devices in the heft manager
 - (void)resetDevices
 {
     [manager resetDevices];
+}
+
+- (NSMutableArray*)devicesCopy
+{
+    return [manager devicesCopy];
 }
 
 // This function is called if the heft manager can access the blueatooth services
@@ -96,11 +158,11 @@
 // Starts discovery of devices and displays an activity indicator
 - (void)startDiscoveryWithActivitiMonitor:(BOOL)fDiscoverAllDevices;
 {
-    //[manager startDiscovery:fDiscoverAllDevices];
-//    activityIndicator.title = Localize(@"Scanning");
-//    activityIndicator.message = @" ";
-//    [activityIndicator show];
-//    [progress startAnimating];
+    [manager startDiscovery:fDiscoverAllDevices];
+    activityIndicator.title = Localize(@"Scanning");
+    activityIndicator.message = @" ";
+    [activityIndicator show];
+    [progress startAnimating];
 }
 
 // Starts discovery of devices
@@ -112,7 +174,6 @@
 - (void)didFindAccessoryDevice:(HeftRemoteDevice *)newDevice
 {
     NSLog(@"hpHeftService didFindAccessoryDevice");
-    
     //add found device to list of devices
     [devices addObject:newDevice];
     // Send notification about a new device being found
@@ -135,25 +196,21 @@
 }
 
 
-//// This function is called each time a device is found
-//- (void)didDiscoverDevice:(HeftRemoteDevice*)newDevice;
-//{
-//    NSLog(@"hpHeftService didDiscoverDevice");
-//
-//    [devices addObject:newDevice];
-//    // Send notification about a new device being found
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
-//                                                        object:nil];
-//    // Declare the shared secret in hex numbers.
-//
-//
-//    
-//}
+// This function is called each time a device is found
+- (void)didDiscoverDevice:(HeftRemoteDevice*)newDevice;
+{
+    NSLog(@"hpHeftService didDiscoverDevice");
+
+    [devices addObject:newDevice];
+    // Send notification about a new device being found
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
+                                                        object:nil];   
+}
 // This function gets called when discovery is finished
 - (void)didDiscoverFinished;
 {
     NSLog(@"hpHeftService didDiscoverFinished");
-    [self connectToLastCardReader];
+    //[self connectToLastCardReader];
     // Dismiss activiti indicator
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
     
@@ -164,6 +221,7 @@
 {
     NSLog(@"hpHeftService clientForDevice");
     [BWStatusBarOverlay showWithMessage:@"Connecting to reader..." loading:YES animated:YES];
+    selectedDevice = device;
     [manager clientForDevice:device sharedSecret:sharedSecret delegate:aDelegate];
 }
 
@@ -173,9 +231,11 @@
 {
     NSLog(@"hpHeftService didConnect");
     NSLog(@"didConnect client: %@", client);
+    NSLog(@"didConnect client serial: %@", [[client mpedInfo] objectForKey:@"SerialNumber"]);
     
-    if(client == NULL)
+    if(client == NULL && heftClient == nil)
     {
+        selectedDevice = nil;
         [BWStatusBarOverlay showErrorWithMessage:Localize(@"Error connection to reader, please try again.") duration:5 animated:YES];
         [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
         
@@ -185,8 +245,29 @@
         heftClient = nil;
         heftClient = client;
         [heftClient logSetLevel:eLogDebug];
-        [BWStatusBarOverlay showSuccessWithMessage:Localize(@"Connected!") duration:5 animated:YES];
-        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.33f green:0.74f blue:0.68f alpha:1.0f]];
+        
+        if ([[[heftClient mpedInfo]objectForKey:kSerialNumberInfoKey] isEqual:defaultCardReaderStoredSerialNumber] || newDefaultCardReader)
+        {
+            NSLog(@"Default CardReader found!");
+            defaultCardReaderIndex = 0;
+            if(newDefaultCardReader)
+            {
+                [self storeDefaultCardReader];
+            }
+            newDefaultCardReader = NO;
+            [BWStatusBarOverlay showSuccessWithMessage:Localize(@"Connected!") duration:5 animated:YES];
+            [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.33f green:0.74f blue:0.68f alpha:1.0f]];
+        }
+        else
+        {
+            NSLog(@"Not found!");
+            NSLog(@"CardReaderSerialNumber: %@", [[heftClient mpedInfo]objectForKey:kSerialNumberInfoKey]);
+            heftClient = nil;
+            selectedDevice = nil;
+            defaultCardReaderIndex++;
+            [self checkForDefaultCardReaderWithIndex:defaultCardReaderIndex];
+        }
+
     }
     //[connectionAlert show];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"readerConnected"
@@ -198,31 +279,34 @@
 - (void)responseStatus:(id<ResponseInfo>)info;
 {
     NSLog(@"hpHeftService responceStatus");
-    activityIndicator.title = Localize(@"Processing");
-    [activityIndicator show];
-    //[progress startAnimating];
+    [transactionViewController setStatusMessage:info.status andStatusCode:info.statusCode];
+	[transactionViewController allowCancel:[info.xml[@"CancelAllowed"] boolValue]];
     
-    NSLog(@"%@", info.status);
+    NSLog(@"StatusMessage: %@", info.status);
+    NSLog(@"StatusCode: %d", info.statusCode);
     NSLog(@"%@", info.xml.description);
-    activityIndicator.message = info.status;
-    
-    
-    
 }
 
 // This function gets called if there is an response error in the transaction
 - (void)responseError:(id<ResponseInfo>)info;
 {
-    NSLog(@"hpHeftService responceError");
+    NSLog(@"hpHeftService responseError");
+    [self dismissTransactionViewController];
+    activityIndicator.title = Localize(@"Error");
+    activityIndicator.message = info.status;
+    if(![activityIndicator isVisible])
+    {
+        [activityIndicator show];
+        //[progress startAnimating];
+    }
     NSLog(@"%@", info.status);
     NSLog(@"%@", info.xml.description);
-    
-    
-    
+
 }
 
 // Is only called when user chooses to send logs to handpoint in support mode
 - (void)responseLogInfo:(id<LogInfo>)info{
+    [transactionViewController setStatusMessage:info.status andStatusCode:info.statusCode];
 	NSLog(@"responseLogInfo:%@", info.status);
     NSLog(@"%@", info.log);
     NSMutableString* logString = [NSMutableString stringWithFormat:@"Device model: %@ \n",[[UIDevice currentDevice] model]];
@@ -232,6 +316,7 @@
     
 	[logString writeToFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"log.txt"] atomically:YES encoding:NSUTF8StringEncoding error:NULL];
     
+    [self dismissTransactionViewController];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logsDidDownload"
                                                         object:nil];
 }
@@ -241,43 +326,25 @@
 // Here alot could be moved to a seperat function and re-designed
 - (void)responseFinanceStatus:(id<FinanceResponseInfo>)info;
 {
-    NSMutableSet *set = [NSSet setWithObjects:@"APPROVED", @"AUTHORISED", @"DECLINED", @"PROCESSED", @"FAILED", @"CANCELLED", @"CARD BLOCKED", nil];
+    [transactionViewController setStatusMessage:info.status andStatusCode:info.statusCode];
+    NSMutableSet *saleSet = [NSSet setWithObjects:@"APPROVED", @"AUTHORISED", @"DECLINED", @"CANCELLED", @"CARD BLOCKED", nil];
+    // The other set defined below is the "financialStatus" when it should not print out a receipt.
+    //NSMutableSet *otherSet = [NSSet setWithObjects:@"PROCESSED", @"FAILED", @"UNDEFINED", @"INVALID CARD", nil];
     
-    
-    NSLog(@"hpHeftService responceFinanceStatus");
+    NSLog(@"hpHeftService responseFinanceStatus");
     NSLog(@"%@", info.status);
     NSLog(@"%@", info.xml.description);
-    if ([set containsObject:[info.status uppercaseString]])
+    NSString* financialStatus = [info.xml objectForKey:@"FinancialStatus"];
+    if ([saleSet containsObject:financialStatus]) 
     {
-        xmlResponce = info;
-        receipt = [[hpReceipt alloc]initWithPrimaryKey:0];
-        receipt.customerReceipt = [info customerReceipt];
-        receipt.customerIsCopy = NO;
-        if ([[info merchantReceipt] length] == 0){
-            receipt.merchantReceipt = signatureReceipt;
-            signatureReceipt = @"";
-        }
-        else {
-            receipt.merchantReceipt = [info merchantReceipt];
-        }
-        receipt.merchantIsCopy = NO;
-        receipt.xml = [info xml];
-        receipt.transactionId = [info transactionId];
-        receipt.description = transactionDescription;
-        receipt.authorisedAmount = [info authorisedAmount];
-        if( transactionImage != NULL)
-        {
-            receipt.image = transactionImage;
-        }        
-
+        receipt = [self generateReceipt:info];
         [receiptDelegate addItem:receipt];
         
         NSLog(@"send customer receipt");
         webReceipt = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 595, 0)];
-        NSString* merchantReceipt;
-        
         [webReceipt setDelegate:self];
         
+        NSString* merchantReceipt;
         // Remove {COPY_RECEIPT} placeholder
         if ([receipt merchantIsCopy])
         {
@@ -293,11 +360,6 @@
         [webReceipt loadHTMLString:merchantReceipt baseURL:nil];
         NSLog(@"Webview is loading...");
         //The rest is handled in the delegate webViewDidFinishLoad
-        }
-    
-    // Display the alert to the user
-    if ([[info.status uppercaseString] isEqualToString:@"APPROVED"] || [[info.status uppercaseString] isEqualToString:@"AUTHORISED"])
-    {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"transactionFinished"
                                                             object:nil];
         
@@ -305,26 +367,95 @@
     else
     {
         // Create a new alert object and set initial values.
-        UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Status")
-                                                         message:info.status
-                                                        delegate:nil
-                                                    cancelButtonTitle:nil
-                                                    otherButtonTitles:Localize(@"Ok"), nil];
-        [status show];
+        [transactionViewController setStatusMessage:info.status andStatusCode:info.statusCode];
+//        UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Status")
+//                                                         message:info.status
+//                                                        delegate:nil
+//                                                    cancelButtonTitle:nil
+//                                                    otherButtonTitles:Localize(@"Ok"), nil];
+//        [status show];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshData"
                                                         object:nil];
     
+
+    [self dismissTransactionViewController];
+//    [transactionViewController.view removeFromSuperview];
+//    transactionViewController = nil;
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
     
     
+}
+
+- (hpReceipt*)generateReceipt:(id<FinanceResponseInfo>)info{
+    xmlResponse = info;
+    
+    //Generate all receipt fields with non-null/nil value
+    receipt = [[hpReceipt alloc]initWithPrimaryKey:0];
+    receipt.customerReceipt = @"";
+    receipt.merchantReceipt = @"";
+    receipt.customerIsCopy = NO;
+    receipt.merchantIsCopy = NO;
+    receipt.xml = [NSDictionary alloc];
+    receipt.transactionId = 0;
+    receipt.authorisedAmount = 0;
+    receipt.image = nil;
+    receipt.description = @"";
+    
+    if ([[info customerReceipt] length] != 0)
+    {
+        receipt.customerReceipt = [info customerReceipt];
+    }
+    
+    if ([[info merchantReceipt] length] != 0)
+    {
+        receipt.merchantReceipt = [info merchantReceipt];
+    }
+    else
+    {
+        if ([signatureReceipt length] != 0)
+        {
+            receipt.merchantReceipt = signatureReceipt;
+            signatureReceipt = @"";
+        }
+    }
+    
+    if ([info xml])
+    {
+        receipt.xml = [info xml];
+    }
+    
+    if ([info transactionId])
+    {
+        receipt.transactionId = [info transactionId];
+    }
+    
+    if ([info authorisedAmount])
+    {
+        receipt.authorisedAmount = [info authorisedAmount];
+    }
+    
+    if( transactionImage != NULL)
+    {
+        receipt.image = transactionImage;
+        transactionImage = nil;
+    }
+    
+    if (transactionDescription != nil)
+    {
+        receipt.description = transactionDescription;
+        transactionDescription = nil;
+    }
+    
+    return receipt;
 }
 
 // This function gets called when a card that needs a signature is inserted into the card reader
 - (void)requestSignature:(NSString*)signatureReceiptIn;
 {
     NSLog(@"hpHeftService requestSignature");
+    [self dismissTransactionViewController];
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
     NSLog(@"%@",signatureReceiptIn);
     self.signatureReceipt = signatureReceiptIn;
@@ -335,11 +466,20 @@
 - (void)cancelSignature;
 {
     NSLog(@"hpHeftService cancelSignature");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"cancelSignature"
+                                                        object:nil];
     
+}
+
+- (void)acceptSignature:(BOOL)flag
+{
+    [self showTransactionViewController:eTransactionSale];
+    [heftClient acceptSignature:flag];
 }
 // Stores information about last card reader connected
 - (void)storeHeftClientSerial:(HeftRemoteDevice*)client andSharedSecret:(NSData*)secret;
 {
+    NSLog(@"hpHeftService - storing last reader");
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *strFile = [documentsDirectory stringByAppendingPathComponent:@"clientInfo.txt"];
@@ -352,6 +492,7 @@
     [archiver finishEncoding];
     
     BOOL success = [data writeToFile:strFile atomically:YES];
+    NSLog(@"%d", success);
     
 }
 // Retrevies the last connected heft client that was stored
@@ -422,7 +563,57 @@
     return dataElm;
 }
 
-// Connects to last coonected reader
+- (void)storeDefaultCardReader;
+{
+    if(heftClient)
+    {
+        NSString* defaultCardReaderSerialNumber = [[heftClient mpedInfo] objectForKey:kSerialNumberInfoKey];
+        [[NSUserDefaults standardUserDefaults] setObject:defaultCardReaderSerialNumber forKey:@"defaultCardReaderSerialNumber"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+}
+- (void)checkForDefaultCardReader;
+{
+    
+    NSLog(@"checkForDefaultCardReader");
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"defaultCardReaderSerialNumber"])
+    {
+        defaultCardReaderStoredSerialNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultCardReaderSerialNumber"];
+        if ([[self devicesCopy] count] > 0)
+        {
+            [self clientForDevice:[[self devicesCopy] objectAtIndex:0] sharedSecret:[self readSharedSecretFromFile] delegate:self];
+        }
+        else
+        {
+            [BWStatusBarOverlay showWithMessage:Localize(@"No card reader available!") animated:YES];
+            [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
+        }
+    }
+    else
+    {
+        defaultCardReaderStoredSerialNumber = @"";
+        [BWStatusBarOverlay showWithMessage:Localize(@"No default card reader selected") animated:YES];
+        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
+    }
+    NSLog(@"defaultCardReaderStoredSerialNumber: %@", defaultCardReaderStoredSerialNumber);
+
+}
+
+- (void)checkForDefaultCardReaderWithIndex:(NSInteger)index;
+{
+    if (index < [[self devicesCopy] count])
+    {
+        [self clientForDevice:[[self devicesCopy] objectAtIndex:index] sharedSecret:[self readSharedSecretFromFile] delegate:self];
+    }
+    else
+    {
+        [BWStatusBarOverlay showWithMessage:@"Default card reader not found" animated:YES];
+        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];    
+    }
+}
+
+
+// Connects to last connected reader
 - (void)connectToLastCardReader;
 {
     if(automaticConnectToReader)
@@ -449,6 +640,7 @@
     NSArray *accessories = [[EAAccessoryManager sharedAccessoryManager]
                             connectedAccessories];
 
+    NSLog(@"accessories desc: %@",[accessories description]);
     if (heftClient == nil)
     {
         if ([accessories count] == 0)
@@ -469,6 +661,11 @@
             }
         }
     }
+}
+
+- (BOOL)financeInit{
+    [self showTransactionViewController:eTransactionFinInit];
+    return [heftClient financeInit];
 }
 
 - (void)storeReceiptIniCloud:(NSMutableData*)receiptData withFilename:(NSString*)filename
@@ -536,7 +733,22 @@
 }
 
 - (BOOL) logGetInfo {
+    [self showTransactionViewController:eTransactionGetLog];
     return [heftClient logGetInfo];
+}
+
+# pragma mark Transaction controller
+
+- (void)showTransactionViewController:(eTransactionType)tType{
+    UIWindow* keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIViewController* visible = keyWindow.rootViewController;
+	transactionViewController = [TransactionViewController transactionWithType:tType storyboard:visible.storyboard];
+	[transactionViewController showViewController:transactionViewController];
+}
+
+- (void)dismissTransactionViewController{
+	[transactionViewController dismissViewController:transactionViewController];
+	transactionViewController = nil;
 }
 
 @end

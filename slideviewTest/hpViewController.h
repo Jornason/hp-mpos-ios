@@ -23,7 +23,7 @@
 #import "Draw SignatureViewController.h"
 
 @class hpWebViewController;
-@interface hpViewController : UIViewController <UITextFieldDelegate>
+@interface hpViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     hpHeftService* sharedHeftService;
     NSString *path;
@@ -49,6 +49,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *payRefundToggleButton;
 @property (weak, nonatomic) IBOutlet UILabel *payRefundToggleLable;
 @property (weak, nonatomic) IBOutlet UIButton *refundButton;
+@property (weak, nonatomic) IBOutlet UIButton *backspaceButton;
+@property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapRecognizer;
+@property (nonatomic, strong) IBOutlet UILongPressGestureRecognizer *longRecognizer;
+@property (nonatomic, strong) IBOutlet UISwipeGestureRecognizer *swipeRecognizer;
 
 @property (weak, nonatomic) IBOutlet UILabel *listOfRecordsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *settingLabel;
@@ -60,7 +64,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *supportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *settingsButtonLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discoverLabel;
+@property (weak, nonatomic) IBOutlet UIButton *discoverButton;
 
+- (IBAction)showAbout:(id)sender;
 -(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency;
 
 @end

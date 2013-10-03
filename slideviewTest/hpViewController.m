@@ -18,9 +18,13 @@
         limitations under the License.
  */
 
+#import <QuartzCore/QuartzCore.h>
 #import "hpViewController.h"
 #import "hpUtils.h"
 #import "hpReceiptViewController.h"
+#import "TransactionViewController.h"
+#import "BWStatusBarOverlay.h"
+#import <tgmath.h> 
 
 @interface hpViewController ()
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
@@ -47,7 +51,7 @@
     self.ammountDisplay.text = [self formatAmount:storedAmount forCurrency:selectedCurrency];
 
 }
-- (IBAction)backspacePressed
+- (IBAction)handleTap:(UITapGestureRecognizer *)sender
 {
     if ( storedAmount > 0)
     {
@@ -62,15 +66,23 @@
     self.ammountDisplay.text = [self formatAmount:storedAmount forCurrency:selectedCurrency];
 }
 
+-  (IBAction)handleLongPress:(UILongPressGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        self.userIsInTheMiddleOfEnteringANumber = NO;
+        storedAmount = @"0";
+        self.ammountDisplay.text = [self formatAmount:storedAmount forCurrency:selectedCurrency];
+    }
+}
+
 
 - (IBAction) startSale
 {
 
     //get current currency
-    hpViewSettings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    selectedCurrency = [hpViewSettings valueForKey:@"SelectedCurrency"];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
+    selectedCurrency = [settings valueForKey:@"SelectedCurrency"];
     
-    int amount = [storedAmount intValue];
+    int amount = [HpUtils formatSendableAmount:[storedAmount intValue] withCurrency:selectedCurrency];
     NSLog(@"Amount: %d", amount);
     NSLog(@"Currency: %@", selectedCurrency);
     if(sharedHeftService.heftClient != nil)
@@ -80,13 +92,14 @@
             //Read the amount and send it to the SDK
             sharedHeftService.transactionDescription = [descriptionTextField text];
             [sharedHeftService saleWithAmount:amount currency:selectedCurrency cardholder:YES];
+            //[self showTransactionViewController:eTransactionSale];
             self.userIsInTheMiddleOfEnteringANumber = NO;
             storedAmount = @"0";
-            self.descriptionTextField.text = @"";
         }
     }
     else
     {
+        [sharedHeftService checkForDefaultCardReader];
         UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Error")
                                                          message:Localize(@"No reader connected")
                                                         delegate:nil
@@ -97,10 +110,10 @@
 }
 - (IBAction)startRefund:(id)sender
 {
-    hpViewSettings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    selectedCurrency = [hpViewSettings valueForKey:@"SelectedCurrency"];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
+    selectedCurrency = [settings objectForKey:@"SelectedCurrency"];
     
-    int amount = [storedAmount intValue];
+    int amount = [HpUtils formatSendableAmount:[storedAmount intValue] withCurrency:selectedCurrency];
     NSLog(@"Amount: %d", amount);
     NSLog(@"Currency: %@", selectedCurrency);
     if(sharedHeftService.heftClient != nil)
@@ -110,13 +123,14 @@
             //Read the amount and send it to the SDK
             sharedHeftService.transactionDescription = [descriptionTextField text];
             [sharedHeftService refundWithAmount:amount currency:selectedCurrency cardholder:YES];
+            //[self showTransactionViewController:eTransactionRefund];
             self.userIsInTheMiddleOfEnteringANumber = NO;
             storedAmount = @"0";
-            self.descriptionTextField.text = @"";
         }
     }
     else
     {
+        [sharedHeftService checkForDefaultCardReader];
         UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Error")
                                                          message:Localize(@"No reader connected")
                                                         delegate:nil
@@ -135,6 +149,9 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     path = [documentsDirectory stringByAppendingPathComponent:@"hpConfig.plist"];
     self.descriptionTextField.delegate = self;
+    
+    UIFont* defaultFont = [UIFont fontWithName:@"Roboto" size:self.ammountDisplay.font.pointSize];
+    self.ammountDisplay.font = defaultFont;
     
     //Setup slideView
     UIImage* background = [UIImage imageNamed: @"Background.png"];
@@ -156,8 +173,14 @@
     
     
     //Create a sharedHeftService object
-    sharedHeftService =[hpHeftService sharedHeftService];
-    [sharedHeftService checkIfAccessoryIsConnected];
+    if(!sharedHeftService)
+    {
+        sharedHeftService =[hpHeftService sharedHeftService];
+    }
+    if (sharedHeftService.heftClient == nil)
+    {
+        [sharedHeftService checkForDefaultCardReader];
+    }
     
     // Recieve notification from hpHeftService when transaction is done
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -177,27 +200,37 @@
     //Setup localozation in buttons
     [self.payButton setTitle:Localize(@"Pay") forState:UIControlStateNormal];
     [self.refundButton setTitle:Localize(@"Refund") forState:UIControlStateNormal];
-
     self.payRefundToggleLable.text      = Localize(@"Refund");
-    self.listOfRecordsLabel.text        = Localize(@"List of records");
-    self.settingLabel.text              = Localize(@"Settings");
+    self.listOfRecordsLabel.text        = Localize(@"Payment history");
+    self.settingLabel.text              = Localize(@"Menu");
     self.logoutLabel.text               = Localize(@"Logout");
     self.socialLabel.text               = Localize(@"Social");
     self.userGuideLabel.text            = Localize(@"User guide");
     self.itemsLabel.text                = Localize(@"Items");
-    self.listOfRecordsButtonLabel.text  = Localize(@"List of records");
-    self.supportLabel.text              = Localize(@"Support");
+    self.listOfRecordsButtonLabel.text  = Localize(@"Payment history");
+    self.supportLabel.text              = Localize(@"About Handpoint");
     self.settingsButtonLabel.text       = Localize(@"Settings");
-    self.discoverLabel.text             = Localize(@"Discover");
+    self.discoverLabel.text             = Localize(@"Connect");
     self.descriptionTextField.placeholder = Localize(@"+ Description");
-
-
+    self.ammountDisplay.font = defaultFont;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(handleTap:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self.backspaceButton addGestureRecognizer:tapRecognizer];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                               initWithTarget:self
+                                               action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 0.8;
+    [self.backspaceButton addGestureRecognizer:longPress];
+    
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
     selectedCurrency = [settings valueForKey:@"SelectedCurrency"];
     currencyDisplay.text = selectedCurrency;
     currencyDisplay.hidden = YES;
@@ -220,6 +253,71 @@
     return NO;
 }
 
+#pragma mark Camera button
+
+- (IBAction)openCameraChooser {
+    
+    //This is check to see if the iPhone have a camera and if it works correctly
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:Localize(@"Error")
+                                                              message:Localize(@"Device has no camera")
+                                                             delegate:nil
+                                                    cancelButtonTitle:Localize(@"OK")
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
+    else //display action sheet to selec camera or photo library
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:nil
+                                      delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                      destructiveButtonTitle:nil
+                                      otherButtonTitles:@"Camera", @"Photo library", nil];
+
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [actionSheet showInView:self.view];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    switch (buttonIndex) {
+        case 0:
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [BWStatusBarOverlay dismissAnimated];
+            [self presentViewController:picker animated:YES completion:NULL];
+            break;
+        case 1:
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [BWStatusBarOverlay dismissAnimated];
+            [self presentViewController:picker animated:YES completion:NULL];
+            break;
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    sharedHeftService.transactionImage = chosenImage;
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 - (IBAction)goToPage:(UIPageControl *)sender
 {
     CGRect frame = self.scrollView.frame;
@@ -238,6 +336,7 @@
     frame.origin.x = frame.size.width * 0;
     frame.origin.y = 0;
     [self.scrollView scrollRectToVisible:frame animated:YES];
+    
 
 }
 - (IBAction)showRefundButton:(id)sender {
@@ -266,13 +365,28 @@
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
     // Update the page when more than 50% of the previous/next page is visible
     CGFloat pageWidth = self.scrollView.frame.size.width;
-    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;
+    /*if(self.scrollView.contentOffset.x > 720.0){
+        CGRect frame = self.scrollView.frame;
+        frame.origin.x = frame.size.width * 0;
+        frame.origin.y = 0;
+        [self.scrollView scrollRectToVisible:frame animated:YES];
+    }
+    else if(self.scrollView.contentOffset.x < 0.0){
+        CGRect frame = self.scrollView.frame;
+        frame.origin.x = frame.size.width * 2;
+        frame.origin.y = 0;
+        [self.scrollView scrollRectToVisible:frame animated:YES];
+    }
+    else{*/
+        int page =  floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.pageControl.currentPage = page;
+    //}
 }
 
 - (void)loadWebViewController:(NSNotification *)notif
 {
     NSLog(@"load web view");
+    //[self dismissTransactionViewController];
     hpReceipt *itemObj = sharedHeftService.receipt;
     hpReceiptViewController *detailViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"receiptViewController"];
     detailViewController.localReceipt = itemObj;
@@ -283,6 +397,7 @@
 - (void)loadSignatureController:(NSNotification *)notif
 {
     NSLog(@"load signature view");
+    //[self dismissTransactionViewController];
     //hpReceiptViewController *detailViewController = [hpReceiptViewController alloc];
     Draw_SignatureViewController *signatureViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"signatureViewController"];
     signatureViewController.receipt = sharedHeftService.signatureReceipt;
@@ -293,11 +408,43 @@
 
 - (void)clearAmount:(NSNotification *)notif
 {
+    self.descriptionTextField.text = @"";
     self.ammountDisplay.text = [self formatAmount:storedAmount forCurrency:selectedCurrency];
+}
+
+- (IBAction)showAbout:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.handpoint.com/about/"]];
 }
 
 -(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency
 {
     return [HpUtils formatAmount:amount forCurrency:currency];
 }
+
+//- (void)addFadeTransition{
+//	CATransition* transition = [CATransition animation];
+//	transition.type = kCATransitionFade;
+//	[self.view.layer addAnimation:transition forKey:nil];
+//}
+//
+//- (void)showViewController:(UIViewController*)viewController{
+//	[self addFadeTransition];
+//	[self.view addSubview:viewController.view];
+//}
+//
+//- (void)dismissViewController:(UIViewController*)viewController{
+//	[self addFadeTransition];
+//	[viewController.view removeFromSuperview];
+//}
+//
+//- (void)showTransactionViewController:(eTransactionType)type{
+//	sharedHeftService.transactionViewController = [TransactionViewController transactionWithType:type storyboard:self.storyboard];
+//	[self showViewController:sharedHeftService.transactionViewController];
+//}
+//
+//- (void)dismissTransactionViewController{
+//	[self dismissViewController:sharedHeftService.transactionViewController];
+//	sharedHeftService.transactionViewController = nil;
+//}
+
 @end

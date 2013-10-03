@@ -29,7 +29,7 @@
 @interface hpListOfRecordsViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 {
     hpReceiptDelegate *receiptDelegate;
-    NSDictionary* currencySymbol;
+    hpHeftService* sharedHeftService;
     //UIImage* logo;
     
 }

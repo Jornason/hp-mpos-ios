@@ -37,7 +37,6 @@
     
     [sharedHeftService resetDevices]; // Clean out device list
     sharedHeftService.automaticConnectToReader = NO;
-    [sharedHeftService startDiscoveryWithActivitiMonitor:NO];
     // Recieve notification from hpHeftService when new devices found
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshDeviceTableView:)
@@ -48,10 +47,13 @@
                                                  name:@"readerConnected"
                                                object:nil];
 
-    super.navigationItem.title = Localize(@"Discover");
+    super.navigationItem.title = Localize(@"Devices");
     super.navigationItem.backBarButtonItem.title = Localize(@"Back");
-
-  
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:Localize(@"Discover")
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(discoveryButton:)];
+    super.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)viewDidUnload
@@ -81,7 +83,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	NSLog(@"numberOfRowsInSection:");
-    return [sharedHeftService.devices count];
+    return [[sharedHeftService devicesCopy] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,16 +100,24 @@
 	}
 	
 	// Set up the cell.
-	cell.textLabel.text = [[sharedHeftService.devices objectAtIndex:indexPath.row] name];
+	cell.textLabel.text = [[[sharedHeftService devicesCopy] objectAtIndex:indexPath.row] name];
+    if([[[sharedHeftService devicesCopy] objectAtIndex:indexPath.row] isEqual:[sharedHeftService selectedDevice]])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
 	
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Declare the shared secret in hex numbers.
-    selectedDevice = [sharedHeftService.devices objectAtIndex:indexPath.row];
-    [sharedHeftService clientForDevice:selectedDevice sharedSecret:[sharedHeftService readSharedSecretFromFile] delegate:sharedHeftService];
+
+    sharedHeftService.newDefaultCardReader = YES;
+    [sharedHeftService clientForDevice:[[sharedHeftService devicesCopy] objectAtIndex:indexPath.row] sharedSecret:[sharedHeftService readSharedSecretFromFile] delegate:sharedHeftService];
 }
 
 - (void)refreshDeviceTableView:(NSNotification *)notif
@@ -130,9 +140,14 @@
     if (buttonIndex != [alertView cancelButtonIndex])
     {
         NSData* sharedSecretData = [[[alertView textFieldAtIndex:0] text] dataUsingEncoding:NSUTF8StringEncoding];
-        [sharedHeftService clientForDevice:selectedDevice sharedSecret:sharedSecretData delegate:sharedHeftService];
+        [sharedHeftService clientForDevice:[sharedHeftService selectedDevice] sharedSecret:sharedSecretData delegate:sharedHeftService];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+}
+- (void)discoveryButton:(id)sender {
+    
+    [sharedHeftService startDiscovery:NO];
+    
 }
 
 

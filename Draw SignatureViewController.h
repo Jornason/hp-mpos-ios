@@ -38,9 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) NSString* receipt;
 
-
 - (IBAction)reset:(id)sender;
-- (IBAction)cancel:(id)sender;
 - (IBAction)decline:(id)sender;
 - (IBAction)accept:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *signatureView;

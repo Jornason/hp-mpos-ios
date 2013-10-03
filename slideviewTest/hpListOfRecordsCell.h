@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *listImage;
 @property (weak, nonatomic) IBOutlet UILabel *transactionAmount;
-@property (weak, nonatomic) IBOutlet UILabel *tranactionType;
+@property (weak, nonatomic) IBOutlet UILabel *transactionType;
 @property (weak, nonatomic) IBOutlet UILabel *transactionDateTime;
 
 

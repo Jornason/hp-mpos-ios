@@ -20,6 +20,7 @@
 
 #import "hpListOfRecordsViewController.h"
 #import "hpUtils.h"
+#import "hpColor.h"
 
 @interface hpListOfRecordsViewController ()
 
@@ -27,7 +28,6 @@
 
 @implementation hpListOfRecordsViewController
 @synthesize listOfRecordsTable, currencySymbol;//, logo;
-
 
 - (void)viewDidLoad
 {
@@ -38,12 +38,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    hpHeftService* sharedHeftService = [hpHeftService sharedHeftService];
+    sharedHeftService = [hpHeftService sharedHeftService];
     receiptDelegate = sharedHeftService.receiptDelegate;
+    for (int i = 0; i < [receiptDelegate.itemArray count]; i++) {
+        hpReceipt* receiptTran = [receiptDelegate.itemArray objectAtIndex:i];
+        [receiptTran hydrateDetailViewData];
+    }
     
-    currencySymbol = @{@"826":@"₤", @"840":@"$", @"978":@"€"};
-    
-    self.title = Localize(@"List of records");
+    self.title = Localize(@"Payment history");
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadListData:)
                                                  name:@"refreshData"
@@ -53,9 +55,11 @@
                                              selector:@selector(clearListData:)
                                                  name:@"clearListData"
                                                object:nil];
-    
-    //logo = [UIImage imageNamed: @"card.png"];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewDidUnload
@@ -98,8 +102,9 @@
     hpListOfRecordsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    hpReceipt *itemObj = [receiptDelegate.itemArray objectAtIndex:indexPath.row];
-    [itemObj hydrateDetailViewData];
+    // Reversing the order the how the array is generated.
+    int reverseArray = [receiptDelegate.itemArray count] - indexPath.row - 1;
+    hpReceipt *itemObj = [receiptDelegate.itemArray objectAtIndex:reverseArray];
     if(itemObj.image != NULL)
     {
         cell.listImage.image = itemObj.image;
@@ -108,12 +113,45 @@
     {
         NSString *cardSchemeName = [itemObj.xml objectForKey: @"CardSchemeName"];
         UIImage *logo = [HpUtils getCardSchemeLogo:cardSchemeName];
+        cell.listImage.contentMode = UIViewContentModeScaleAspectFit;
         cell.listImage.image = logo;
     }
-    cell.tranactionType.text = [Localize([itemObj.xml objectForKey:@"TransactionType"])capitalizedString];
+    if ([sharedHeftService isTransactionVoid:[itemObj transactionId]])
+    {
+        cell.transactionType.text = [Localize(@"Reversed")capitalizedString];
+    }
+    else
+    {
+        cell.transactionType.text = [Localize([itemObj.xml objectForKey:@"TransactionType"])capitalizedString];
+    }
     cell.transactionDateTime.text = [itemObj dateFromTimestamp];
     cell.transactionAmount.text = [itemObj ammountWithCurrencySymbol];
-
+    
+    //Applying colors
+    
+    if ([cell.transactionType.text isEqualToString:@"Reversed"] || [cell.transactionType.text rangeOfString:@"Void"].location != NSNotFound)
+    {
+        [cell.transactionType setTextColor:[UIColor hpOrange]];
+    }
+    else if ([cell.transactionType.text isEqualToString:@"Refund"])
+    {
+        [cell.transactionType setTextColor:[UIColor redColor]];
+    }
+    else
+    {
+        [cell.transactionType setTextColor:[UIColor hpBlack]];
+    }
+    NSString* financialStatus = [itemObj.xml objectForKey:@"FinancialStatus"];
+    if ([financialStatus isEqualToString:@"CANCELLED"] || [financialStatus isEqualToString:@"DECLINED"])
+    {
+        [cell.transactionAmount setTextColor:[UIColor redColor]];
+        [cell.transactionType setTextColor:[UIColor hpBlack]];
+    }
+    else
+    {
+        [cell.transactionAmount setTextColor:[UIColor hpBlack]];
+    }
+    
     return cell;
 }
 
@@ -161,8 +199,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-
-    hpReceipt *itemObj = [receiptDelegate.itemArray objectAtIndex:indexPath.row];
+    int reverseArray = [receiptDelegate.itemArray count] - indexPath.row - 1;
+    
+    hpReceipt *itemObj = [receiptDelegate.itemArray objectAtIndex:reverseArray];
     hpReceiptViewController *detailViewController =[self.storyboard instantiateViewControllerWithIdentifier:@"receiptViewController"];
     detailViewController.localReceipt = itemObj;
     // Pass the selected object to the new view controller.

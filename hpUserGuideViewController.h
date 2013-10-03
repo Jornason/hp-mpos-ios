@@ -20,7 +20,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface hpUserGuideViewController : UIViewController
+@interface hpUserGuideViewController : UIViewController <UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end

@@ -6,6 +6,8 @@
   Copyright (c) 2013 Handpoint ehf. All rights reserved.
 */
 "Ok"                        = "Ok";
+"Yes"                       = "Yes";
+"No"                        = "No";
 "Pay"                       = "Pay";
 "Retry"                     = "Retry";
 "Cancel"                    = "Cancel";
@@ -21,7 +23,7 @@
 "Connecting to reader..."   = "Connecting to reader...";
 "Reader disconnected!"      = "Reader disconnected!";
 
-"List of records"           = "List of records";
+"Payment history"           = "History";
 "Connection to reader:"     = "Connection to reader:";
 "Receipt from mPOS"         = "Receipt from mPOS";
 "Nice to see you again."    = "Nice to see you again.";
@@ -31,7 +33,7 @@
 
 "Error connection to reader, please try again." = "Error connecting to reader, please try again.";
 
-"Support"               = "Support";
+"About Handpoint"       = "About";
 "User guide"            = "User guide";
 "No reader connected"   = "No reader connected";
 "Refund"                = "Refund";
@@ -48,15 +50,24 @@
 "Create passcode"   = "Create passcode";
 "Confirm passcode"  = "Confirm passcode";
 
-"Logout"                = "Logout";
-"Settings"              = "Settings";
-"Social"                = "Social";
-"User guide"            = "User guide";
-"Discover"              = "Discover";
-"+ Description"         = "+ Description";
-"E-mail address"        = "E-mail address";
-"Details"               = "Details";
-"Back"                  = "Back";
+"Settings"                  = "Settings";
+"Logout"                    = "Logout";
+"Menu"                      = "Menu";
+"Social"                    = "Social";
+"User guide"                = "User guide";
+"Connect"                   = "Connect";
+"Devices"                   = "Devices";
+"+ Description"             = "+ Description";
+"E-mail address"            = "E-mail address";
+"Phone number"              = "Phone number";
+"Details"                   = "Details";
+"Revert"                    = "Revert";
+"Reversed"                  = "Reversed";
+"Revert are you sure"       = "Are you sure you want to revert this transaction?";
+"This transaction voided"   = "This transaction has already been voided";
+"Back"                      = "Back";
+"Support"                   = "Support";
+"Support mode"              = "Support mode";
 
 "UNDEFINED"         = "UNDEFINED";
 "SALE"              = "SALE";
@@ -71,15 +82,19 @@
 "Select currency"           = "Select currency";
 "Merchant information"      = "Merchant information";
 "Contact Handpoint support" = "Contact Handpoint support";
+"Card reader update"        = "Card reader update";
+"Checking for card reader"  = "Checking for card reader software update";
+"Transaction in process"    = "Transaction in process";
 "Hotline"                   = "Phone number:";
 "visit our website"         = "Visit our website:";
 "E-mail us"                 = "E-mail us:";
 
-"Fetching log from card reader."            = "Fetching log from card reader.";
-"No log available!"                         = "No log available!";
-"Please check instructions."                = "Please check instructions.";
-"No E-mail account found!"                  = "No E-mail account found!";
-"Please check iOS E-mail settings."         = "Please check iOS E-mail settings.";
-"Connect to reader to enable support mode." = "Connect to reader to enable support mode.";
+"Fetching log from card reader."                = "Fetching log from card reader.";
+"No log available!"                             = "No log available!";
+"Please check instructions."                    = "Please check instructions.";
+"No E-mail account found!"                      = "No E-mail account found!";
+"Please check iOS E-mail settings."             = "Please check iOS E-mail settings.";
+"Connect to reader to enable support mode."     = "Connect to reader to enable support mode.";
+"Create your PIN and start accepting payments"  = "Create your PIN and start accepting payments";
 
 

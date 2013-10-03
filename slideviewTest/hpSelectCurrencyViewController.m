@@ -40,10 +40,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.    
     //load config file
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    path = [documentsDirectory stringByAppendingPathComponent:@"hpConfig.plist"];
-    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
     
     currency = [settings valueForKey:@"Currencies"];
     currencySelected = [settings valueForKey:@"SelectedCurrency"];
@@ -119,6 +116,7 @@
     [settings setObject:currencyShort forKey:@"SelectedCurrency"];
     [settings writeToFile:path atomically:YES];
     [tableView reloadData];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

@@ -23,30 +23,36 @@
 #import "HeftManager.h"
 #import "HeftStatusReportPublic.h"
 #import "hpReceipt.h"
+#import "TransactionViewController.h"
+#import "CmdIds.h"
 
 @interface hpHeftService : NSObject <HeftDiscoveryDelegate, HeftStatusReportDelegate, UIWebViewDelegate>
 {
     UIAlertView *activityIndicator;
     UIActivityIndicatorView *progress;
     id<HeftClient> heftClient;
+    HeftRemoteDevice *selectedDevice;
     HeftManager* manager;
     NSMutableArray* devices;
-    id<FinanceResponseInfo> xmlResponce;
+    id<FinanceResponseInfo> xmlResponse;
     hpReceiptDelegate* receiptDelegate;
     hpReceipt *receipt;
     NSString* signatureReceipt;
     NSString* transactionDescription;
     UIImage* transactionImage;
     BOOL automaticConnectToReader;
+    BOOL newDefaultCardReader;
     BOOL supportModeOn;
     
+    TransactionViewController* transactionViewController;
     UIWebView* webReceipt;
 }
 
 @property(retain, nonatomic) id<HeftClient> heftClient;
+@property(retain, nonatomic) HeftRemoteDevice *selectedDevice;
 @property(retain, nonatomic) NSMutableArray* devices;
 @property(retain, nonatomic) HeftManager* manager;
-@property(retain, nonatomic) id<FinanceResponseInfo> xmlResponce;
+@property(retain, nonatomic) id<FinanceResponseInfo> xmlResponse;
 @property(retain, nonatomic) hpReceiptDelegate* receiptDelegate;
 @property(retain, nonatomic) hpReceipt *receipt;
 @property(retain, nonatomic) NSString* signatureReceipt;
@@ -55,6 +61,8 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property(nonatomic) BOOL supportModeOn;
 @property(nonatomic) BOOL automaticConnectToReader;
+@property(nonatomic) BOOL newDefaultCardReader;
+@property(retain, nonatomic) TransactionViewController* transactionViewController;
 
 
 + (hpHeftService *)sharedHeftService;
@@ -62,14 +70,26 @@
 - (void)startDiscovery:(BOOL)fDiscoverAllDevices;
 - (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 - (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
+- (BOOL)saleVoidWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present transaction:(NSString*)transaction;
+- (BOOL)refundVoidWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present transaction:(NSString*)transaction;
+- (void)throwVoidError;
+- (BOOL)isTransactionVoid:(NSString*)transaction;
 - (void)resetDevices;
 - (void)clientForDevice:(HeftRemoteDevice*)device sharedSecret:(NSData*)sharedSecret delegate:(NSObject<HeftStatusReportDelegate>*)aDelegate;
 - (void)connectToLastCardReader;
 - (void)checkIfAccessoryIsConnected;
+- (BOOL)financeInit;
+- (void)storeDefaultCardReader;
+- (void)checkForDefaultCardReader;
 - (void) logSetLevel:(eLogLevel)level;
 - (BOOL) logReset;
 - (BOOL) logGetInfo;
+- (void)acceptSignature:(BOOL)flag;
 - (NSData*)readSharedSecretFromFile;
+- (NSMutableArray*)devicesCopy;
+- (HeftRemoteDevice*)lastHeftClient;
+
+- (void)dismissTransactionViewController;
 
 
 

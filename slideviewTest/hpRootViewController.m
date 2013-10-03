@@ -269,8 +269,13 @@
                 //dismiss keyboard
                 [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
                 [textField resignFirstResponder];
-                [self signInButton];
-                        
+                if(hasPin){
+                    [self signIn];
+                }
+                else{
+                    [self signInButton];
+                }
+                
             }
         }
         if (shouldMoveToFormerField) {
@@ -326,6 +331,7 @@
     self.enterPasscodeLabel.text    = Localize(@"Enter passcode");
     self.createPasscodeLabel.text   = Localize(@"Create passcode");
     self.confirmPasscodeLabel.text  = Localize(@"Confirm passcode");
+    self.createPinSloganLabel.text  = Localize(@"Create your PIN and start accepting payments");
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backspaceWasPressed:) name:@"backspacePressed" object:nil];
 

@@ -21,6 +21,7 @@
 #import "hpPasswordController.h"
 #import "hpTextField.h"
 #import "PasswordConstants.h"
+#import "hpColor.h"
 @interface hpPasswordController ()
 
 @end
@@ -120,7 +121,7 @@ Status status = FIRST_CREATE;
     resetLabel.text               = Localize(@"Reset passcode");
     resetLabel.textAlignment      = NSTextAlignmentLeft;
     resetLabel.backgroundColor    = [UIColor clearColor];
-    resetLabel.textColor          = [UIColor colorWithRed:70.0 green: 113.0 blue:168.0 alpha:1.0];
+    resetLabel.textColor          = [UIColor hpOrange];//colorWithRed:70.0 green: 113.0 blue:168.0 alpha:1.0];
     [self.view addSubview:resetLabel];
 
 

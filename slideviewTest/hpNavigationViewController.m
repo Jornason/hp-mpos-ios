@@ -32,7 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.navigationBar.tintColor = [UIColor colorWithRed:0.33f green:0.74f blue:0.68f alpha:1.0f];
+        self.navigationBar.tintColor = [UIColor colorWithRed:0.94f green:0.91f blue:0.85f alpha:1.0f];
     }
     return self;
 }

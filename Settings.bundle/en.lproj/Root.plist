@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Store settings</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Values</key>
+			<array>
+				<string>ISK</string>
+				<string>GBP</string>
+				<string>EUR</string>
+				<string>USD</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Icelandic Krona</string>
+				<string>British Pound</string>
+				<string>Euro</string>
+				<string>US Dollar</string>
+			</array>
+			<key>Title</key>
+			<string>Currency</string>
+			<key>Key</key>
+			<string>SelectedCurrency</string>
+			<key>DefaultValue</key>
+			<string>GBP</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Name</string>
+			<key>Key</key>
+			<string>merchantName</string>
+            <key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Address</string>
+			<key>Key</key>
+			<string>merchantAddress</string>
+            <key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Handpoint Support</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+        <dict>
+			<key>Key</key>
+			<string>ACTION_MAIL_SUPPORT</string>
+			<key>Title</key>
+			<string>E-mail us!</string>
+			<key>IASKCellImage</key>
+			<string>email</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>handpoint.com</string>
+			<key>IASKCellImage</key>
+			<string>web</string>
+			<key>File</key>
+			<string>http://www.handpoint.com/</string>
+			<key>Title</key>
+			<string>Visit our website</string>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Support mode</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Warning: Support mode will slow down your Handpoint app considerably and should only be used when requested by Handpoint support. When turning on Support mode the app will collect logs from your card reader. When you&apos;ve replicated the problem then press the button below to send the logs to Handpoint support.</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>ACTION_UPDATE_CARD_READER</string>
+			<key>Title</key>
+			<string>Update card reader</string>
+			<key>IASKCellImage</key>
+			<string>email</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>NO</string>
+			<key>Key</key>
+			<string>EnableSupport</string>
+			<key>Title</key>
+			<string>Enable support mode</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>ACTION_SEND_LOGS</string>
+			<key>Title</key>
+			<string>Send logs</string>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Application info</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>1.5.0</string>
+			<key>Key</key>
+			<string>version</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>Handpoint ehf</string>
+			<key>Key</key>
+			<string>copyright</string>
+			<key>Title</key>
+			<string>Copyright</string>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Contact info</string>
+			<key>File</key>
+			<string>hpConfig</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>Title</key>
+	<string>Handpoint Settings</string>
+</dict>
+</plist>

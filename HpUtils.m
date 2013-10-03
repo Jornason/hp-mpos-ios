@@ -19,37 +19,29 @@
  */
 
 #import "HpUtils.h"
+#import "Currency.h"
 
 @implementation HpUtils
 
-+(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency
++(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currencyAlpha
 {
-    NSDictionary* currencySymbol = @{@"GBP":@"₤", @"USD":@"$", @"EUR":@"€", @"ISK":@"Kr"};
+    Currency* currency = [[Currency alloc] initWithAlpha:currencyAlpha];
     NSMutableString* amountString = [NSMutableString stringWithString:@""];
-    if (!(amount) || !(currency))
+    if (!(amount) || !(currencyAlpha))
     {
         [amountString setString:@"0"];
         return amountString;
     }
-    NSString* symbol = [currencySymbol objectForKey:currency];
-    if (symbol)
+    NSString* currencySymbol = currency.currencySymbol;
+    if (currencySymbol)
     {
-        amountString = [NSMutableString stringWithFormat:@"%@0.00 ", symbol];
-        if (![amount isEqual:@"0"])
-        {
-            NSNumberFormatter* formatter = [[NSNumberFormatter alloc]init];
-            [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-            [formatter setPaddingPosition:NSNumberFormatterPadAfterPrefix];
-            [formatter setCurrencySymbol:@""];
-            [formatter setMaximumFractionDigits:2];
-            [formatter setMinimumFractionDigits:2];
-            [formatter setUsesGroupingSeparator:YES];
-            [formatter setCurrencyGroupingSeparator:@","];
-            [formatter setCurrencyDecimalSeparator:@"."];
-
-            NSNumber* amountNumber = [NSNumber numberWithDouble:[amount doubleValue]/100];
-            NSString* formatNumber = [formatter stringFromNumber:amountNumber];
-            amountString = [NSMutableString stringWithFormat:@"%@%@", symbol, formatNumber];
+        NSNumberFormatter* formatter = [HpUtils currencyFormatter:currency];
+        NSNumber* amountNumber = [NSNumber numberWithDouble:[amount doubleValue]/currency.divider];
+        NSString* formatNumber = [formatter stringFromNumber:amountNumber];
+        if (currency.infront){
+            amountString = [NSMutableString stringWithFormat:@"%@%@", currencySymbol, formatNumber];
+        } else {
+            amountString = [NSMutableString stringWithFormat:@"%@%@", formatNumber, currencySymbol];
         }
     }
     else{
@@ -58,9 +50,30 @@
     return amountString;
 }
 
++(NSNumberFormatter*)currencyFormatter:(Currency*)currency{
+    NSNumberFormatter* formatter = [[NSNumberFormatter alloc]init];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [formatter setPaddingPosition:NSNumberFormatterPadAfterPrefix];
+    [formatter setCurrencySymbol:@""];
+    [formatter setMaximumFractionDigits:currency.maxFractionDigits];
+    [formatter setMinimumFractionDigits:currency.minFractionDigits];
+    [formatter setUsesGroupingSeparator:YES];
+    [formatter setCurrencyGroupingSeparator:currency.groupingSeparator];
+    [formatter setCurrencyDecimalSeparator:currency.decimalSeparator];
+    return formatter;
+}
+
 +(NSString*)currencyAlphafromISO:(NSString*)currencyIso{
-    NSDictionary* currencySymbol = @{@"826":@"GBP", @"840":@"USD", @"978":@"EUR", @"357":@"ISK"};
-    return [currencySymbol objectForKey:currencyIso];
+    Currency* currency = [[Currency alloc] initWithCode:currencyIso];
+    return currency.currencyAlpha;
+}
+
++(NSInteger)formatSendableAmount:(NSInteger)amount withCurrency:(NSString*)currencyAlpha{
+    Currency* currency = [[Currency alloc] initWithAlpha:currencyAlpha];
+    if (currency.divider != 100){
+        return amount*100;
+    }
+    return amount;
 }
 
 

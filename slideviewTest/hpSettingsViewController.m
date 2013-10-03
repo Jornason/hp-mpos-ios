@@ -42,11 +42,10 @@
 
     [self.currencyButton setTitle:Localize(@"Select currency") forState:UIControlStateNormal];
     [self.merchantInfoButton setTitle:Localize(@"Merchant information") forState:UIControlStateNormal];
-
-    
+    [self.supportButton setTitle:Localize(@"Support") forState:UIControlStateNormal];
+        
     self.titleLabel.text = Localize(@"Settings");
-    self.navigationItem.title = Localize(@"Settings");
-    
+    self.navigationItem.title = Localize(@"Settings");    
 
 }
 

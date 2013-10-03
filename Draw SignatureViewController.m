@@ -39,9 +39,9 @@
     
     [super viewDidLoad];
     sharedHeftService = [hpHeftService sharedHeftService];
-    [self.clearButton setTintColor:[UIColor yellowColor]];
+    /*[self.clearButton setTintColor:[UIColor yellowColor]];
     [self.declineButton setTintColor:[UIColor redColor]];
-    [self.acceptButton setTintColor:[UIColor greenColor]];
+    [self.acceptButton setTintColor:[UIColor greenColor]];*/
     NSInteger REF_WIDTH = self.view.frame.size.height;
 
     NSArray *sourceImages = [[NSArray alloc]initWithObjects:[UIImage imageNamed: @"visa.png"],[UIImage imageNamed: @"mastercard.png"], nil];
@@ -52,21 +52,32 @@
         cardLogoView.image          = t;
         [self.tempDrawImage addSubview:cardLogoView];
     }
-
-    NSArray *paths                  = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory    = [paths objectAtIndex:0];
-    NSString *path                  = [documentsDirectory stringByAppendingPathComponent:@"hpConfig.plist"];
-    NSMutableDictionary * settings  = [[NSMutableDictionary alloc]initWithContentsOfFile:path];
-    UILabel *merchLabel             = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, REF_WIDTH, 80.0) ];
+    NSUserDefaults *settings        = [NSUserDefaults standardUserDefaults];
+    UILabel *merchLabel             = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, REF_WIDTH, 40.0) ];
     merchLabel.textColor            = [UIColor blackColor];
     merchLabel.backgroundColor      = [UIColor whiteColor];
     merchLabel.font                 = [UIFont fontWithName:@"Avenir" size:(36.0)];
     NSString *merchantName          = [settings objectForKey:@"merchantName"];
-    merchLabel.text                 = [NSString stringWithFormat:@"%@\r%@", merchantName,self.amountwithCurrency];
-    merchLabel.numberOfLines        = 2;
+    //merchLabel.numberOfLines        = 2;
+    merchLabel.text                 = merchantName;
+    NSLog(@"%@", merchLabel.text);
+    [self.view addSubview:merchLabel];
+    
+    UILabel *amountLable            = [[UILabel alloc] initWithFrame:CGRectMake(10, 44, REF_WIDTH, 40.0) ];
+    amountLable.textColor           = [UIColor blackColor];
+    amountLable.backgroundColor     = [UIColor whiteColor];
+    amountLable.font                = [UIFont fontWithName:@"Avenir" size:(36.0)];
+    //amountLable.numberOfLines       = 2;
+    amountLable.text                = self.amountwithCurrency;
+    NSLog(@"%@", amountLable.text);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cancelSignature:)
+                                                 name:@"cancelSignature"
+                                               object:nil];
     //sharedHeftService.receipt.customerReceipt;
     
-    [self.view addSubview:merchLabel];
+    [self.view addSubview:amountLable];
     
 	// Do any additional setup after loading the view.
 }
@@ -105,7 +116,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 }
-                            
 
 - (IBAction)reset:(id)sender
 {
@@ -113,20 +123,21 @@
     self.tempDrawImage.image = nil; //Clears all the strokes in the image
 }
 
-- (IBAction)cancel:(id)sender
+- (void)cancelSignature:(NSNotification *)notif
 {
+    //[sharedHeftService.heftClient acceptSignature:NO];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)decline:(id)sender
 {
-    [sharedHeftService.heftClient acceptSignature:NO];
+    [sharedHeftService acceptSignature:NO];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)accept:(id)sender
 {
-    [sharedHeftService.heftClient acceptSignature:YES];
+    [sharedHeftService acceptSignature:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -39,7 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"mPOS_User_Guide"]];
+    // User guide url is set in hpConfig.plist
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hpConfig" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    NSURL *url = [NSURL URLWithString:[dict objectForKey:@"userGuideURL"]];
+    
+    [webView setDelegate:self];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
 	// Do any additional setup after loading the view.
 }
@@ -61,6 +67,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) webView:(UIWebView *)webViewIn didFailLoadWithError:(NSError *)error {
+    NSLog(@"Failed to load webview");
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"mPOS_User_Guide"]];
+    [webViewIn loadRequest:[NSURLRequest requestWithURL:url]];
+    
 }
 
 @end

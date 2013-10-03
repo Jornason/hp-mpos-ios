@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>mPOS for iOS User manual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+</head>
+
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div>
+                        <p><small>v.1.1.4</small></p>
+                        <h1>Handpoint mPOS for iOS</h1>
+                        <p>This document is a user guide for the Handpoint iOS mPos application. In this document you will find information about how to use the mPOS application to conduct secure chip and pin transactions and other features of the application.
+                        </p>
+                    </div>
+                <div class="span3">
+                    <div class="well sidebar-nav" id="top">
+                        <ul class="nav nav-list">
+                            <li class="active"><a href="#quickstart">Introduction</a></li>
+                            <li class="nav-header">Navigation and settings</li>
+                            <li><a href="#navigation">Navigation</a></li>
+                            <li><a href="#menu">Menu</a></li>
+                            <li><a href)"#settings">Settings</a></li>
+                            <li><a href="#refund">Refund</a></li>
+                            <li><a href="#history">History</a></li>
+                            <li><a href="#logout">Logout</a></li>
+                            <li><a href="#usergude">User guide</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#discover">Discover</a></li>
+                            <li class="nav-header">Taking payments</li>
+                            <li><a href="#performtransaction">Transactions</a></li>
+                            <li><a href="#addimage">Add image</a></li>
+                            <li><a href="#adddescription">Add description</a></li>
+                            <li><a href="#pay">Pay</a></li>
+                            <li><a href="#refund">Refund</a></li>
+                            <li><a href="#sendreceipt">Send receipt</a></li>
+                            <li class="nav-header">Transactions details</li>
+                            <li><a href="#transactionsdetails">View transaction details</a></li>
+                            <li><a href="#sendreceipt2">Send receipt</a></li>
+                        </ul>
+                    </div><!--/.well -->
+                </div><!--/span-->
+                <div class="span8">
+                
+                        <div class="row-fluid">
+                        <div class="span12">
+                        <h2 id="quickstart">Introduction and requerments</h2>
+                        <p>
+                            <h4>Functionality</h4>
+                            The Handpoint App and the Handpoint mobile POS device (card reader) enables you to accept chip and pin payments in a secure way. The app provides you with a simple numpad screen where you can enter amounts and initiate a sale. Swiping to the right on the numpad screen shows the Payments History list from where you can view prevous payments. Swiping to the left on the numbad screen brings up the settings view from where you can configure the application.
+                        </p>
+                        <p>
+                            <h4>Card reader</h4>
+                            The app connects to a card reader from Handpoint. Please sign up at www.handpoint.com for a card reader if you haven't already. When the sign up procedure has been finished you will recieve a card reader and a license to go with it 
+                        </p>
+                        <p>
+                            Connecting to the card reader is done through the bluetooth settings on your iOS device. First you have to pair the devices and then connect. The Handpoint App automatically connects to the paired device upon startup. A small status bar at the top of the screen shows the status of card reader connection.
+                        </p>
+                        <p>
+                            <h4>License</h4>
+                            The license is sent by email as an attachement. To activate the Handpoint app you need to open the license from within your email application. For additional security you are also required to create a pin when you first open the app.
+                        </p>
+
+                            
+                        <a href="#top">Top</a>
+                        </div><!--/span-->
+                        </div><!--/row-->
+                        <div class="row-fluid">
+                        <div class="span12">
+                        <h2>Navigation and settings</h2>
+                        <h3 id="navigation">Navigation</h3>
+                        <p>Navigating the mPOS application is simple. The application main window consists of three main views, which you can move between by sliding with your finger. The applications starts with displaying the main main payment window. Sliding to the left, you will see a list of older transactions. Sliding to the right will show a menu for more actions.
+                        </p>
+                        <a href="#top">Top</a>
+                        <h3 id="menu">Menu</h3>
+                        <h4 id="settings">Settings</h4>
+                        <p> Pressing this button will bring up the settings view. From there you can change the default currency, edit merchant information for receipts, enter support mode (if requested by Handpoint support staff) and update your card reader.
+
+                        </p>
+                        <h4 id="refund">Refund</h4>
+                        <p>Pressing this button will switch the payment method from payment to refund. Transactions will then refund the cardholder for the input amount.
+                        </p>
+                        <a href="#top">Top</a>
+                        <h4 id="history">History</h4>
+                        <p>Pressing History will show the list of transactions view</p>
+                        <a href="#top">Top</a>
+                        <h4 id="logout">Logout</h4>
+                        <p>Logs you out of the application and shows the input pin view</p>
+                        <a href="#top">Top</a>
+                        <h4 id="userguide">User guide</h4>
+                        <p>Brings you to this document.</p>
+                        <a href="#top">Top</a>
+                        <h4 id="about">About Handpoint</h4>
+                        <p>Displays information about Handpoint such as phone number and email address</p>
+                        <a href="#top">Top</a>
+                        <h4 id="discover">Discover</h4>
+                        <p>Opens up a view for discovering and connecting to available card readers in range.</p>
+                        <a href="#top">Top</a>
+                        </div><!--/span-->
+                        </div><!--/row-->
+                        <div class="row-fluid">
+                        <div class="span12">
+                        <h2 id="performtransaction">Transactions</h2>
+                        <p>Taking payments is simple. On the main view you enter the amount. Optinally you can add a picture and write a description. Then simply press Pay. The card reader handles the rest of it. After the transaction has been processed you will be brought to the receipt view, which details the results of the transaction.</p>
+                        <h3 id="addimage">Add image</h3>
+                        <p>Pressing the camera button will allow you to take a picture or choose from your photo library to attach to the receipt.</p>
+                        <a href="#top">Top</a>
+                        <h3 id="adddescription">Add description</h3>
+                        <p>To add a description simply touch the description label to bring up the keyboard.</p>
+                        <a href="#top">Top</a>
+                        <h3 id="pay">Pay</h3>
+                        <p>Press Pay to initiate the transaction.
+                        </p>
+                        <a href="#top">Top</a>
+                        <h3 id="refund">Refund</h3>
+                        <p>You can set the app to refund mode, this allows you to refund customers f.ex when returning items previously bought. The refund mode is set in the right menu (swipe right) and the Pay button changes to Refund</p>
+                        <a href="#top">Top</a>
+                        <h3 id="sendreceipt">Send receipt</h3>
+                        <p>When a transaction is finished, the application should display a receipt. That receipt can be sent to the customer as an PDF file via E-mail. To send the receipt the user can press the text field labeled E-mail address and a keyboard will appear. The user can enter the customer e-mail address and press the Send button. Then the application will create an e-mail message using the native iOS e-mail application, with the customers e-mail address and the receipt as an attachment. The the user can either add something to the message body or just press Send. Then the user is returned to the mPOS application. </p>
+                        <a href="#top">Top</a>
+                        </div><!--/span-->
+                        </div><!--/row-->
+                        <div class="row-fluid">
+                        <div class="span12">
+                        <h2 id="transactiondetails">Transactions details</h2>
+                        <h4 id="transactionsdetails">View transaction details</h4>
+                        <p>Transaction details are shown after a transaction has been processed. Details can also be accessed through the Payments History list (swipe left on payments view). It shows important information about the transaction and from this view you can send the receipt by email. Pressing the details button brings up the receipt slip as it comes from handpoint systems.
+                        </p>
+                        <a href="#top">Top</a>
+                        <h4 id="sendreceipt2">Send receipt</h4>
+                        <p>Enter the email address of your customer to send the receipt by email. She will get the receipt in pdf format along with the description and image (if available). 
+                        </p>
+                        <a href="#top">Top</a>
+                        </div><!--/span-->
+                        </div><!--/row-->
+                        
+                        </div>
+                        
+                        <hr>
+                    </div><!--/.fluid-container-->
+                        <footer>
+                        <p>&copy; Handpoint 2013</p>
+                        </footer>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap-transition.js"></script>
+<script src="bootstrap/js/bootstrap-alert.js"></script>
+<script src="bootstrap/js/bootstrap-modal.js"></script>
+<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/js/bootstrap-tab.js"></script>
+<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="bootstrap/js/bootstrap-popover.js"></script>
+<script src="bootstrap/js/bootstrap-button.js"></script>
+<script src="bootstrap/js/bootstrap-collapse.js"></script>
+<script src="bootstrap/js/bootstrap-carousel.js"></script>
+<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>

@@ -6,6 +6,8 @@
   Copyright (c) 2013 Handpoint ehf. All rights reserved.
 */
 "Ok"                        = "Ok";
+"Yes"                       = "Yes";
+"No"                        = "No";
 "Pay"                       = "Pagar";
 "Retry"                     = "Reintentar";
 "Cancel"                    = "Cancelar";
@@ -18,10 +20,10 @@
 "Approved"                  = "Aprobado";
 "Connected"                 = "Conectado";
 "Processing"                = "Procesando";
-"Connecting to reader..."   = "Connectando...";
+"Connecting to reader..."   = "Conectando...";
 "Reader disconnected!"      = "Lector desconectado";
 
-"List of records"           = "Operaciones";
+"Payment history"           = "Operaciones";
 "Connection to reader:"     = "Conexión al lector:";
 "Receipt from mPOS"         = "Recibo del mPOS";
 "Nice to see you again."    = "Bienvenido de nuevo.";
@@ -31,7 +33,7 @@
 
 "Error connection to reader, please try again." = "Error conectando al lector, por favor, vuelva a intentarlo más adelante.";
 
-"Support" = "Soporte";
+"About Handpoint" = "Acerca de";
 "Error" = "Error";
 "No reader connected" = "Ningun lector conectado";
 "Refund" = "Reembolso";
@@ -47,16 +49,23 @@
 "Create passcode"   = "Crear contraseña";
 "Confirm passcode"  = "Confirmar contraseña";
 
-"Logout"                = "Salir";
-"Settings"              = "Ajustes";
-"Social"                = "Social";
-"User guide"            = "Ayuda";
-"Discover"              = "Buscar";
-"Items"                 = "Elementos";
-"+ Description"         = "+ Descripción";
-"E-mail address"        = "Dirección de e-mail";
-"Details"               = "Detalles";
-"Back"                  = "Atrás";
+"Settings"                  = "Ajustes";
+"Logout"                    = "Salir";
+"Menu"                      = "Menú";
+"Social"                    = "Social";
+"User guide"                = "Ayuda";
+"Connect"                   = "Connect";
+"Devices"                   = "Devices";
+"Items"                     = "Elementos";
+"+ Description"             = "+ Descripción";
+"E-mail address"            = "Dirección de e-mail";
+"Phone number"              = "Número de teléfono";
+"Details"                   = "Detalles";
+"Revert"                    = "Revert";
+"Reversed"                  = "Reversed";
+"Revert are you sure"       = "Are you sure you want to revert this transaction?";
+"This transaction voided"   = "This transaction has already been voided";
+"Back"                      = "Atrás";
 
 "UNDEFINED"         = "INDEFINIDO";
 "SALE"              = "VENTA";
@@ -65,12 +74,25 @@
 "VOID_REFUND"       = "REEMBOLSO ANULADO";
 "CANCEL_SALE"       = "VENTA CANCELADA";
 "CANCEL_REFUND"     = "REEMBOLSO CANCELADO";
+"Support"                  = "Soporte técnico";
+"Support mode"                  = "Modo soporte";
 
-"Select currency"           = "Selecciona la moneda";
+"Merchant address"          = "Dirección de la tienda";
+"Merchant name"             = "Nombre de la tienda";
 "Merchant information"      = "Información de la tienda";
 "Contact Handpoint support" = "Contacta con el sopórte técnico de Handpoint";
+"Select currency"           = "Selecciona la moneda";
+"Card reader update"        = "Actualizar el lector";
+"Checking for card reader"  = "Comprobando si existe una nueva versión";
+"Transaction in process"    = "Transacción en curso.";
 "Hotline"                   = "Teléfono";
 "visit our website"         = "visita nuestra web";
 "E-mail us"                 = "Envíanos un e-mail";
-"Merchant name"             = "Nombre de la tienda";
-"Merchant address"          = "Dirección de la tienda";
+
+"Fetching log from card reader."                = "Cargando el registro del lector.";
+"No log available!"                             = "!No hay registro disponible!";
+"Please check instructions."                    = "Por favor, siga las instrucciones.";
+"No E-mail account found!"                      = "No se ha encontrado dirección de e-mail";
+"Please check iOS E-mail settings."             = "Por favor revise sus ajustes de e-mail.";
+"Connect to reader to enable support mode."     = "Conéctese a un lector para habilitar el modo soporte.";
+"Create your PIN and start accepting payments"  = "Crea tu contraseña y empieza a aceptar pagos";

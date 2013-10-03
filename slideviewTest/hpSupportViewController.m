@@ -107,13 +107,17 @@
     self.hotlineLabel.text = Localize(@"Hotline");
     self.visitLabel.text = Localize(@"visit our website");
     self.emailLabel.text = Localize(@"E-mail us");
+    [self.softwareUpdateButton setTitle:Localize(@"Card reader update") forState:UIControlStateNormal];
+    [self.supportModeLabel setTitle:Localize(@"Support mode") forState:UIControlStateNormal];
+
+
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    self.navigationItem.title = Localize(@"Support");
+    self.navigationItem.title = Localize(@"About Handpoint");
     [super viewWillAppear:animated];
 }
 
@@ -128,5 +132,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction) updateCardReader
+{
+    // set localzation for the lable on the button when started.
+    if(sharedHeftService.heftClient != nil)
+    {
+        {
+            NSLog(@"Checking for card reader software update");
+            [sharedHeftService financeInit];
+        }
+    }
+    else
+    {
+        UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Error")
+                                                         message:Localize(@"No reader connected")
+                                                        delegate:nil
+                                               cancelButtonTitle:Localize(@"Ok")
+                                               otherButtonTitles:nil];
+        [status show];
+    }
+}
+
 
 @end
