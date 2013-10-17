@@ -9,7 +9,11 @@ This app is available on Apple App Store, See https://itunes.apple.com/us/app/ha
 Requerments for use:
 This source code depends on libraries found in the Handpoint SDK for iOS, available here: http://www.handpoint.com/developers/ios/
 
-v.1.2.0 Changes since v1.1.4
+v1.2.1 Changes since v1.2.0
+* Bug fixed: Crashed on iPad
+
+
+v1.2.0 Changes since v1.1.4
 * UI Improvements
 * New menu view
 * improved  receipt view
@@ -20,7 +24,7 @@ v.1.2.0 Changes since v1.1.4
 * Transactions can be voided
 * Other minor performance and functionality tweaks
 
-v1.1.4 Changes since v.1.0.0
+v1.1.4 Changes since v1.0.0
 * GUI Improvements
 * Uses the Handpoint iOS SDK v.2.0
 * Automatically connects via bluetooth to card reader
