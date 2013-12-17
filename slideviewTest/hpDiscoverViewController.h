@@ -21,9 +21,10 @@
 #import "hpViewController.h"
 #import "hpHeftService.h"
 
-@interface hpDiscoverViewController : hpViewController <UITableViewDelegate, UITableViewDataSource>
+@interface hpDiscoverViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     //HeftRemoteDevice *selectedDevice;
+    hpHeftService *sharedHeftService;
     
 
 }

@@ -186,6 +186,8 @@
     [KeychainWrapper deleteItemFromKeychainWithIdentifier:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedSharedSecret"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCardReaderSerialNumber"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self deleteAllFilesInDocumentsFolder];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"clearListData"

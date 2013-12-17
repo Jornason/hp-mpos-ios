@@ -1564,6 +1564,207 @@
         <image name="supportIcon.png" width="400" height="400"/>
         <image name="userGuideIcon.png" width="400" height="400"/>
     </resources>
+    <classes>
+        <class className="Draw_SignatureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Draw_SignatureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="accept:"/>
+                <relationship kind="action" name="decline:"/>
+                <relationship kind="action" name="reset:"/>
+                <relationship kind="outlet" name="acceptButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="declineButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mainImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="signatureView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tempDrawImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="IASKAppSettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IASKAppSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="SocialViewController" superclassName="hpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SocialViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="chooseImage:"/>
+                <relationship kind="action" name="takePhoto:"/>
+                <relationship kind="action" name="tweetButton:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="socialDescription" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="TransactionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TransactionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel"/>
+            </relationships>
+        </class>
+        <class className="hpButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpButton.h"/>
+        </class>
+        <class className="hpCircularButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpCircularButton.h"/>
+        </class>
+        <class className="hpCustomerReceiptViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpCustomerReceiptViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="customerReceiptWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="hpDiscoverViewController" superclassName="hpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpDiscoverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="deviceTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="hpInAppSettingsViewController" superclassName="hpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpInAppSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tabAppSettingsViewController" candidateClass="IASKAppSettingsViewController"/>
+            </relationships>
+        </class>
+        <class className="hpListOfRecordsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpListOfRecordsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="listImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="transactionAmount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="transactionDateTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="transactionType" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hpListOfRecordsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpListOfRecordsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="listOfRecordsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="hpMerchantReceiptViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpMerchantReceiptViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="merchantReceiptWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="hpNavigationViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpNavigationViewController.h"/>
+        </class>
+        <class className="hpReceiptViewController" superclassName="hpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpReceiptViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="detailsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phonenumberField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="receiptTemplate" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webReceipt" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="hpReceiptViewTemplateController" superclassName="hpViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpReceiptViewTemplateController.h"/>
+            <relationships>
+                <relationship kind="action" name="detailsButton:"/>
+                <relationship kind="action" name="insertDescription:"/>
+                <relationship kind="action" name="voidButton:"/>
+                <relationship kind="outlet" name="amountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="authCodeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="authStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="creditCardImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="detailsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="insertPhoto" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="phoneNumberField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pictureImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="receiptBottomImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="receiptMiddleImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="separatorBottomImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="separatorTopImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="voidButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="webReceipt" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="wouldReceiptLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hpReceiptsDetailsTabViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpReceiptsDetailsTabViewController.h"/>
+        </class>
+        <class className="hpRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpRootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetPasscodeGestureRecognizer:"/>
+                <relationship kind="action" name="signInButton:"/>
+                <relationship kind="outlet" name="confirmPasscodeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createPasscode" candidateClass="UIView"/>
+                <relationship kind="outlet" name="createPasscodeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createPinSloganLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="enterPasscode" candidateClass="UIView"/>
+                <relationship kind="outlet" name="enterPasscodeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hiLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="resetPasscode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hpTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpTextField.h"/>
+        </class>
+        <class className="hpUserGuideViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpUserGuideViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="hpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="goToPage:" candidateClass="UIPageControl"/>
+                <relationship kind="action" name="gotoListOfRecords:"/>
+                <relationship kind="action" name="handleTap:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="showAbout:"/>
+                <relationship kind="action" name="showRefundButton:"/>
+                <relationship kind="action" name="startRefund:"/>
+                <relationship kind="outlet" name="ammountDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="backspaceButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="currencyDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="discoverButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="discoverLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="firstView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="itemsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="listOfRecordsButtonLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="listOfRecordsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoutLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="longRecognizer" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="numpadView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="payButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="payRefundToggleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="payRefundToggleLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="refundButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="secondView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="settingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingsButtonLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="socialLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="supportLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="swipeRecognizer" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="tapRecognizer" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="thirdView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="userGuideLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

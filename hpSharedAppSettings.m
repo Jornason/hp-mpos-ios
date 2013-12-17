@@ -50,7 +50,7 @@
     
     //get the plist location from the settings bundle
     NSString *settingsPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
-    NSString *plistPath = [settingsPath stringByAppendingPathComponent:@"en.lproj/Root.plist"];
+    NSString *plistPath = [settingsPath stringByAppendingPathComponent:@"Root.plist"];
     
     //get the preference specifiers array which contains the settings
     NSDictionary *settingsDictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath];

@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  mPOS
-
-  Created by Juan on 6/6/13.
-  Copyright (c) 2013 Handpoint ehf. All rights reserved.
-*/
+/*
+ Localizable.strings
+ mPOS
+ 
+ Created by Juan on 6/6/13.
+ Copyright (c) 2013 Handpoint ehf. All rights reserved.
+ */
 "Ok"                        = "Ok";
 "Yes"                       = "Yes";
 "No"                        = "No";

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>userGuideURL</key>
+	<string>http://www.handpoint.com/user-guides/ios-app.html</string>
+	<key>webpage</key>
+	<string>http://www.handpoint.com</string>
+	<key>email</key>
+	<string>support@handpoint.com</string>
+	<key>phonenumber</key>
+	<string>(+354) 510 33 00</string>
+</dict>
+</plist>

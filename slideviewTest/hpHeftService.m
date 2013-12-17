@@ -70,6 +70,8 @@ NSString* defaultCardReaderStoredSerialNumber;
     return self;
 }
 
+# pragma mark Transaction functions
+
 // Starts a sale transaction with amount, currency and cardholder present properties
 - (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present
 {
@@ -130,6 +132,8 @@ NSString* defaultCardReaderStoredSerialNumber;
     [activityIndicator show];
 }
 
+# pragma mark SDK Device connections
+
 // Resets/clears the list of found devices in the heft manager
 - (void)resetDevices
 {
@@ -179,20 +183,25 @@ NSString* defaultCardReaderStoredSerialNumber;
     // Send notification about a new device being found
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
                                                         object:nil];
-    [self clientForDevice:newDevice sharedSecret:[self readSharedSecretFromFile] delegate:self];
-    
+    if (automaticConnectToReader && (heftClient == nil))
+    {
+        [self checkForDefaultCardReader];
+    }
 }
 
 - (void)didLostAccessoryDevice:(HeftRemoteDevice *)oldDevice
 {
     NSLog(@"hpHeftService didLostAccessoryDevice");
+    if (oldDevice == selectedDevice)
+    {
+        [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
+        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
+        heftClient = nil;
+    }
     [devices removeObject:oldDevice];
-    heftClient = nil;
-    [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
-    [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView"
-                                                        object:nil];
-    
+    [manager.devicesCopy removeObject:oldDevice];
+    // TODO: uncomment when issue with lostAccessory has been fixed in SDK
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDevicesTableView" object:nil];
 }
 
 
@@ -230,7 +239,6 @@ NSString* defaultCardReaderStoredSerialNumber;
 - (void)didConnect:(id<HeftClient>)client;
 {
     NSLog(@"hpHeftService didConnect");
-    NSLog(@"didConnect client: %@", client);
     NSLog(@"didConnect client serial: %@", [[client mpedInfo] objectForKey:@"SerialNumber"]);
     
     if(client == NULL && heftClient == nil)
@@ -274,6 +282,8 @@ NSString* defaultCardReaderStoredSerialNumber;
                                                         object:nil];
     
 }
+
+# pragma mark Transactions responces
 
 // This function gets called when a transaction is in progress to report of the transaction status
 - (void)responseStatus:(id<ResponseInfo>)info;
@@ -340,25 +350,6 @@ NSString* defaultCardReaderStoredSerialNumber;
         receipt = [self generateReceipt:info];
         [receiptDelegate addItem:receipt];
         
-        NSLog(@"send customer receipt");
-        webReceipt = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 595, 0)];
-        [webReceipt setDelegate:self];
-        
-        NSString* merchantReceipt;
-        // Remove {COPY_RECEIPT} placeholder
-        if ([receipt merchantIsCopy])
-        {
-            merchantReceipt = [receipt customerReceipt];
-        }
-        else
-        {
-            merchantReceipt = [[receipt merchantReceipt] stringByReplacingOccurrencesOfString:@"{COPY_RECEIPT}" withString:@""];
-        }
-        // TODO: Add functionality so we know if receipt is being sent for the first time or not.
-        
-        NSLog(@"Merchant receipt: %@", merchantReceipt);
-        [webReceipt loadHTMLString:merchantReceipt baseURL:nil];
-        NSLog(@"Webview is loading...");
         //The rest is handled in the delegate webViewDidFinishLoad
         [[NSNotificationCenter defaultCenter] postNotificationName:@"transactionFinished"
                                                             object:nil];
@@ -366,23 +357,13 @@ NSString* defaultCardReaderStoredSerialNumber;
     }
     else
     {
-        // Create a new alert object and set initial values.
         [transactionViewController setStatusMessage:info.status andStatusCode:info.statusCode];
-//        UIAlertView *status = [[UIAlertView alloc] initWithTitle:Localize(@"Status")
-//                                                         message:info.status
-//                                                        delegate:nil
-//                                                    cancelButtonTitle:nil
-//                                                    otherButtonTitles:Localize(@"Ok"), nil];
-//        [status show];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshData"
                                                         object:nil];
     
-
     [self dismissTransactionViewController];
-//    [transactionViewController.view removeFromSuperview];
-//    transactionViewController = nil;
     [activityIndicator dismissWithClickedButtonIndex:0 animated:YES];
     
     
@@ -476,73 +457,17 @@ NSString* defaultCardReaderStoredSerialNumber;
     [self showTransactionViewController:eTransactionSale];
     [heftClient acceptSignature:flag];
 }
-// Stores information about last card reader connected
-- (void)storeHeftClientSerial:(HeftRemoteDevice*)client andSharedSecret:(NSData*)secret;
-{
-    NSLog(@"hpHeftService - storing last reader");
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *strFile = [documentsDirectory stringByAppendingPathComponent:@"clientInfo.txt"];
-    
-    NSMutableData *data = [[NSMutableData alloc]init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
-    
-    [archiver encodeObject:client forKey:@"remoteDevice"];
-    [archiver encodeObject:secret forKey:@"clientSecret"];
-    [archiver finishEncoding];
-    
-    BOOL success = [data writeToFile:strFile atomically:YES];
-    NSLog(@"%d", success);
-    
-}
-// Retrevies the last connected heft client that was stored
-- (HeftRemoteDevice*)lastHeftClient;
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *strFile = [documentsDirectory stringByAppendingPathComponent:@"clientInfo.txt"];
-    
-    NSData * dataElm = [[NSData alloc] initWithContentsOfFile:strFile];
-    if (dataElm != NULL)
-    {
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:dataElm];
-        
-        HeftRemoteDevice* remoteDevice = [unarchiver decodeObjectForKey:@"remoteDevice"];
-        return remoteDevice;
-    }
-    else
-    {
-        HeftRemoteDevice* remoteDevice = nil;
-        return remoteDevice;
-    }
-    
-}
-// Retrevies the shared secret of the last connected reader that was stored
-// This would propably be stored somewhere else in the future
-- (NSData*)lastHeftClientSecret;
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *strFile = [documentsDirectory stringByAppendingPathComponent:@"clientInfo.txt"];
-    
-    NSData * dataElm = [[NSData alloc] initWithContentsOfFile:strFile];
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:dataElm];
-    
-    NSData* remoteDevice = [unarchiver decodeObjectForKey:@"clientSecret"];
-    return remoteDevice;
-}
 
-- (NSData*)readSharedSecretFromFile;
+# pragma mark Shared secret
+
+- (NSData*)getSavedSharedSecret;
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *strFile = [documentsDirectory stringByAppendingPathComponent:@"sharedSecret.txt"];
     NSData * dataElm;
     NSMutableData* data = [NSMutableData data];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:strFile])
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"savedSharedSecret"])
     {
-        NSString *sharedSecretFromFile = [NSString stringWithContentsOfFile:strFile encoding:NSUTF8StringEncoding error:nil];
+        NSString *sharedSecretFromFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"savedSharedSecret"];
         for (int i = 0 ; i < 32; i++)
         {
             NSRange range = NSMakeRange (i*2, 2);
@@ -563,6 +488,8 @@ NSString* defaultCardReaderStoredSerialNumber;
     return dataElm;
 }
 
+# pragma mark Card reader connections
+
 - (void)storeDefaultCardReader;
 {
     if(heftClient)
@@ -581,7 +508,7 @@ NSString* defaultCardReaderStoredSerialNumber;
         defaultCardReaderStoredSerialNumber = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultCardReaderSerialNumber"];
         if ([[self devicesCopy] count] > 0)
         {
-            [self clientForDevice:[[self devicesCopy] objectAtIndex:0] sharedSecret:[self readSharedSecretFromFile] delegate:self];
+            [self clientForDevice:[[self devicesCopy] objectAtIndex:0] sharedSecret:[self getSavedSharedSecret] delegate:self];
         }
         else
         {
@@ -603,7 +530,7 @@ NSString* defaultCardReaderStoredSerialNumber;
 {
     if (index < [[self devicesCopy] count])
     {
-        [self clientForDevice:[[self devicesCopy] objectAtIndex:index] sharedSecret:[self readSharedSecretFromFile] delegate:self];
+        [self clientForDevice:[[self devicesCopy] objectAtIndex:index] sharedSecret:[self getSavedSharedSecret] delegate:self];
     }
     else
     {
@@ -612,56 +539,7 @@ NSString* defaultCardReaderStoredSerialNumber;
     }
 }
 
-
-// Connects to last connected reader
-- (void)connectToLastCardReader;
-{
-    if(automaticConnectToReader)
-    {
-        NSLog(@"connectToLastCardReader");
-        HeftRemoteDevice* lastClient = [self lastHeftClient];
-        if (lastClient != NULL)
-        {
-            NSMutableArray* lastDeviceArray = [[NSMutableArray alloc]init];
-            [lastDeviceArray addObject:lastClient];
-            NSString* lastName = [[lastDeviceArray objectAtIndex:0]name];
-            NSString* newName = [[devices objectAtIndex:0]name];
-            if([newName isEqual:lastName]) {
-                NSLog(@"found Device");
-                [self clientForDevice:lastClient sharedSecret:[self lastHeftClientSecret] delegate:self];
-            }
-        }
-    }
-}
-
-- (void)checkIfAccessoryIsConnected
-{
-    NSString* eaProtocol = @"com.datecs.pinpad";
-    NSArray *accessories = [[EAAccessoryManager sharedAccessoryManager]
-                            connectedAccessories];
-
-    NSLog(@"accessories desc: %@",[accessories description]);
-    if (heftClient == nil)
-    {
-        if ([accessories count] == 0)
-        {
-            [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
-            [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
-        }
-        else
-        {
-            for (EAAccessory* accessory in accessories)
-            {
-                if([accessory.protocolStrings containsObject:eaProtocol])
-                {
-                    //Connect to last known card reader
-                    HeftRemoteDevice* newRemoteDevice = [manager.devicesCopy objectAtIndex:(manager.devicesCopy.count-1)];
-                    [self clientForDevice:newRemoteDevice sharedSecret:[self readSharedSecretFromFile] delegate:self];
-                }
-            }
-        }
-    }
-}
+# pragma mark Util functions
 
 - (BOOL)financeInit{
     [self showTransactionViewController:eTransactionFinInit];

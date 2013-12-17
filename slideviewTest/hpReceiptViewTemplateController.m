@@ -42,6 +42,7 @@
 
     self.authStatusLabel.text   = [localReceipt.xml objectForKey: @"FinancialStatus"];
     self.authCodeLabel.text     = [localReceipt.xml objectForKey: @"StatusMessage"];
+    self.dateLabel.text         = [NSString stringWithFormat:@"Date: %@",[HpUtils formatEFTTimestamp:[localReceipt.xml objectForKey: @"EFTTimestamp"]]];
     self.amountLabel.text       = localReceipt.ammountWithCurrencySymbol;
     //self.descriptionLabel.text  = localReceipt.description;
     UIFont* defaultFont         = [UIFont fontWithName:@"Roboto" size:self.ammountDisplay.font.pointSize];
@@ -56,6 +57,7 @@
     CGFloat height = 0.0;
     self.authStatusLabel.text   = [localReceipt.xml objectForKey: @"FinancialStatus"];
     self.authCodeLabel.text     = [localReceipt.xml objectForKey: @"StatusMessage"];
+    self.dateLabel.text         = [NSString stringWithFormat:@"Date: %@",[HpUtils formatEFTTimestamp:[localReceipt.xml objectForKey: @"EFTTimestamp"]]];
     if(localReceipt.image != NULL){
         
         CGRect pictureRect = CGRectMake(self.startx, self.starty, self.dateLabel.frame.size.width, 200);
@@ -237,6 +239,11 @@
     [mailController setSubject:Localize(@"Receipt from mPOS")];
     [mailController setMessageBody:Localize(@"Regards") isHTML:YES];
     [mailController addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"Receipt.pdf"];
+    if (localReceipt.image != nil)
+    {
+        NSData *imageData = UIImagePNGRepresentation(localReceipt.image);
+        [mailController addAttachmentData:imageData mimeType:@"image/png" fileName:@"image.png"];
+    }
     [self presentViewController:mailController animated:YES completion:nil];
     if (![localReceipt customerIsCopy])
     {

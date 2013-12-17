@@ -140,6 +140,7 @@
 {
     // Override point for customization after application launch.
     [self performSelector:@selector(copyPlist)];
+    [self performSelector:@selector(copySharedSecret)];
     
     //Check if iCloud is functioning
     NSURL *ubiq = [[NSFileManager defaultManager]
@@ -192,6 +193,8 @@
 - (void)copyPlist
 {
     //Copy plist file from bundle to Documents folder on launch if not found in Documents folder
+    hpReceiptDelegate *receiptDelegate = [[hpReceiptDelegate alloc]init];
+    [receiptDelegate copyDatabaseIfNeeded];
     
     NSFileManager *fileManger=[NSFileManager defaultManager];
     NSError *error;
@@ -209,6 +212,37 @@
     
     [fileManger copyItemAtPath:sourcePath toPath:destinationPath error:&error];
 }
+
+- (void)copySharedSecret {
+    
+    //Check if SharedSecret has been saved in NSUserDefaults
+    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"savedSharedSecret"]) {
+        
+        //Get path to sharedSecret.txt
+        NSFileManager *fileManger=[NSFileManager defaultManager];
+        NSArray *pathsArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+        NSString *doumentDirectoryPath=[pathsArray objectAtIndex:0];
+        NSString *sharedSecretFile= [doumentDirectoryPath stringByAppendingPathComponent:@"sharedSecret.txt"];
+        
+        //Check if sharedSecret.txt exists
+        if ([fileManger fileExistsAtPath:sharedSecretFile]){
+            
+            //Copy shared secret from file
+            NSString *sharedSecretFromFile = [NSString stringWithContentsOfFile:sharedSecretFile encoding:NSUTF8StringEncoding error:nil];
+            //Store shared secret in NSUserDefaults
+            [[NSUserDefaults standardUserDefaults] setObject:sharedSecretFromFile forKey:@"savedSharedSecret"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            //Remove sharedSecret.txt
+            [fileManger removeItemAtPath:sharedSecretFile error:nil];
+            return;
+        }
+        // else: nothing - shared secret was not been saved with version 1.2.1 or older
+    }
+    //else: nothing - Shared secret has been saved in NSUserDefaults
+}
+
+
 - (void)storeSharedSecretFromFile:(NSURL *)url
 {
     NSLog(@"Url: %@", [url absoluteString]);
@@ -226,10 +260,9 @@
         NSString *contentWithoutPrefix = [content substringFromIndex:[prefix length]];
         if ([contentWithoutPrefix rangeOfCharacterFromSet:hex].location == NSNotFound && contentWithoutPrefix.length == 64)
         {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentDir = [paths objectAtIndex:0];
-            NSString *sharedSecretFile = [documentDir stringByAppendingPathComponent:@"sharedSecret.txt"];
-            [contentWithoutPrefix writeToFile:sharedSecretFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            [[NSUserDefaults standardUserDefaults] setObject:contentWithoutPrefix forKey:@"savedSharedSecret"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shared secret saved"
                                                             message:nil
                                                            delegate:self

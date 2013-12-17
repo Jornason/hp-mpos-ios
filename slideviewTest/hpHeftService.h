@@ -76,18 +76,17 @@
 - (BOOL)isTransactionVoid:(NSString*)transaction;
 - (void)resetDevices;
 - (void)clientForDevice:(HeftRemoteDevice*)device sharedSecret:(NSData*)sharedSecret delegate:(NSObject<HeftStatusReportDelegate>*)aDelegate;
-- (void)connectToLastCardReader;
 - (void)checkIfAccessoryIsConnected;
 - (BOOL)financeInit;
 - (void)storeDefaultCardReader;
 - (void)checkForDefaultCardReader;
+- (void)checkForDefaultCardReaderWithIndex:(NSInteger)index;
 - (void) logSetLevel:(eLogLevel)level;
 - (BOOL) logReset;
 - (BOOL) logGetInfo;
 - (void)acceptSignature:(BOOL)flag;
-- (NSData*)readSharedSecretFromFile;
+- (NSData*)getSavedSharedSecret;
 - (NSMutableArray*)devicesCopy;
-- (HeftRemoteDevice*)lastHeftClient;
 
 - (void)dismissTransactionViewController;
 
