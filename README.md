@@ -1,4 +1,4 @@
-Handpoint mPOS App for iOS v1.2.4
+Handpoint mPOS App for iOS v1.2.6
 ===============
 The Handpoint mPOS App offers a simple GUI where users can enter an amount and start a card payment transaction against the Handpoint PP2E system. This application offers a simple card transaction management where it is possible to do sales, refunds, cancellations and voids. Functionality also includes sending reciepts by email or sms and show a transaction history.
 
@@ -8,6 +8,12 @@ This app is available on Apple App Store, See https://itunes.apple.com/us/app/ha
  
 Requerments for use:
 This source code depends on libraries found in the Handpoint SDK for iOS, available here: http://www.handpoint.com/developers/ios/
+
+v1.2.6 changes since 1.2.1
+* Automatically send merchant receipts via E-mail.
+** When merchant E-mail server settings have been added in the settings, the app automatically sends the merchant  
+* Several user interface and performance improvements
+* Automatic keylock on iOS device is disabled during a transaction and software update.
 
 v1.2.4 changes since 1.2.1
 * Uses the Handpoint iOS SDK v.2.1.2
