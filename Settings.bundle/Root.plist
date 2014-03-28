@@ -8,7 +8,7 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Store settings</string>
+			<string>Merchant settings</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -41,7 +41,7 @@
 			<string>Name</string>
 			<key>Key</key>
 			<string>merchantName</string>
-            <key>DefaultValue</key>
+			<key>DefaultValue</key>
 			<string></string>
 		</dict>
 		<dict>
@@ -51,8 +51,16 @@
 			<string>Address</string>
 			<key>Key</key>
 			<string>merchantAddress</string>
-            <key>DefaultValue</key>
+			<key>DefaultValue</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Merchant E-mail settings</string>
+			<key>File</key>
+			<string>merchantEmailSettings</string>
 		</dict>
 		<dict>
 			<key>Title</key>
@@ -60,7 +68,7 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
-        <dict>
+		<dict>
 			<key>Key</key>
 			<string>ACTION_MAIL_SUPPORT</string>
 			<key>Title</key>

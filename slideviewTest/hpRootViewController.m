@@ -21,6 +21,7 @@
 #import "hpRootViewController.h"
 #import "hpTextField.h"
 #import "KeychainWrapper.h"
+#import "hpHeftService.h"
 
 #define passcodeResetAlert ((NSInteger)1)
 
@@ -183,10 +184,15 @@
 
 - (void)resetPasscodeConfirmed
 {
+    [TestFlight passCheckpoint:RESET_PASSCODE];
     [KeychainWrapper deleteItemFromKeychainWithIdentifier:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedSharedSecret"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultCardReaderSerialNumber"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    hpHeftService* sharedHeftService = [hpHeftService sharedHeftService];
+    sharedHeftService.heftClient = nil;
     [self deleteAllFilesInDocumentsFolder];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"clearListData"
                                                         object:nil];
@@ -286,6 +292,7 @@
             {
                 //move focus to next textfieldanimated:YES];
                 [nextField becomeFirstResponder];
+                nextField.text = @"";
             }
             else
             {
@@ -331,7 +338,7 @@
     self.enterPasscodeLabel.text    = Localize(@"Enter passcode");
     self.createPasscodeLabel.text   = Localize(@"Create passcode");
     self.confirmPasscodeLabel.text  = Localize(@"Confirm passcode");
-    self.createPinSloganLabel.text  = Localize(@"Create your PIN and start accepting payments");
+    self.createPinSloganLabel.text  = Localize(@"Create passcode and start accepting payments");
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backspaceWasPressed:) name:@"backspacePressed" object:nil];
 
@@ -341,10 +348,18 @@
 -(void)backspaceWasPressed:(NSNotification *)notification {
     UITextField *textField = [notification object];
     //Kludge
-    textField.text = @"";
-    NSRange range = {0,0};
-
-    [self textField:textField shouldChangeCharactersInRange:range replacementString:@""];
+    if (textField.text.length == 1)
+    {
+        textField.text = @"";
+    }
+    else
+    {
+        textField.text = @"";
+        NSRange range = {0,0};
+        
+        [self textField:textField shouldChangeCharactersInRange:range replacementString:@""];
+        
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

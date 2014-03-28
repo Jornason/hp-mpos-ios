@@ -21,7 +21,7 @@
 
 
 @implementation hpInAppSettingsViewController
-@synthesize appSettingsViewController, tabAppSettingsViewController, fetchingLogsAlert;
+@synthesize appSettingsViewController, tabAppSettingsViewController, fetchingLogsAlert, sendingTestEmailalert, testMessage;
 
 
 - (void)viewDidLoad
@@ -47,7 +47,9 @@
     
     [self addChildViewController:self.appSettingsViewController];
     CGRect rect = self.view.frame;
-    rect.origin.y -= 20.0; //For some reason this amount of gap has to be reduced
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")){
+        rect.origin.y -= 20.0; //For some reason this amount of gap has to be reduced
+    }
     self.appSettingsViewController.view.frame = rect;
     [self.view addSubview:self.appSettingsViewController.view];
     
@@ -55,14 +57,39 @@
                                              selector:@selector(sendSupportEmail:)
                                                  name:@"logsDidDownload"
                                                object:nil];
+    // Check if merchant email server and port have been stored
+    if( [[NSUserDefaults standardUserDefaults] stringForKey:@"merchantEmailHost"])
+    {
+        // Check if value is empty
+        if([[[NSUserDefaults standardUserDefaults] stringForKey:@"merchantEmailHost"] length] == 0)
+        {
+            // Set default value
+            [[NSUserDefaults standardUserDefaults] setObject:@"smtp.gmail.com" forKey:@"merchantEmailHost"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
+    if( [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailPort"])
+    {
+        // Check if value is empty
+        if([[[NSUserDefaults standardUserDefaults] stringForKey:@"merchantEmailPort"] length] == 0)
+        {
+            // Set default value
+            [[NSUserDefaults standardUserDefaults] setObject:@"587" forKey:@"merchantEmailPort"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
    
 }
+
 
 -(void) willMoveToParentViewController:(UIViewController *)parent{
     if(self.navigationController.isNavigationBarHidden == NO)
     {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
+    //Syncronize standard defaults
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -128,7 +155,8 @@
 }
 
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender {
-    [self dismissModalViewControllerAnimated:YES];
+   // [self dismissModalViewControllerAnimated:YES]; deprecated
+    [self dismissViewControllerAnimated:YES completion:nil];
 	
 	// your code here to reconfigure the app for changed settings
 }
@@ -156,7 +184,7 @@
 	} else if ([key isEqualToString:@"IASKCustomHeaderStyle"]) {
         UILabel* label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = UITextAlignmentCenter;
+        label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor redColor];
         label.shadowColor = [UIColor whiteColor];
         label.shadowOffset = CGSizeMake(0, 1);
@@ -233,6 +261,7 @@
         if(sharedHeftService.heftClient != nil)
         {
             NSLog(@"Checking for card reader software update");
+            [TestFlight passCheckpoint:UPDATE_CARDEADER];
             [sharedHeftService financeInit];
         }
         else
@@ -274,6 +303,56 @@
         }
         
     }
+    else if ([specifier.key isEqualToString:@"ACTION_TEST_MERCHANT_EMAIL"]) {
+        NSLog(@"Start sending test email");
+        
+        //BOOL sendEmail = [[NSUserDefaults standardUserDefaults] boolForKey:@"merchantEmailToggle"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"merchantEmailToggle"];
+        
+        NSMutableArray* emailSettings = [NSArray arrayWithObjects:
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailUser"],
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailPassword"],
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailHost"],
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailPort"],
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:@"merchantEmailProtocol"],
+                                         nil];
+        
+        //Check if settings are not empty and email senging is on
+        if(![emailSettings containsObject:@""])
+        {
+            sendingTestEmailalert = [[UIAlertView alloc] initWithTitle:@"Sending test e-mail" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
+            [sendingTestEmailalert show];
+            testMessage = [[SKPSMTPMessage alloc] init];
+            
+            //Email server settings
+            testMessage.fromEmail = emailSettings[0]; //sender email address
+            testMessage.toEmail = emailSettings[0];  //receiver email address
+            testMessage.relayHost = emailSettings[2];
+            testMessage.relayPorts = [NSArray arrayWithObject:[NSNumber numberWithShort:[emailSettings[3] integerValue]]];
+            //emailMessage.ccEmail =@"your cc address";
+            //emailMessage.bccEmail =@"your bcc address";
+            testMessage.requiresAuth = YES;
+            testMessage.login = emailSettings[0]; //sender email address
+            testMessage.pass = emailSettings[1]; //sender email password
+            testMessage.wantsSecure = ([emailSettings[4] isEqual:@"None"]) ? NO : YES;
+            testMessage.validateSSLChain = ([emailSettings[4] isEqual:@"SSL"]) ? YES : NO;
+            testMessage.delegate = self;
+            
+            //Email message settings
+            testMessage.subject = @"Merchant receipt test email";
+            NSString *messageBody = @"Congratulations, your e-mail settings are correct!";
+            // Now creating plain text email message
+            NSDictionary *plainMsg = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"text/plain",kSKPSMTPPartContentTypeKey,
+                                      messageBody,kSKPSMTPPartMessageKey,
+                                      @"8bit",kSKPSMTPPartContentTransferEncodingKey,
+                                      nil];
+            
+            testMessage.parts = [NSArray arrayWithObjects:plainMsg,nil]; //including plain msg
+            [testMessage send];
+            // sending email
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -303,6 +382,7 @@
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
+    [TestFlight passCheckpoint:SEND_LOGS];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -353,6 +433,7 @@
 - (void)settingDidChange:(NSNotification*)notification {
     
 	if([notification.object isEqual:@"EnableSupport"]){
+        [TestFlight passCheckpoint:ENABLE_SUPPORT_MODE];
         BOOL enabled = (BOOL)[[notification.userInfo objectForKey:notification.object] intValue];
         if (enabled) {
             NSLog(@"SUPPORT MODE ON");
@@ -369,10 +450,38 @@
     else if([notification.object isEqual:@"id_currency"]){
         [[hpSharedAppSettings sharedManager] setPropertyWithKey:@"SelectedCurrency" withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
     }
-    else if([notification.object isEqual:@"id_merchant_address"]){        [[hpSharedAppSettings sharedManager] setPropertyWithKey:@"merchantAddress" withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
+    else if([notification.object isEqual:@"id_merchant_address"]){
+        [[hpSharedAppSettings sharedManager] setPropertyWithKey:@"merchantAddress" withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
     }
-    else if([notification.object isEqual:@"id_merchant_name"]){        [[hpSharedAppSettings sharedManager] setPropertyWithKey:@"merchantName" withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
+    else if([notification.object isEqual:@"id_merchant_name"]){
+        [[hpSharedAppSettings sharedManager] setPropertyWithKey:@"merchantName" withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
     }
+    else if([notification.object hasPrefix:@"merchantEmail"]){
+        [[hpSharedAppSettings sharedManager] setPropertyWithKey:notification.object withValue:(NSString*)[notification.userInfo objectForKey:notification.object]];
+    }
+
+}
+
+#pragma mark smtp email delegate functions
+
+// On success
+-(void)messageSent:(SKPSMTPMessage *)message{
+    NSLog(@"delegate - merchant email settings test successfully sent");
+    testMessage = nil;
+    [sendingTestEmailalert dismissWithClickedButtonIndex:0 animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Test e-mail successfully sent!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+}
+
+// On Failure
+-(void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error{
+    
+    testMessage = nil;
+    [sendingTestEmailalert dismissWithClickedButtonIndex:0 animated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:[NSString stringWithFormat:@"Test e-mail failed, please check your settings. - %@" ,[error localizedDescription] ] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+    NSLog(@"Sending merchant email settings test - error(%d): %@", [error code], [error localizedDescription]);
+    
 }
 
 

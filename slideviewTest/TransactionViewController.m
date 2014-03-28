@@ -203,12 +203,14 @@ const int imagesCount[eTransactionNum] = {4, 2, 2, 4, 4, 4};
 
 - (void)showViewController:(UIViewController*)viewController{
 	[self addFadeTransition];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     UIView* topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
 	[topView addSubview:viewController.view];
 }
 
 - (void)dismissViewController:(UIViewController*)viewController{
 	[self addFadeTransition];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 	[viewController.view removeFromSuperview];
 }
 

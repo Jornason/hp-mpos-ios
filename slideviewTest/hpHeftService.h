@@ -25,8 +25,10 @@
 #import "hpReceipt.h"
 #import "TransactionViewController.h"
 #import "CmdIds.h"
+#import "SKPSMTPMessage.h"
+#import "NSData+Base64Additions.h"
 
-@interface hpHeftService : NSObject <HeftDiscoveryDelegate, HeftStatusReportDelegate, UIWebViewDelegate>
+@interface hpHeftService : NSObject <HeftDiscoveryDelegate, HeftStatusReportDelegate, UIWebViewDelegate, SKPSMTPMessageDelegate>
 {
     UIAlertView *activityIndicator;
     UIActivityIndicatorView *progress;
@@ -44,6 +46,7 @@
     BOOL newDefaultCardReader;
     BOOL supportModeOn;
     
+    SKPSMTPMessage *emailMessage;
     TransactionViewController* transactionViewController;
     UIWebView* webReceipt;
 }
@@ -58,10 +61,12 @@
 @property(retain, nonatomic) NSString* signatureReceipt;
 @property(retain, nonatomic) NSString* transactionDescription;
 @property(retain, nonatomic) UIImage* transactionImage;
+@property(retain, nonatomic) UIImage* signatureImage;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property(nonatomic) BOOL supportModeOn;
 @property(nonatomic) BOOL automaticConnectToReader;
 @property(nonatomic) BOOL newDefaultCardReader;
+@property(strong, nonatomic) SKPSMTPMessage *emailMessage;
 @property(retain, nonatomic) TransactionViewController* transactionViewController;
 
 
@@ -76,18 +81,17 @@
 - (BOOL)isTransactionVoid:(NSString*)transaction;
 - (void)resetDevices;
 - (void)clientForDevice:(HeftRemoteDevice*)device sharedSecret:(NSData*)sharedSecret delegate:(NSObject<HeftStatusReportDelegate>*)aDelegate;
-- (void)connectToLastCardReader;
 - (void)checkIfAccessoryIsConnected;
 - (BOOL)financeInit;
 - (void)storeDefaultCardReader;
 - (void)checkForDefaultCardReader;
+- (void)checkForDefaultCardReaderWithIndex:(NSInteger)index;
 - (void) logSetLevel:(eLogLevel)level;
 - (BOOL) logReset;
 - (BOOL) logGetInfo;
 - (void)acceptSignature:(BOOL)flag;
-- (NSData*)readSharedSecretFromFile;
+- (NSData*)getSavedSharedSecret;
 - (NSMutableArray*)devicesCopy;
-- (HeftRemoteDevice*)lastHeftClient;
 
 - (void)dismissTransactionViewController;
 

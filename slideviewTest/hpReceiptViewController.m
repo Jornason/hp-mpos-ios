@@ -41,6 +41,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImage* background = [UIImage imageNamed: @"Background.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:background];
+    
     [emailField setDelegate:self];
     [phonenumberField setDelegate:self];
     

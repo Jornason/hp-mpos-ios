@@ -15,7 +15,7 @@
 "Create"                    = "Create";
 "Regards"                   = "Regards";
 "Sign in"                   = "Sign in";
-"Welcome."                  = "This could be the start of a beautiful friendship";
+"Welcome."                  = "Þetta gæti verið upphafið af fallegri vináttu";
 "Scanning"                  = "Scanning";
 "Approved"                  = "Approved";
 "Connected"                 = "Connected";
@@ -51,7 +51,7 @@
 "Confirm passcode"  = "Confirm passcode";
 
 "Settings"                  = "Settings";
-"Sign out"                  = "Sign out";
+"Logout"                    = "Logout";
 "Menu"                      = "Menu";
 "Social"                    = "Social";
 "User guide"                = "User guide";
@@ -61,9 +61,9 @@
 "E-mail address"            = "E-mail address";
 "Phone number"              = "Phone number";
 "Details"                   = "Details";
-"Reverse"                   = "Reverse";
+"Revert"                    = "Revert";
 "Reversed"                  = "Reversed";
-"Reverse are you sure"      = "Are you sure you want to reverse this transaction?";
+"Revert are you sure"       = "Are you sure you want to revert this transaction?";
 "This transaction voided"   = "This transaction has already been voided";
 "Back"                      = "Back";
 "Support"                   = "Support";
@@ -95,6 +95,6 @@
 "No E-mail account found!"                      = "No E-mail account found!";
 "Please check iOS E-mail settings."             = "Please check iOS E-mail settings.";
 "Connect to reader to enable support mode."     = "Connect to reader to enable support mode.";
-"Create passcode and start accepting payments"  = "Create passcode and start accepting payments";
+"Create your PIN and start accepting payments"  = "Create your PIN and start accepting payments";
 
 

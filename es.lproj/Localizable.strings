@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  mPOS
-
-  Created by Juan on 6/6/13.
-  Copyright (c) 2013 Handpoint ehf. All rights reserved.
-*/
+/*
+ Localizable.strings
+ mPOS
+ 
+ Created by Juan on 6/6/13.
+ Copyright (c) 2013 Handpoint ehf. All rights reserved.
+ */
 "Ok"                        = "Ok";
 "Yes"                       = "Yes";
 "No"                        = "No";
@@ -50,7 +50,7 @@
 "Confirm passcode"  = "Confirmar contraseña";
 
 "Settings"                  = "Ajustes";
-"Logout"                    = "Salir";
+"Sign out"                  = "Salir";
 "Menu"                      = "Menú";
 "Social"                    = "Social";
 "User guide"                = "Ayuda";
@@ -95,4 +95,4 @@
 "No E-mail account found!"                      = "No se ha encontrado dirección de e-mail";
 "Please check iOS E-mail settings."             = "Por favor revise sus ajustes de e-mail.";
 "Connect to reader to enable support mode."     = "Conéctese a un lector para habilitar el modo soporte.";
-"Create your PIN and start accepting payments"  = "Crea tu contraseña y empieza a aceptar pagos";
+"Create passcode and start accepting payments"  = "Crea tu contraseña y empieza a aceptar pagos";

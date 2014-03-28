@@ -23,6 +23,28 @@
 
 @implementation HpUtils
 
++(NSString*)formatEFTTimestamp:(NSString*)EFTTimestamp
+{
+    //Todo: parse date from timestamp in regards of locale
+    if (EFTTimestamp != NULL)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        NSDate *date = [formatter dateFromString:EFTTimestamp];
+        [formatter setDateFormat:@"dd/MM/YYYY"];
+        NSString* formatedDate = [formatter stringFromDate:date];
+        return formatedDate;
+    }
+    else
+    {
+        NSDateFormatter *date_formater=[[NSDateFormatter alloc]init];
+        [date_formater setDateFormat:@"dd/MM/YYYY"];
+        NSString *formatedDate=[date_formater stringFromDate:[NSDate date]];
+        
+        return formatedDate;
+    }
+}
+
 +(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currencyAlpha
 {
     Currency* currency = [[Currency alloc] initWithAlpha:currencyAlpha];

@@ -22,6 +22,7 @@
 #import "Currency.h"
 
 @interface HpUtils : NSObject
++(NSString*)formatEFTTimestamp:(NSString*)EFTTimestamp;
 +(NSString*)formatAmount:(NSString*)amount forCurrency:(NSString*)currency;
 +(NSNumberFormatter*)currencyFormatter:(Currency*)currency;
 +(NSString*)currencyAlphafromISO:(NSString*)currencyIso;

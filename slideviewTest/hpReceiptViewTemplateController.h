@@ -12,12 +12,15 @@
 #import <MessageUI/MessageUI.h>
 #import "hpReceipt.h"
 #import "hpReceiptsDetailsTabViewController.h"
+#import "hpViewController.h"
+#import "hpHeftService.h"
 
-@interface hpReceiptViewTemplateController : hpViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate, UIWebViewDelegate>
+@interface hpReceiptViewTemplateController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate, UIWebViewDelegate>
 {
     hpReceipt* localReceipt;
     UIWebView* webReceipt;
-    UIScrollView *scrollView;
+    //UIScrollView *scrollView;
+    hpHeftService* sharedHeftService;
     
 }
 

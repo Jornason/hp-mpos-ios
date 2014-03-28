@@ -162,9 +162,19 @@
    
     CGRect scrollFrame;
     scrollFrame.origin = self.scrollView.frame.origin;
-    scrollFrame.size = CGSizeMake(self.scrollView.frame.size.width, self.mainView.frame.size.height - 48);
-    self.scrollView.frame = scrollFrame;
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * self.scrollView.subviews.count, self.scrollView.frame.size.height);
+
+    if( SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        scrollFrame.size = CGSizeMake(self.scrollView.frame.size.width, self.mainView.frame.size.height - 68);
+        self.scrollView.frame = scrollFrame;
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * self.scrollView.subviews.count, self.scrollView.frame.size.height);
+    }
+    else {
+        scrollFrame.size = CGSizeMake(self.scrollView.frame.size.width, self.mainView.frame.size.height - 88);
+        self.scrollView.frame = scrollFrame;
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * self.scrollView.subviews.count, self.scrollView.frame.size.height -20);
+    }
+    
     
     CGRect startFrame = self.scrollView.frame;
     startFrame.origin.x = startFrame.size.width * 1;
@@ -203,7 +213,7 @@
     self.payRefundToggleLable.text      = Localize(@"Refund");
     self.listOfRecordsLabel.text        = Localize(@"Payment history");
     self.settingLabel.text              = Localize(@"Menu");
-    self.logoutLabel.text               = Localize(@"Logout");
+    self.logoutLabel.text               = Localize(@"Sign out");
     self.socialLabel.text               = Localize(@"Social");
     self.userGuideLabel.text            = Localize(@"User guide");
     self.itemsLabel.text                = Localize(@"Items");
@@ -224,7 +234,6 @@
                                                action:@selector(handleLongPress:)];
     longPress.minimumPressDuration = 0.8;
     [self.backspaceButton addGestureRecognizer:longPress];
-    
 
 }
 
@@ -250,6 +259,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    if ([[textField text] length ] != 0) {
+        [TestFlight passCheckpoint:DESCRIPTION_ADDED];
+    }
     return NO;
 }
 
@@ -312,6 +324,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    [TestFlight passCheckpoint:PICTURE_ADDED];
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     sharedHeftService.transactionImage = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -340,6 +353,7 @@
 
 }
 - (IBAction)showRefundButton:(id)sender {
+    [TestFlight passCheckpoint:TOGGLE_REFUND];
     self.payButton.hidden = YES;
     if ([self.payRefundToggleLable.text isEqual:Localize(@"Refund")])
     {
@@ -378,6 +392,7 @@
         [self.scrollView scrollRectToVisible:frame animated:YES];
     }
     else{*/
+        [descriptionTextField resignFirstResponder];
         int page =  floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         self.pageControl.currentPage = page;
     //}

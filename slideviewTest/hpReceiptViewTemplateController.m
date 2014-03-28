@@ -32,20 +32,25 @@
     [super viewDidLoad];
     [self.emailField setDelegate:self];
     [self.phoneNumberField setDelegate:self];
+    if(!sharedHeftService)
+    {
+        sharedHeftService =[hpHeftService sharedHeftService];
+    }
     
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard:)];
     gestureRecognizer.delegate = self;
     self.emailField.placeholder = Localize(@"E-mail address");
     self.phoneNumberField.placeholder = Localize(@"Phone Number");
     [self.detailsButton setTitle:Localize(@"Details") forState:UIControlStateNormal];
-    [self.voidButton setTitle:Localize(@"Revert") forState:UIControlStateNormal];
+    [self.voidButton setTitle:Localize(@"Reverse") forState:UIControlStateNormal];
 
     self.authStatusLabel.text   = [localReceipt.xml objectForKey: @"FinancialStatus"];
     self.authCodeLabel.text     = [localReceipt.xml objectForKey: @"StatusMessage"];
+    self.dateLabel.text         = [NSString stringWithFormat:@"Date: %@",[HpUtils formatEFTTimestamp:[localReceipt.xml objectForKey: @"EFTTimestamp"]]];
     self.amountLabel.text       = localReceipt.ammountWithCurrencySymbol;
     //self.descriptionLabel.text  = localReceipt.description;
-    UIFont* defaultFont         = [UIFont fontWithName:@"Roboto" size:self.ammountDisplay.font.pointSize];
-    self.ammountDisplay.font    = defaultFont;
+    //UIFont* defaultFont         = [UIFont fontWithName:@"Roboto" size:self.ammountDisplay.font.pointSize];
+    //self.ammountDisplay.font    = defaultFont;
     
     self.startx = self.dateLabel.frame.origin.x;
     self.starty = self.amountLabel.frame.origin.y + self.amountLabel.frame.size.height + 12.0;
@@ -56,6 +61,7 @@
     CGFloat height = 0.0;
     self.authStatusLabel.text   = [localReceipt.xml objectForKey: @"FinancialStatus"];
     self.authCodeLabel.text     = [localReceipt.xml objectForKey: @"StatusMessage"];
+    self.dateLabel.text         = [NSString stringWithFormat:@"Date: %@",[HpUtils formatEFTTimestamp:[localReceipt.xml objectForKey: @"EFTTimestamp"]]];
     if(localReceipt.image != NULL){
         
         CGRect pictureRect = CGRectMake(self.startx, self.starty, self.dateLabel.frame.size.width, 200);
@@ -175,10 +181,12 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == emailField)
     {
+        [TestFlight passCheckpoint:RECEIPT_EMAIL_SENT];
         [self sendCustomerReceiptEmail];
     }
     else if(textField == phoneNumberField)
     {
+        [TestFlight passCheckpoint:RECEIPT_SMS_SENT];
         [self sendCustomerReceiptSms];
     }
     [textField resignFirstResponder];
@@ -237,6 +245,11 @@
     [mailController setSubject:Localize(@"Receipt from mPOS")];
     [mailController setMessageBody:Localize(@"Regards") isHTML:YES];
     [mailController addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"Receipt.pdf"];
+    if (localReceipt.image != nil)
+    {
+        NSData *imageData = UIImagePNGRepresentation(localReceipt.image);
+        [mailController addAttachmentData:imageData mimeType:@"image/png" fileName:@"image.png"];
+    }
     [self presentViewController:mailController animated:YES completion:nil];
     if (![localReceipt customerIsCopy])
     {
@@ -297,8 +310,8 @@
 
 - (IBAction)voidButton:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:Localize(@"Revert")
-                                                    message:Localize(@"Revert are you sure")
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:Localize(@"Reverse")
+                                                    message:Localize(@"Reverse are you sure")
                                                    delegate:self
                                           cancelButtonTitle:Localize(@"No")
                                           otherButtonTitles:Localize(@"Yes"),nil];
@@ -309,6 +322,7 @@
 }
 
 - (IBAction)detailsButton:(id)sender {
+    [TestFlight passCheckpoint:VIEW_DETAILS];
     hpReceiptsDetailsTabViewController* detailTabController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReceiptDetailsTabBar"];
     detailTabController.tabBarReceipt = localReceipt;
     [self.navigationController pushViewController:detailTabController animated:YES];

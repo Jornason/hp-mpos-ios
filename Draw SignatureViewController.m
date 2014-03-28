@@ -137,6 +137,7 @@
 
 - (IBAction)accept:(id)sender
 {
+    sharedHeftService.signatureImage = self.mainImage.image;
     [sharedHeftService acceptSignature:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }

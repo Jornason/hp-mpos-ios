@@ -12,7 +12,7 @@
 #import "hpReceipt.h"
 #import "hpReceiptsDetailsTabViewController.h"
 
-@interface hpReceiptViewController : hpViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, UIWebViewDelegate>
+@interface hpReceiptViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate, UIWebViewDelegate>
 {
     hpReceipt* localReceipt;
     UIWebView* webReceipt;

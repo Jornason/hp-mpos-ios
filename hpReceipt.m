@@ -290,20 +290,7 @@ static sqlite3_stmt *updateStmt = nil;
 
 - (NSString*)dateFromTimestamp
 {
-    NSString* timeStamp = [xml objectForKey:@"EFTTimestamp"];
-    if (timeStamp != NULL)
-    {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        [formatter setDateFormat:@"yyyyMMddHHmmss"];
-        NSDate *date = [formatter dateFromString:timeStamp];
-        [formatter setDateFormat:@"dd/MM/YYYY"];
-        timeStamp = [formatter stringFromDate:date];
-        return timeStamp;
-    }
-    else
-    {
-        return @"date not available";
-    }
+    return [HpUtils formatEFTTimestamp:[xml objectForKey:@"EFTTimestamp"]];
 }
 
 - (NSString*)htmlReceipt

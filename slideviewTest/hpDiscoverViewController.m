@@ -34,9 +34,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [TestFlight passCheckpoint:CONNECTION_MENU];
+    sharedHeftService = [hpHeftService sharedHeftService];
     [sharedHeftService resetDevices]; // Clean out device list
     sharedHeftService.automaticConnectToReader = NO;
+    
+    UIImage* background = [UIImage imageNamed: @"Background.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:background];
+
     // Recieve notification from hpHeftService when new devices found
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshDeviceTableView:)
@@ -69,6 +74,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    sharedHeftService.automaticConnectToReader = YES;
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillDisappear:animated];
 }
@@ -116,8 +122,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    [TestFlight passCheckpoint:SELECT_CARDREADER];
     sharedHeftService.newDefaultCardReader = YES;
-    [sharedHeftService clientForDevice:[[sharedHeftService devicesCopy] objectAtIndex:indexPath.row] sharedSecret:[sharedHeftService readSharedSecretFromFile] delegate:sharedHeftService];
+    sharedHeftService.heftClient = nil;
+    [sharedHeftService checkForDefaultCardReaderWithIndex:indexPath.row];
+    //[sharedHeftService clientForDevice:[[sharedHeftService devicesCopy] objectAtIndex:indexPath.row] sharedSecret:[sharedHeftService readSharedSecretFromFile] delegate:sharedHeftService];
 }
 
 - (void)refreshDeviceTableView:(NSNotification *)notif
@@ -135,15 +144,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    if (buttonIndex != [alertView cancelButtonIndex])
-    {
-        NSData* sharedSecretData = [[[alertView textFieldAtIndex:0] text] dataUsingEncoding:NSUTF8StringEncoding];
-        [sharedHeftService clientForDevice:[sharedHeftService selectedDevice] sharedSecret:sharedSecretData delegate:sharedHeftService];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-}
 - (void)discoveryButton:(id)sender {
     
     [sharedHeftService startDiscovery:NO];
