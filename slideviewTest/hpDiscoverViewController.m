@@ -34,7 +34,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+<<<<<<< HEAD
     [TestFlight passCheckpoint:CONNECTION_MENU];
+=======
+    
+>>>>>>> FETCH_HEAD
     sharedHeftService = [hpHeftService sharedHeftService];
     [sharedHeftService resetDevices]; // Clean out device list
     sharedHeftService.automaticConnectToReader = NO;

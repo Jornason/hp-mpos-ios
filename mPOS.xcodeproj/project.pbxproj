@@ -35,6 +35,7 @@
 		0DC0651717EC622C007A338E /* roboto-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC0651617EC622C007A338E /* roboto-regular.ttf */; };
 		0DD60EFB17622D61002A842E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DD60EFD17622D61002A842E /* Localizable.strings */; };
 		7F22168717F052C100B908F9 /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F22168617F052C100B908F9 /* TransactionViewController.m */; };
+<<<<<<< HEAD
 		7F2AD4981876ECB50020C699 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD48F1876ECB50020C699 /* Base64Transcoder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7F2AD4991876ECB50020C699 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4911876ECB50020C699 /* HSK_CFUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7F2AD49A1876ECB50020C699 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4931876ECB50020C699 /* NSData+Base64Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -42,6 +43,9 @@
 		7F2AD49C1876ECB50020C699 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4971876ECB50020C699 /* SKPSMTPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7F348CFC18085117006774ED /* hpConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F348CFB18085117006774ED /* hpConfig.plist */; };
 		7F59CE9118A2BBC700BB1E46 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F59CE9018A2BBC700BB1E46 /* libheft.a */; };
+=======
+		7F348CFC18085117006774ED /* hpConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F348CFB18085117006774ED /* hpConfig.plist */; };
+>>>>>>> FETCH_HEAD
 		7F81791317F1F76400D2D657 /* pin_item.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81790F17F1F76400D2D657 /* pin_item.0.png */; };
 		7F81791417F1F76400D2D657 /* pin_item.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791017F1F76400D2D657 /* pin_item.1.png */; };
 		7F81791517F1F76400D2D657 /* pin_item.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791117F1F76400D2D657 /* pin_item.2.png */; };
@@ -53,6 +57,8 @@
 		7F81792017F336AB00D2D657 /* ped.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791F17F336AB00D2D657 /* ped.png */; };
 		7F81792217F3401600D2D657 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81792117F3401500D2D657 /* mobile.png */; };
 		7F81792417F344FE00D2D657 /* arrowsSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81792317F344FD00D2D657 /* arrowsSmall.png */; };
+		7FA23E7E185F0F6E00ABFFE6 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */; };
+		7FA23E86185F0F9500ABFFE6 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA23E85185F0F9500ABFFE6 /* libheft.a */; };
 		7FBC7DF417F5C03A00B57847 /* card2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FBC7DF317F5C03A00B57847 /* card2.png */; };
 		7FBCE69B18ABC51200D15DEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBCE69518ABC51200D15DEA /* libTestFlight.a */; };
 		7FBCE69C18ABC51200D15DEA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7FBCE69618ABC51200D15DEA /* README.md */; };
@@ -265,6 +271,7 @@
 		7F19BE2B1857492A001FCFD2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F22168517F052C100B908F9 /* TransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionViewController.h; sourceTree = "<group>"; };
 		7F22168617F052C100B908F9 /* TransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		7F2AD48E1876ECB50020C699 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
 		7F2AD48F1876ECB50020C699 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
 		7F2AD4901876ECB50020C699 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSK_CFUtilities.h; sourceTree = "<group>"; };
@@ -281,6 +288,9 @@
 		7F59CE8E18A2BBC700BB1E46 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
 		7F59CE8F18A2BBC700BB1E46 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
 		7F59CE9018A2BBC700BB1E46 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
+=======
+		7F348CFB18085117006774ED /* hpConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hpConfig.plist; sourceTree = "<group>"; };
+>>>>>>> FETCH_HEAD
 		7F81790F17F1F76400D2D657 /* pin_item.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.0.png; sourceTree = "<group>"; };
 		7F81791017F1F76400D2D657 /* pin_item.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.1.png; sourceTree = "<group>"; };
 		7F81791117F1F76400D2D657 /* pin_item.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.2.png; sourceTree = "<group>"; };
@@ -292,6 +302,13 @@
 		7F81791F17F336AB00D2D657 /* ped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ped.png; sourceTree = "<group>"; };
 		7F81792117F3401500D2D657 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		7F81792317F344FD00D2D657 /* arrowsSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowsSmall.png; sourceTree = "<group>"; };
+		7FA23E7C185F0F6E00ABFFE6 /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
+		7FA23E81185F0F9500ABFFE6 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
+		7FA23E82185F0F9500ABFFE6 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
+		7FA23E83185F0F9500ABFFE6 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
+		7FA23E84185F0F9500ABFFE6 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
+		7FA23E85185F0F9500ABFFE6 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		7FBC7DF317F5C03A00B57847 /* card2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card2.png; sourceTree = "<group>"; };
 		7FBCE69518ABC51200D15DEA /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		7FBCE69618ABC51200D15DEA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -489,6 +506,12 @@
 				AF6681DC16E8C86000A17A89 /* UIKit.framework in Frameworks */,
 				AF6681DE16E8C86000A17A89 /* Foundation.framework in Frameworks */,
 				AF6681E016E8C86000A17A89 /* CoreGraphics.framework in Frameworks */,
+<<<<<<< HEAD
+=======
+				0D99EC3817EB2F5800D84D8B /* libInAppSettingsKit.a in Frameworks */,
+				7FA23E7E185F0F6E00ABFFE6 /* libdtdev.a in Frameworks */,
+				7FA23E86185F0F9500ABFFE6 /* libheft.a in Frameworks */,
+>>>>>>> FETCH_HEAD
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +610,7 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		7F2AD48D1876ECB50020C699 /* SMTPLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +644,24 @@
 				7F59CE8D18A2BBC700BB1E46 /* HeftClient.h */,
 				7F59CE8E18A2BBC700BB1E46 /* HeftManager.h */,
 				7F59CE8F18A2BBC700BB1E46 /* HeftStatusReportPublic.h */,
+=======
+		7FA23E7F185F0F9500ABFFE6 /* HeftLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				7FA23E80185F0F9500ABFFE6 /* include */,
+				7FA23E85185F0F9500ABFFE6 /* libheft.a */,
+			);
+			path = HeftLibrary;
+			sourceTree = "<group>";
+		};
+		7FA23E80185F0F9500ABFFE6 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7FA23E81185F0F9500ABFFE6 /* CmdIds.h */,
+				7FA23E82185F0F9500ABFFE6 /* HeftClient.h */,
+				7FA23E83185F0F9500ABFFE6 /* HeftManager.h */,
+				7FA23E84185F0F9500ABFFE6 /* HeftStatusReportPublic.h */,
+>>>>>>> FETCH_HEAD
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -768,10 +810,17 @@
 		97F9070F17CE43910068DB5B /* extLibraries */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				7FBCE69418ABC51200D15DEA /* TestFlightSDK2.2.1 */,
 				7FE08FF618A00F8800479055 /* libInAppSettingsKit.a */,
 				7F2AD48D1876ECB50020C699 /* SMTPLibrary */,
 				0D4AF32617E7225400E6E702 /* include */,
+=======
+				7FA23E7C185F0F6E00ABFFE6 /* DTDevices.h */,
+				7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */,
+				0D4AF32617E7225400E6E702 /* include */,
+				0D99EC3717EB2F5800D84D8B /* libInAppSettingsKit.a */,
+>>>>>>> FETCH_HEAD
 			);
 			path = extLibraries;
 			sourceTree = "<group>";
@@ -779,7 +828,12 @@
 		AF6681CF16E8C86000A17A89 = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				7F59CE8A18A2BBC700BB1E46 /* HeftLibrary */,
+=======
+				7FA23E7F185F0F9500ABFFE6 /* HeftLibrary */,
+				7FC55FAC17F05E7300283AE5 /* QuartzCore.framework */,
+>>>>>>> FETCH_HEAD
 				0D99EC4A17EB2FCD00D84D8B /* Settings.bundle */,
 				97F9070F17CE43910068DB5B /* extLibraries */,
 				9704C1BF177C427F00DCEED2 /* mPOS.entitlements */,
@@ -1360,6 +1414,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+<<<<<<< HEAD
 					"\\\"$(SRCROOT)/HeftLibrary\\\"",
 					"\\\"$(SRCROOT)/extLibraries\\\"",
 					"$(SRCROOT)",
@@ -1367,6 +1422,12 @@
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary",
 					"/Users/jgustafsson/Dev/iOS-mPOS-App/extLibraries/TestFlightSDK2.2.1",
+=======
+					"\"$(SRCROOT)/HeftLibrary\"",
+					"\"$(SRCROOT)/extLibraries\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/HeftSimulatorLibrary\"",
+>>>>>>> FETCH_HEAD
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lc++";
@@ -1374,7 +1435,11 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/extLibraries\"";
+<<<<<<< HEAD
 				VALID_ARCHS = "armv7 armv7s arm64";
+=======
+				VALID_ARCHS = "armv7 armv7s";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1392,6 +1457,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+<<<<<<< HEAD
 					"\\\"$(SRCROOT)/HeftLibrary\\\"",
 					"\\\"$(SRCROOT)/extLibraries\\\"",
 					"$(SRCROOT)",
@@ -1399,6 +1465,12 @@
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary",
 					"/Users/jgustafsson/Dev/iOS-mPOS-App/extLibraries/TestFlightSDK2.2.1",
+=======
+					"\"$(SRCROOT)/HeftLibrary\"",
+					"\"$(SRCROOT)/extLibraries\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/HeftSimulatorLibrary\"",
+>>>>>>> FETCH_HEAD
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lc++";
@@ -1406,7 +1478,11 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/extLibraries\"";
+<<<<<<< HEAD
 				VALID_ARCHS = "armv7 armv7s arm64";
+=======
+				VALID_ARCHS = "armv7 armv7s";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

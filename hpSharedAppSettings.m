@@ -50,9 +50,13 @@
     
     //get the plist location from the settings bundle
     NSString *settingsPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
+<<<<<<< HEAD
     NSString *rootPlistPath = [settingsPath stringByAppendingPathComponent:@"Root.plist"];
     NSString *merchantEmailPlistPath = [settingsPath stringByAppendingPathComponent:@"merchantEmailSettings.plist"];
     NSArray *plistArray = [NSArray arrayWithObjects:rootPlistPath, merchantEmailPlistPath, nil];
+=======
+    NSString *plistPath = [settingsPath stringByAppendingPathComponent:@"Root.plist"];
+>>>>>>> FETCH_HEAD
     
     //get the preference specifiers array which contains the settings
     for(NSString *plist in plistArray)

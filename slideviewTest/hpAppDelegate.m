@@ -264,7 +264,10 @@
         {
             [[NSUserDefaults standardUserDefaults] setObject:contentWithoutPrefix forKey:@"savedSharedSecret"];
             [[NSUserDefaults standardUserDefaults]synchronize];
+<<<<<<< HEAD
             [TestFlight passCheckpoint:IMPORT_SHAREDSECRET];
+=======
+>>>>>>> FETCH_HEAD
 
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shared secret saved"
                                                             message:nil
