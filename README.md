@@ -7,7 +7,7 @@ See http://www.handpoint.com for more information.
 This app is available on Apple App Store, See https://itunes.apple.com/us/app/handpoint/id660715472
  
 Requerments for use:
-This source code depends on libraries found in the Handpoint SDK for iOS, available here: http://www.handpoint.com/developers/ios/
+This source code depends on libraries found in the Handpoint SDK for iOS, available here: https://www.handpoint.com/docs/device/iOS/
 
 v1.2.6 changes since 1.2.1
 * Automatically send merchant receipts via E-mail.
