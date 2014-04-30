@@ -261,7 +261,6 @@
         if(sharedHeftService.heftClient != nil)
         {
             NSLog(@"Checking for card reader software update");
-            [TestFlight passCheckpoint:UPDATE_CARDEADER];
             [sharedHeftService financeInit];
         }
         else
@@ -382,7 +381,6 @@
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-    [TestFlight passCheckpoint:SEND_LOGS];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -433,7 +431,6 @@
 - (void)settingDidChange:(NSNotification*)notification {
     
 	if([notification.object isEqual:@"EnableSupport"]){
-        [TestFlight passCheckpoint:ENABLE_SUPPORT_MODE];
         BOOL enabled = (BOOL)[[notification.userInfo objectForKey:notification.object] intValue];
         if (enabled) {
             NSLog(@"SUPPORT MODE ON");

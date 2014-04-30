@@ -259,9 +259,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    if ([[textField text] length ] != 0) {
-        [TestFlight passCheckpoint:DESCRIPTION_ADDED];
-    }
     return NO;
 }
 
@@ -324,7 +321,6 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    [TestFlight passCheckpoint:PICTURE_ADDED];
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     sharedHeftService.transactionImage = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -353,7 +349,6 @@
 
 }
 - (IBAction)showRefundButton:(id)sender {
-    [TestFlight passCheckpoint:TOGGLE_REFUND];
     self.payButton.hidden = YES;
     if ([self.payRefundToggleLable.text isEqual:Localize(@"Refund")])
     {

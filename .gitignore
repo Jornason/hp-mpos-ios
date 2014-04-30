@@ -17,7 +17,6 @@ profile
 DerivedData
 .idea/
 pom.xml
-extLibraries/
 HeftLibrary/
 
 Coffee.h

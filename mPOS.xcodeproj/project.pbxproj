@@ -35,17 +35,7 @@
 		0DC0651717EC622C007A338E /* roboto-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DC0651617EC622C007A338E /* roboto-regular.ttf */; };
 		0DD60EFB17622D61002A842E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DD60EFD17622D61002A842E /* Localizable.strings */; };
 		7F22168717F052C100B908F9 /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F22168617F052C100B908F9 /* TransactionViewController.m */; };
-<<<<<<< HEAD
-		7F2AD4981876ECB50020C699 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD48F1876ECB50020C699 /* Base64Transcoder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7F2AD4991876ECB50020C699 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4911876ECB50020C699 /* HSK_CFUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7F2AD49A1876ECB50020C699 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4931876ECB50020C699 /* NSData+Base64Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7F2AD49B1876ECB50020C699 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4951876ECB50020C699 /* NSStream+SKPSMTPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7F2AD49C1876ECB50020C699 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD4971876ECB50020C699 /* SKPSMTPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7F348CFC18085117006774ED /* hpConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F348CFB18085117006774ED /* hpConfig.plist */; };
-		7F59CE9118A2BBC700BB1E46 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F59CE9018A2BBC700BB1E46 /* libheft.a */; };
-=======
-		7F348CFC18085117006774ED /* hpConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F348CFB18085117006774ED /* hpConfig.plist */; };
->>>>>>> FETCH_HEAD
 		7F81791317F1F76400D2D657 /* pin_item.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81790F17F1F76400D2D657 /* pin_item.0.png */; };
 		7F81791417F1F76400D2D657 /* pin_item.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791017F1F76400D2D657 /* pin_item.1.png */; };
 		7F81791517F1F76400D2D657 /* pin_item.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791117F1F76400D2D657 /* pin_item.2.png */; };
@@ -57,13 +47,15 @@
 		7F81792017F336AB00D2D657 /* ped.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81791F17F336AB00D2D657 /* ped.png */; };
 		7F81792217F3401600D2D657 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81792117F3401500D2D657 /* mobile.png */; };
 		7F81792417F344FE00D2D657 /* arrowsSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F81792317F344FD00D2D657 /* arrowsSmall.png */; };
-		7FA23E7E185F0F6E00ABFFE6 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */; };
-		7FA23E86185F0F9500ABFFE6 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA23E85185F0F9500ABFFE6 /* libheft.a */; };
 		7FBC7DF417F5C03A00B57847 /* card2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FBC7DF317F5C03A00B57847 /* card2.png */; };
-		7FBCE69B18ABC51200D15DEA /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBCE69518ABC51200D15DEA /* libTestFlight.a */; };
-		7FBCE69C18ABC51200D15DEA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7FBCE69618ABC51200D15DEA /* README.md */; };
-		7FBCE69D18ABC51200D15DEA /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 7FBCE69718ABC51200D15DEA /* release_notes.md */; };
 		7FBCE69F18ABC54500D15DEA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBCE69E18ABC54500D15DEA /* libz.dylib */; };
+		7FC033F419113A9100DF5F80 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC033EB19113A9100DF5F80 /* Base64Transcoder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7FC033F519113A9100DF5F80 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC033ED19113A9100DF5F80 /* HSK_CFUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7FC033F619113A9100DF5F80 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC033EF19113A9100DF5F80 /* NSData+Base64Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7FC033F719113A9100DF5F80 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC033F119113A9100DF5F80 /* NSStream+SKPSMTPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7FC033F819113A9100DF5F80 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC033F319113A9100DF5F80 /* SKPSMTPMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7FC033FD1911420500DF5F80 /* libInAppSettingsKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC033FC1911420500DF5F80 /* libInAppSettingsKit.a */; };
+		7FC034041911425300DF5F80 /* libheft.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC034031911425300DF5F80 /* libheft.a */; };
 		7FC55FA217F05A0D00283AE5 /* transaction.dsc.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55F9817F05A0D00283AE5 /* transaction.dsc.0.png */; };
 		7FC55FA317F05A0D00283AE5 /* transaction.dsc.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55F9917F05A0D00283AE5 /* transaction.dsc.1.png */; };
 		7FC55FA417F05A0D00283AE5 /* transaction.dsc.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55F9A17F05A0D00283AE5 /* transaction.dsc.2.png */; };
@@ -85,7 +77,6 @@
 		7FC55FC417F1E87600283AE5 /* hand_with_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55FB917F1E87600283AE5 /* hand_with_card.png */; };
 		7FC55FC717F1F23800283AE5 /* transaction.sale.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55FC517F1F23800283AE5 /* transaction.sale.1.png */; };
 		7FC55FC817F1F23800283AE5 /* transaction.sale.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FC55FC617F1F23800283AE5 /* transaction.sale.0.png */; };
-		7FE08FF818A00F8800479055 /* libInAppSettingsKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE08FF618A00F8800479055 /* libInAppSettingsKit.a */; };
 		7FE55FB8186B80380065790A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE55FB7186B80380065790A /* CFNetwork.framework */; };
 		81E3EC3D17424EC80017B2BD /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC3C17424EC80017B2BD /* LocationViewController.m */; };
 		81E3EC40174250640017B2BD /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3EC3F174250640017B2BD /* ItemViewController.m */; };
@@ -212,18 +203,6 @@
 		0D20E36417F33E980025EC00 /* CustomViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewCell.m; sourceTree = "<group>"; };
 		0D20E36717F35A8F0025EC00 /* hpSharedAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpSharedAppSettings.h; sourceTree = "<group>"; };
 		0D20E36817F35A8F0025EC00 /* hpSharedAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpSharedAppSettings.m; sourceTree = "<group>"; };
-		0D4AF32717E7225400E6E702 /* NinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinePatch.h; sourceTree = "<group>"; };
-		0D4AF32817E7225400E6E702 /* NinePatch_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinePatch_Prefix.pch; sourceTree = "<group>"; };
-		0D4AF32917E7225400E6E702 /* TUCachingNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUCachingNinePatch.h; sourceTree = "<group>"; };
-		0D4AF32A17E7225400E6E702 /* TUDebugLoggingAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUDebugLoggingAssistant.h; sourceTree = "<group>"; };
-		0D4AF32B17E7225400E6E702 /* TUFullNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUFullNinePatch.h; sourceTree = "<group>"; };
-		0D4AF32C17E7225400E6E702 /* TUHorizontalNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUHorizontalNinePatch.h; sourceTree = "<group>"; };
-		0D4AF32D17E7225400E6E702 /* TUNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNinePatch.h; sourceTree = "<group>"; };
-		0D4AF32E17E7225400E6E702 /* TUNinePatchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNinePatchCache.h; sourceTree = "<group>"; };
-		0D4AF32F17E7225400E6E702 /* TUNinePatchCachingCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNinePatchCachingCategories.h; sourceTree = "<group>"; };
-		0D4AF33017E7225400E6E702 /* TUNinePatchProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNinePatchProtocols.h; sourceTree = "<group>"; };
-		0D4AF33117E7225400E6E702 /* TUVerticalNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUVerticalNinePatch.h; sourceTree = "<group>"; };
-		0D4AF33217E7225400E6E702 /* UIImage-TUNinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-TUNinePatch.h"; sourceTree = "<group>"; };
 		0D4F582D17E9AE4C00F80DEE /* empty_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_image.png; sourceTree = "<group>"; };
 		0D4FCCFC17ECAF6C004843DD /* hpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hpButton.h; sourceTree = "<group>"; };
 		0D4FCCFD17ECAF6C004843DD /* hpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hpButton.m; sourceTree = "<group>"; };
@@ -271,26 +250,7 @@
 		7F19BE2B1857492A001FCFD2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F22168517F052C100B908F9 /* TransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionViewController.h; sourceTree = "<group>"; };
 		7F22168617F052C100B908F9 /* TransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		7F2AD48E1876ECB50020C699 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
-		7F2AD48F1876ECB50020C699 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
-		7F2AD4901876ECB50020C699 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSK_CFUtilities.h; sourceTree = "<group>"; };
-		7F2AD4911876ECB50020C699 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSK_CFUtilities.m; sourceTree = "<group>"; };
-		7F2AD4921876ECB50020C699 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
-		7F2AD4931876ECB50020C699 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
-		7F2AD4941876ECB50020C699 /* NSStream+SKPSMTPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStream+SKPSMTPExtensions.h"; sourceTree = "<group>"; };
-		7F2AD4951876ECB50020C699 /* NSStream+SKPSMTPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStream+SKPSMTPExtensions.m"; sourceTree = "<group>"; };
-		7F2AD4961876ECB50020C699 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
-		7F2AD4971876ECB50020C699 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
 		7F348CFB18085117006774ED /* hpConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hpConfig.plist; sourceTree = "<group>"; };
-		7F59CE8C18A2BBC700BB1E46 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
-		7F59CE8D18A2BBC700BB1E46 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
-		7F59CE8E18A2BBC700BB1E46 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
-		7F59CE8F18A2BBC700BB1E46 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
-		7F59CE9018A2BBC700BB1E46 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
-=======
-		7F348CFB18085117006774ED /* hpConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hpConfig.plist; sourceTree = "<group>"; };
->>>>>>> FETCH_HEAD
 		7F81790F17F1F76400D2D657 /* pin_item.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.0.png; sourceTree = "<group>"; };
 		7F81791017F1F76400D2D657 /* pin_item.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.1.png; sourceTree = "<group>"; };
 		7F81791117F1F76400D2D657 /* pin_item.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_item.2.png; sourceTree = "<group>"; };
@@ -302,21 +262,24 @@
 		7F81791F17F336AB00D2D657 /* ped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ped.png; sourceTree = "<group>"; };
 		7F81792117F3401500D2D657 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		7F81792317F344FD00D2D657 /* arrowsSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowsSmall.png; sourceTree = "<group>"; };
-		7FA23E7C185F0F6E00ABFFE6 /* DTDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
-		7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
-		7FA23E81185F0F9500ABFFE6 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
-		7FA23E82185F0F9500ABFFE6 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
-		7FA23E83185F0F9500ABFFE6 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
-		7FA23E84185F0F9500ABFFE6 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
-		7FA23E85185F0F9500ABFFE6 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		7FBC7DF317F5C03A00B57847 /* card2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card2.png; sourceTree = "<group>"; };
-		7FBCE69518ABC51200D15DEA /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		7FBCE69618ABC51200D15DEA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		7FBCE69718ABC51200D15DEA /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		7FBCE69818ABC51200D15DEA /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		7FBCE69918ABC51200D15DEA /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		7FBCE69A18ABC51200D15DEA /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		7FBCE69E18ABC54500D15DEA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7FC033EA19113A9100DF5F80 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		7FC033EB19113A9100DF5F80 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
+		7FC033EC19113A9100DF5F80 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSK_CFUtilities.h; sourceTree = "<group>"; };
+		7FC033ED19113A9100DF5F80 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSK_CFUtilities.m; sourceTree = "<group>"; };
+		7FC033EE19113A9100DF5F80 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
+		7FC033EF19113A9100DF5F80 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
+		7FC033F019113A9100DF5F80 /* NSStream+SKPSMTPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStream+SKPSMTPExtensions.h"; sourceTree = "<group>"; };
+		7FC033F119113A9100DF5F80 /* NSStream+SKPSMTPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStream+SKPSMTPExtensions.m"; sourceTree = "<group>"; };
+		7FC033F219113A9100DF5F80 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
+		7FC033F319113A9100DF5F80 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
+		7FC033FC1911420500DF5F80 /* libInAppSettingsKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libInAppSettingsKit.a; sourceTree = "<group>"; };
+		7FC033FF1911425300DF5F80 /* CmdIds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdIds.h; sourceTree = "<group>"; };
+		7FC034001911425300DF5F80 /* HeftClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftClient.h; sourceTree = "<group>"; };
+		7FC034011911425300DF5F80 /* HeftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftManager.h; sourceTree = "<group>"; };
+		7FC034021911425300DF5F80 /* HeftStatusReportPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeftStatusReportPublic.h; sourceTree = "<group>"; };
+		7FC034031911425300DF5F80 /* libheft.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libheft.a; sourceTree = "<group>"; };
 		7FC55F9817F05A0D00283AE5 /* transaction.dsc.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transaction.dsc.0.png; sourceTree = "<group>"; };
 		7FC55F9917F05A0D00283AE5 /* transaction.dsc.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transaction.dsc.1.png; sourceTree = "<group>"; };
 		7FC55F9A17F05A0D00283AE5 /* transaction.dsc.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transaction.dsc.2.png; sourceTree = "<group>"; };
@@ -338,7 +301,6 @@
 		7FC55FB917F1E87600283AE5 /* hand_with_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand_with_card.png; sourceTree = "<group>"; };
 		7FC55FC517F1F23800283AE5 /* transaction.sale.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transaction.sale.1.png; sourceTree = "<group>"; };
 		7FC55FC617F1F23800283AE5 /* transaction.sale.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transaction.sale.0.png; sourceTree = "<group>"; };
-		7FE08FF618A00F8800479055 /* libInAppSettingsKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libInAppSettingsKit.a; sourceTree = "<group>"; };
 		7FE55FB7186B80380065790A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		81E3EC3B17424EC80017B2BD /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		81E3EC3C17424EC80017B2BD /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
@@ -491,12 +453,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FBCE69F18ABC54500D15DEA /* libz.dylib in Frameworks */,
-				7FBCE69B18ABC51200D15DEA /* libTestFlight.a in Frameworks */,
 				7FE55FB8186B80380065790A /* CFNetwork.framework in Frameworks */,
 				7FC55FAD17F05E7300283AE5 /* QuartzCore.framework in Frameworks */,
-				7F59CE9118A2BBC700BB1E46 /* libheft.a in Frameworks */,
 				81E3EC4E174254F20017B2BD /* CoreData.framework in Frameworks */,
-				7FE08FF818A00F8800479055 /* libInAppSettingsKit.a in Frameworks */,
+				7FC033FD1911420500DF5F80 /* libInAppSettingsKit.a in Frameworks */,
+				7FC034041911425300DF5F80 /* libheft.a in Frameworks */,
 				81E3EC4C174254E00017B2BD /* MapKit.framework in Frameworks */,
 				81FAFA34172AC386003F775B /* Social.framework in Frameworks */,
 				929574A216F88FBE00992410 /* libsqlite3.0.dylib in Frameworks */,
@@ -506,12 +467,6 @@
 				AF6681DC16E8C86000A17A89 /* UIKit.framework in Frameworks */,
 				AF6681DE16E8C86000A17A89 /* Foundation.framework in Frameworks */,
 				AF6681E016E8C86000A17A89 /* CoreGraphics.framework in Frameworks */,
-<<<<<<< HEAD
-=======
-				0D99EC3817EB2F5800D84D8B /* libInAppSettingsKit.a in Frameworks */,
-				7FA23E7E185F0F6E00ABFFE6 /* libdtdev.a in Frameworks */,
-				7FA23E86185F0F9500ABFFE6 /* libheft.a in Frameworks */,
->>>>>>> FETCH_HEAD
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,18 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				0D99EC3917EB2F7100D84D8B /* include */,
-				0D4AF32717E7225400E6E702 /* NinePatch.h */,
-				0D4AF32817E7225400E6E702 /* NinePatch_Prefix.pch */,
-				0D4AF32917E7225400E6E702 /* TUCachingNinePatch.h */,
-				0D4AF32A17E7225400E6E702 /* TUDebugLoggingAssistant.h */,
-				0D4AF32B17E7225400E6E702 /* TUFullNinePatch.h */,
-				0D4AF32C17E7225400E6E702 /* TUHorizontalNinePatch.h */,
-				0D4AF32D17E7225400E6E702 /* TUNinePatch.h */,
-				0D4AF32E17E7225400E6E702 /* TUNinePatchCache.h */,
-				0D4AF32F17E7225400E6E702 /* TUNinePatchCachingCategories.h */,
-				0D4AF33017E7225400E6E702 /* TUNinePatchProtocols.h */,
-				0D4AF33117E7225400E6E702 /* TUVerticalNinePatch.h */,
-				0D4AF33217E7225400E6E702 /* UIImage-TUNinePatch.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -610,73 +553,41 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		7F2AD48D1876ECB50020C699 /* SMTPLibrary */ = {
+		7F59CE8A18A2BBC700BB1E46 /* HeftLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				7F2AD48E1876ECB50020C699 /* Base64Transcoder.h */,
-				7F2AD48F1876ECB50020C699 /* Base64Transcoder.m */,
-				7F2AD4901876ECB50020C699 /* HSK_CFUtilities.h */,
-				7F2AD4911876ECB50020C699 /* HSK_CFUtilities.m */,
-				7F2AD4921876ECB50020C699 /* NSData+Base64Additions.h */,
-				7F2AD4931876ECB50020C699 /* NSData+Base64Additions.m */,
-				7F2AD4941876ECB50020C699 /* NSStream+SKPSMTPExtensions.h */,
-				7F2AD4951876ECB50020C699 /* NSStream+SKPSMTPExtensions.m */,
-				7F2AD4961876ECB50020C699 /* SKPSMTPMessage.h */,
-				7F2AD4971876ECB50020C699 /* SKPSMTPMessage.m */,
+				7FC033FE1911425300DF5F80 /* include */,
+				7FC034031911425300DF5F80 /* libheft.a */,
+			);
+			path = HeftLibrary;
+			sourceTree = "<group>";
+		};
+		7FC033E919113A9100DF5F80 /* SMTPLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				7FC033EA19113A9100DF5F80 /* Base64Transcoder.h */,
+				7FC033EB19113A9100DF5F80 /* Base64Transcoder.m */,
+				7FC033EC19113A9100DF5F80 /* HSK_CFUtilities.h */,
+				7FC033ED19113A9100DF5F80 /* HSK_CFUtilities.m */,
+				7FC033EE19113A9100DF5F80 /* NSData+Base64Additions.h */,
+				7FC033EF19113A9100DF5F80 /* NSData+Base64Additions.m */,
+				7FC033F019113A9100DF5F80 /* NSStream+SKPSMTPExtensions.h */,
+				7FC033F119113A9100DF5F80 /* NSStream+SKPSMTPExtensions.m */,
+				7FC033F219113A9100DF5F80 /* SKPSMTPMessage.h */,
+				7FC033F319113A9100DF5F80 /* SKPSMTPMessage.m */,
 			);
 			path = SMTPLibrary;
 			sourceTree = "<group>";
 		};
-		7F59CE8A18A2BBC700BB1E46 /* HeftLibrary */ = {
+		7FC033FE1911425300DF5F80 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7F59CE8B18A2BBC700BB1E46 /* include */,
-				7F59CE9018A2BBC700BB1E46 /* libheft.a */,
-			);
-			path = HeftLibrary;
-			sourceTree = "<group>";
-		};
-		7F59CE8B18A2BBC700BB1E46 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				7F59CE8C18A2BBC700BB1E46 /* CmdIds.h */,
-				7F59CE8D18A2BBC700BB1E46 /* HeftClient.h */,
-				7F59CE8E18A2BBC700BB1E46 /* HeftManager.h */,
-				7F59CE8F18A2BBC700BB1E46 /* HeftStatusReportPublic.h */,
-=======
-		7FA23E7F185F0F9500ABFFE6 /* HeftLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				7FA23E80185F0F9500ABFFE6 /* include */,
-				7FA23E85185F0F9500ABFFE6 /* libheft.a */,
-			);
-			path = HeftLibrary;
-			sourceTree = "<group>";
-		};
-		7FA23E80185F0F9500ABFFE6 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				7FA23E81185F0F9500ABFFE6 /* CmdIds.h */,
-				7FA23E82185F0F9500ABFFE6 /* HeftClient.h */,
-				7FA23E83185F0F9500ABFFE6 /* HeftManager.h */,
-				7FA23E84185F0F9500ABFFE6 /* HeftStatusReportPublic.h */,
->>>>>>> FETCH_HEAD
+				7FC033FF1911425300DF5F80 /* CmdIds.h */,
+				7FC034001911425300DF5F80 /* HeftClient.h */,
+				7FC034011911425300DF5F80 /* HeftManager.h */,
+				7FC034021911425300DF5F80 /* HeftStatusReportPublic.h */,
 			);
 			path = include;
-			sourceTree = "<group>";
-		};
-		7FBCE69418ABC51200D15DEA /* TestFlightSDK2.2.1 */ = {
-			isa = PBXGroup;
-			children = (
-				7FBCE69518ABC51200D15DEA /* libTestFlight.a */,
-				7FBCE69618ABC51200D15DEA /* README.md */,
-				7FBCE69718ABC51200D15DEA /* release_notes.md */,
-				7FBCE69818ABC51200D15DEA /* TestFlight+AsyncLogging.h */,
-				7FBCE69918ABC51200D15DEA /* TestFlight+ManualSessions.h */,
-				7FBCE69A18ABC51200D15DEA /* TestFlight.h */,
-			);
-			path = TestFlightSDK2.2.1;
 			sourceTree = "<group>";
 		};
 		7FC55FAE17F1E7F900283AE5 /* transactionsImages */ = {
@@ -810,17 +721,9 @@
 		97F9070F17CE43910068DB5B /* extLibraries */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				7FBCE69418ABC51200D15DEA /* TestFlightSDK2.2.1 */,
-				7FE08FF618A00F8800479055 /* libInAppSettingsKit.a */,
-				7F2AD48D1876ECB50020C699 /* SMTPLibrary */,
+				7FC033FC1911420500DF5F80 /* libInAppSettingsKit.a */,
+				7FC033E919113A9100DF5F80 /* SMTPLibrary */,
 				0D4AF32617E7225400E6E702 /* include */,
-=======
-				7FA23E7C185F0F6E00ABFFE6 /* DTDevices.h */,
-				7FA23E7D185F0F6E00ABFFE6 /* libdtdev.a */,
-				0D4AF32617E7225400E6E702 /* include */,
-				0D99EC3717EB2F5800D84D8B /* libInAppSettingsKit.a */,
->>>>>>> FETCH_HEAD
 			);
 			path = extLibraries;
 			sourceTree = "<group>";
@@ -828,12 +731,7 @@
 		AF6681CF16E8C86000A17A89 = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				7F59CE8A18A2BBC700BB1E46 /* HeftLibrary */,
-=======
-				7FA23E7F185F0F9500ABFFE6 /* HeftLibrary */,
-				7FC55FAC17F05E7300283AE5 /* QuartzCore.framework */,
->>>>>>> FETCH_HEAD
 				0D99EC4A17EB2FCD00D84D8B /* Settings.bundle */,
 				97F9070F17CE43910068DB5B /* extLibraries */,
 				9704C1BF177C427F00DCEED2 /* mPOS.entitlements */,
@@ -1130,7 +1028,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FBCE69D18ABC51200D15DEA /* release_notes.md in Resources */,
 				0D4FCD0217ECBC39004843DD /* roboto-medium.ttf in Resources */,
 				AF6681E616E8C86000A17A89 /* InfoPlist.strings in Resources */,
 				AF6681F816E8C86000A17A89 /* MainStoryboard_iPad.storyboard in Resources */,
@@ -1151,7 +1048,6 @@
 				AFE70DF01737E3BA0019D1A0 /* Camera_icon.png in Resources */,
 				AFE70DF21737E4640019D1A0 /* Camera_icon_PRESSED.png in Resources */,
 				AF8916D7173A667800DC33C3 /* handpoint logo.png in Resources */,
-				7FBCE69C18ABC51200D15DEA /* README.md in Resources */,
 				AF6DCCA917425B24007B7774 /* mPOS_User_Guide in Resources */,
 				AF5A5DEB1742F1F400FAD165 /* MainStoryboard_iPhone.storyboard in Resources */,
 				AF5A5DED174306D200FAD165 /* socialIcon.png in Resources */,
@@ -1287,19 +1183,19 @@
 				0DB15113176B1142001618F4 /* hpPasswordController.m in Sources */,
 				0DB2405B177079B5004CD1D1 /* hpTextField.m in Sources */,
 				0DB2405F1771EF9B004CD1D1 /* HpUtils.m in Sources */,
+				7FC033F419113A9100DF5F80 /* Base64Transcoder.m in Sources */,
 				9704C1B8177AE85D00DCEED2 /* BWStatusBarOverlay.m in Sources */,
 				0DB8F27817E8929800831710 /* hpReceiptViewTemplateController.m in Sources */,
 				F2DD2C0917E882690007FD1B /* Currency.m in Sources */,
+				7FC033F519113A9100DF5F80 /* HSK_CFUtilities.m in Sources */,
 				7F22168717F052C100B908F9 /* TransactionViewController.m in Sources */,
 				0D4FCCFE17ECAF6C004843DD /* hpButton.m in Sources */,
 				0DA13A1117EDEF0300163134 /* hpCircularButton.m in Sources */,
+				7FC033F719113A9100DF5F80 /* NSStream+SKPSMTPExtensions.m in Sources */,
+				7FC033F619113A9100DF5F80 /* NSData+Base64Additions.m in Sources */,
+				7FC033F819113A9100DF5F80 /* SKPSMTPMessage.m in Sources */,
 				F2EC84A417F07C3E00A2EC92 /* hpColor.m in Sources */,
 				0D20E36917F35A8F0025EC00 /* hpSharedAppSettings.m in Sources */,
-				7F2AD4981876ECB50020C699 /* Base64Transcoder.m in Sources */,
-				7F2AD4991876ECB50020C699 /* HSK_CFUtilities.m in Sources */,
-				7F2AD49A1876ECB50020C699 /* NSData+Base64Additions.m in Sources */,
-				7F2AD49B1876ECB50020C699 /* NSStream+SKPSMTPExtensions.m in Sources */,
-				7F2AD49C1876ECB50020C699 /* SKPSMTPMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,20 +1310,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
-					"\\\"$(SRCROOT)/HeftLibrary\\\"",
-					"\\\"$(SRCROOT)/extLibraries\\\"",
 					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/HeftSimulatorLibrary\\\"",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary",
-					"/Users/jgustafsson/Dev/iOS-mPOS-App/extLibraries/TestFlightSDK2.2.1",
-=======
-					"\"$(SRCROOT)/HeftLibrary\"",
-					"\"$(SRCROOT)/extLibraries\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/HeftSimulatorLibrary\"",
->>>>>>> FETCH_HEAD
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lc++";
@@ -1435,11 +1320,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/extLibraries\"";
-<<<<<<< HEAD
 				VALID_ARCHS = "armv7 armv7s arm64";
-=======
-				VALID_ARCHS = "armv7 armv7s";
->>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1457,20 +1338,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-<<<<<<< HEAD
-					"\\\"$(SRCROOT)/HeftLibrary\\\"",
-					"\\\"$(SRCROOT)/extLibraries\\\"",
 					"$(SRCROOT)",
-					"\\\"$(SRCROOT)/HeftSimulatorLibrary\\\"",
 					"$(PROJECT_DIR)/extLibraries",
 					"$(PROJECT_DIR)/HeftLibrary",
-					"/Users/jgustafsson/Dev/iOS-mPOS-App/extLibraries/TestFlightSDK2.2.1",
-=======
-					"\"$(SRCROOT)/HeftLibrary\"",
-					"\"$(SRCROOT)/extLibraries\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/HeftSimulatorLibrary\"",
->>>>>>> FETCH_HEAD
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lc++";
@@ -1478,11 +1348,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/extLibraries\"";
-<<<<<<< HEAD
 				VALID_ARCHS = "armv7 armv7s arm64";
-=======
-				VALID_ARCHS = "armv7 armv7s";
->>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

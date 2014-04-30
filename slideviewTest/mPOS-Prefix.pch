@@ -12,7 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
-    #import "TestFlight.h"
     #define Localize(x) NSLocalizedString(x,nil)
     #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
     #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -22,24 +21,4 @@
     // Status bar colors
     #define STATUS_BAR_ALERT ([UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f])
     #define STATUS_BAR_CONNECTED ([UIColor colorWithRed:0.33f green:0.74f blue:0.68f alpha:1.0f])
-    // TestFlight checkpoints
-    #define RECEIPT_EMAIL_SENT @"Receipt email sent"
-    #define RECEIPT_SMS_SENT @"Receipt sms sent"
-    #define UPDATE_CARDEADER @"Update card reader"
-    #define ENABLE_SUPPORT_MODE @"enable support mode"
-    #define SEND_LOGS @"Send logs"
-    #define TOGGLE_REFUND @"Toggle refund"
-    #define SALE_TRANSACTION @"Sale transaction"
-    #define REFUND_TRANSACTION @"Refund transaction"
-    #define VOID_SALE_TRANSACTION @"Void sale transaction"
-    #define VOID_REFUND_TRANSACTION @"Void refund transaction"
-    #define RESET_PASSCODE @"Reset passcode"
-    #define SIGN_OUT @"Sign out"
-    #define PICTURE_ADDED @"Picture added"
-    #define DESCRIPTION_ADDED @"Description added"
-    #define VIEW_DETAILS @"View transaction details"
-    #define CONNECTION_MENU @"Connection menu"
-    #define DISCOVER @"Perform discover"
-    #define SELECT_CARDREADER @"Cardreader selected"
-    #define IMPORT_SHAREDSECRET @"Sharedsecret imported"
 #endif

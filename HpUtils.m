@@ -37,15 +37,11 @@
     }
     else
     {
-<<<<<<< HEAD
         NSDateFormatter *date_formater=[[NSDateFormatter alloc]init];
         [date_formater setDateFormat:@"dd/MM/YYYY"];
         NSString *formatedDate=[date_formater stringFromDate:[NSDate date]];
         
         return formatedDate;
-=======
-        return @"Not available";
->>>>>>> FETCH_HEAD
     }
 }
 

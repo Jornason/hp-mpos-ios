@@ -77,14 +77,12 @@ NSInteger merchantEmailAttempts = 0;
 // Starts a sale transaction with amount, currency and cardholder present properties
 - (BOOL)saleWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present
 {
-    [TestFlight passCheckpoint:SALE_TRANSACTION];
     [self showTransactionViewController:eTransactionSale];
     return [heftClient saleWithAmount:amount currency:currency cardholder:present];
 }
 // Starts a refund transaction with amount, currency and cardholder present properties
 - (BOOL)refundWithAmount:(NSInteger)amount currency:(NSString*)currency cardholder:(BOOL)present;
 {
-    [TestFlight passCheckpoint:REFUND_TRANSACTION];
     [self showTransactionViewController:eTransactionRefund];
     return [heftClient refundWithAmount:amount currency:currency cardholder:present];
 }
@@ -93,7 +91,6 @@ NSInteger merchantEmailAttempts = 0;
 {
     if (![self isTransactionVoid:transaction])
     {
-        [TestFlight passCheckpoint:VOID_SALE_TRANSACTION];
         [self showTransactionViewController:eTransactionVoid];
         return [heftClient saleVoidWithAmount:amount currency:currency cardholder:present transaction:transaction];
     }
@@ -108,7 +105,6 @@ NSInteger merchantEmailAttempts = 0;
 {
     if (![self isTransactionVoid:transaction])
     {
-        [TestFlight passCheckpoint:VOID_REFUND_TRANSACTION];
         [self showTransactionViewController:eTransactionVoid];
         return [heftClient refundVoidWithAmount:amount currency:currency cardholder:present transaction:transaction];
     }
@@ -178,7 +174,6 @@ NSInteger merchantEmailAttempts = 0;
 // Starts discovery of devices
 - (void)startDiscovery:(BOOL)fDiscoverAllDevices;
 {
-    [TestFlight passCheckpoint:DISCOVER];
     [manager startDiscovery:fDiscoverAllDevices];
 }
 
@@ -202,11 +197,7 @@ NSInteger merchantEmailAttempts = 0;
     if (oldDevice == selectedDevice)
     {
         [BWStatusBarOverlay showWithMessage:Localize(@"Reader disconnected!") animated:YES];
-<<<<<<< HEAD
         [BWStatusBarOverlay setBackgroundColor:STATUS_BAR_ALERT];
-=======
-        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];
->>>>>>> FETCH_HEAD
         heftClient = nil;
     }
     [devices removeObject:oldDevice];
@@ -358,7 +349,6 @@ NSInteger merchantEmailAttempts = 0;
     NSString* financialStatus = [info.xml objectForKey:@"FinancialStatus"];
     if ([saleSet containsObject:financialStatus]) 
     {
-<<<<<<< HEAD
         webReceipt = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 595, 0)];
         [webReceipt setDelegate:self];
         
@@ -366,11 +356,7 @@ NSInteger merchantEmailAttempts = 0;
         [receiptDelegate addItem:receipt];
         [webReceipt loadHTMLString:receipt.merchantReceipt baseURL:nil];
         NSLog(@"Webview is loading...");
-=======
-        receipt = [self generateReceipt:info];
-        [receiptDelegate addItem:receipt];
->>>>>>> FETCH_HEAD
-        
+
         //The rest is handled in the delegate webViewDidFinishLoad
         [[NSNotificationCenter defaultCenter] postNotificationName:@"transactionFinished"
                                                             object:nil];
@@ -558,11 +544,7 @@ NSInteger merchantEmailAttempts = 0;
     else
     {
         [BWStatusBarOverlay showWithMessage:@"Default card reader not found" animated:YES];
-<<<<<<< HEAD
         [BWStatusBarOverlay setBackgroundColor:STATUS_BAR_ALERT];
-=======
-        [BWStatusBarOverlay setBackgroundColor:[UIColor colorWithRed:0.94f green:0.40f blue:0.18f alpha:1.0f]];    
->>>>>>> FETCH_HEAD
     }
 }
 

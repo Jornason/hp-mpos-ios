@@ -184,7 +184,6 @@
 
 - (void)resetPasscodeConfirmed
 {
-    [TestFlight passCheckpoint:RESET_PASSCODE];
     [KeychainWrapper deleteItemFromKeychainWithIdentifier:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:PIN_SAVED];
     [[NSUserDefaults standardUserDefaults] setValue:@"" forKey:USERNAME];

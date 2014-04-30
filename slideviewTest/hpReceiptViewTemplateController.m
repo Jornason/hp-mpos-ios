@@ -181,12 +181,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == emailField)
     {
-        [TestFlight passCheckpoint:RECEIPT_EMAIL_SENT];
         [self sendCustomerReceiptEmail];
     }
     else if(textField == phoneNumberField)
     {
-        [TestFlight passCheckpoint:RECEIPT_SMS_SENT];
         [self sendCustomerReceiptSms];
     }
     [textField resignFirstResponder];
@@ -322,7 +320,6 @@
 }
 
 - (IBAction)detailsButton:(id)sender {
-    [TestFlight passCheckpoint:VIEW_DETAILS];
     hpReceiptsDetailsTabViewController* detailTabController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReceiptDetailsTabBar"];
     detailTabController.tabBarReceipt = localReceipt;
     [self.navigationController pushViewController:detailTabController animated:YES];

@@ -34,11 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-<<<<<<< HEAD
-    [TestFlight passCheckpoint:CONNECTION_MENU];
-=======
-    
->>>>>>> FETCH_HEAD
+
     sharedHeftService = [hpHeftService sharedHeftService];
     [sharedHeftService resetDevices]; // Clean out device list
     sharedHeftService.automaticConnectToReader = NO;
@@ -126,7 +122,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    [TestFlight passCheckpoint:SELECT_CARDREADER];
     sharedHeftService.newDefaultCardReader = YES;
     sharedHeftService.heftClient = nil;
     [sharedHeftService checkForDefaultCardReaderWithIndex:indexPath.row];

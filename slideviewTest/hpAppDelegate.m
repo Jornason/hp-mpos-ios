@@ -21,7 +21,7 @@
 #import "hpAppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "hpSharedAppSettings.h"
-#import "TestFlight.h"
+
 
 @implementation hpAppDelegate
 
@@ -139,7 +139,6 @@
 //Defaults
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [TestFlight takeOff:@"f6597dc0-d156-45e8-b285-877d8109eac7"];
     // Override point for customization after application launch.
     [self performSelector:@selector(copyPlist)];
     [self performSelector:@selector(copySharedSecret)];
@@ -264,10 +263,6 @@
         {
             [[NSUserDefaults standardUserDefaults] setObject:contentWithoutPrefix forKey:@"savedSharedSecret"];
             [[NSUserDefaults standardUserDefaults]synchronize];
-<<<<<<< HEAD
-            [TestFlight passCheckpoint:IMPORT_SHAREDSECRET];
-=======
->>>>>>> FETCH_HEAD
 
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shared secret saved"
                                                             message:nil
